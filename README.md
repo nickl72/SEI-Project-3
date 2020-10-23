@@ -22,7 +22,9 @@ Application users may search for breweries in an area and learn more about what 
 - Brewery show page to display more information, such as Yelp reviews
 
 ### Wireframe
-
+-[HomePage](/planning/wireframes/HomePage.jpg)
+-[Select Brewery](/planning/wireframes/Select_Brewery.jpg)
+-[Brewery Info Page](/planning/wireframes/BreweryInfoPage.jpg)
 
 ### Technologies used
 - React
