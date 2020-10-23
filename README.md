@@ -19,7 +19,7 @@ Application users may search for breweries in an area and learn more about what 
 
 
 
-####Useful links:
+#### Useful links:
 - [Google Maps JS API](https://developers.google.com/maps/documentation/javascript/overview#maps_map_simple-javascript)
 - [Open Brewery DB](https://www.openbrewerydb.org/)
 - [The Beer Spot API](http://www.thebeerspot.com/api)
