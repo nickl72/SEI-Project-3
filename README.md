@@ -44,4 +44,4 @@ Application users may search for breweries in an area and learn more about what 
 - [Google Maps JS API](https://developers.google.com/maps/documentation/javascript/overview#maps_map_simple-javascript)
 - [Open Brewery DB](https://www.openbrewerydb.org/)
 - [Brewery DB: sandbox](https://www.brewerydb.com/developers/docs)
-- [Yelp API](https://www.yelp.com/developers/documentation/v3)
+
