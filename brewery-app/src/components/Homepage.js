@@ -1,13 +1,13 @@
 import React from 'react'
 
-import MapContainer from './components/MapContainer';
+import MapContainer from './MapContainer';
 
 
 const Homepage =() => {
     return (
         <div>
-            <SearchForm />
-            <ResultsList />
+            {/* <SearchForm />
+            <ResultsList /> */}
             <MapContainer />
         </div>
     )
