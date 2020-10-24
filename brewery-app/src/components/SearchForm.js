@@ -12,12 +12,44 @@ const SearchForm = () => {
         breweryType: ''
     })
 
+    const handleSearch = (e) => {
+        e.preventDefault();
+        // make sure spaces in city are replaced by underscores
+        // make sure stae names use underscore 
+        // make sure zip code is 5 digit number
+        // make sure spaces in brewery name are replaced by underscores
+
+        let searchURL = 'https://api.openbrewerydb.org/breweries?'
+
+        if(searchData.city) {
+            searchURL = searchURL + `&by_city=${searchData.city}`;
+        }
+        if(searchData.state !== 'State' &&
+           searchData.state !== '') {
+            searchURL = searchURL + `&by_state=${searchData.state}`;
+        }
+        if(searchData.zipCode) {
+            searchURL = searchURL + `&by_postal=${searchData.zipCode}`;
+        }
+        if(searchData.breweryName) {
+            searchURL = searchURL + `&by_name=${searchData.breweryName}`;
+        }
+        if(searchData.breweryType !== '') {
+            searchURL = searchURL + `&by_type=${searchData.breweryType}`;
+        }
+
+        console.log(searchURL);
+
+    }
+
     const handleInputChange = (e) => {
         searchData[e.target.name] = e.target.value
     }
 
     return (
-        <S.StyledForm>
+        <S.StyledForm
+            onSubmit={(e) => {handleSearch(e)}}
+        >
             <S.FormTitle>Search for a Brewery by...</S.FormTitle>
             <S.FormInputs>
                 <S.InputContainer>
