@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import * as S from './SearchFormStyles';
+import * as S from '../styles/SearchFormStyles';
 
 const SearchForm = () => {
     const [searchData, setSearchData] = useState({
