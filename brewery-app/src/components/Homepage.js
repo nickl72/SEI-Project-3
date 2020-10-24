@@ -1,15 +1,20 @@
 import React from 'react'
+import styled from 'styled-components';
 
 import MapContainer from './MapContainer';
+import ResultsList from './ResultsList';
 
+const Div = styled.div`
+    display: flex;
+`
 
 const Homepage =() => {
     return (
-        <div>
-            {/* <SearchForm />
-            <ResultsList /> */}
+        <Div>
+            {/* <SearchForm /> */}
+            <ResultsList />
             <MapContainer />
-        </div>
+        </Div>
     )
 }
 
