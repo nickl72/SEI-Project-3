@@ -1,40 +1,6 @@
 import React, { useState } from 'react';
 
-import Styled from 'styled-components';
-
-const StyledForm = Styled.form`
-    border: solid black 5px;
-    width: 80%;
-    margin: 0 auto;
-    padding: 5px;
-`
-
-const FormTitle = Styled.h2`
-    text-align: center;
-    margin: 0;
-`
-
-const FormInputs = Styled.div`
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-around;
-`
-
-const InputContainer = Styled.div`
-    display: flex;
-    flex-flow: column wrap;
-`
-
-const StyledInput = Styled.input`
-    margin: 3px;
-    width: 30vw;
-`
-
-const StyledSelect = Styled.select`
-    margin: 5px;
-    width: 30vw;
-`
-
+import { StyledForm, FormTitle, FormInputs, InputContainer, StyledInput, StyledSelect } from './SearchFormStyles';
 
 const SearchForm = () => {
     const [searchData, setSearchData] = useState({
@@ -101,7 +67,6 @@ const SearchForm = () => {
             </FormInputs>
         </StyledForm>
     )
-
 }
 
 export default SearchForm;
