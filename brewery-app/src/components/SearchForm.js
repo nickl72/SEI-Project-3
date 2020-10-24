@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { StyledForm, FormTitle, FormInputs, InputContainer, StyledInput, StyledSelect } from './SearchFormStyles';
+import * as S from './SearchFormStyles';
 
 const SearchForm = () => {
     const [searchData, setSearchData] = useState({
@@ -17,38 +17,38 @@ const SearchForm = () => {
     }
 
     return (
-        <StyledForm>
-            <FormTitle>Search for a Brewery by...</FormTitle>
-            <FormInputs>
-                <InputContainer>
-                    <StyledInput 
+        <S.StyledForm>
+            <S.FormTitle>Search for a Brewery by...</S.FormTitle>
+            <S.FormInputs>
+                <S.InputContainer>
+                    <S.StyledInput 
                         type='text' 
                         name='city'
                         placeholder='City'
                         onChange={handleInputChange}
                     />
-                    <StyledSelect 
+                    <S.StyledSelect 
                         name='state'
                         onChange={handleInputChange}
                     > 
                         <option selected disabled hidden>State</option>
                         <option>Iowa</option>
-                    </StyledSelect>
-                    <StyledInput 
+                    </S.StyledSelect>
+                    <S.StyledInput 
                         type='text' 
                         name='zipCode'
                         placeholder='Zip code'
                         onChange={handleInputChange}
                     />
-                </InputContainer>
-                <InputContainer>
-                    <StyledInput 
+                </S.InputContainer>
+                <S.InputContainer>
+                    <S.StyledInput 
                         type='text' 
                         name='breweryName'
                         placeholder='Brewery name'
                         onChange={handleInputChange}
                     />
-                    <StyledSelect 
+                    <S.StyledSelect 
                         name='breweryType'
                         onChange={handleInputChange}
                     > 
@@ -56,16 +56,16 @@ const SearchForm = () => {
                         {/* todo, breweries must be of types:
                             micro, regional, brewpub, large, planning, bar, contract, proprietor
                         */}
-                    </StyledSelect>
+                    </S.StyledSelect>
                     {/* todo per_page, sort by one or more fields */}
 
-                </InputContainer>
-                <StyledInput 
+                </S.InputContainer>
+                <S.StyledInput 
                     type='submit' 
                     value='Search'
                 />
-            </FormInputs>
-        </StyledForm>
+            </S.FormInputs>
+        </S.StyledForm>
     )
 }
 
