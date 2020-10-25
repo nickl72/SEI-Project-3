@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styled from 'styled-components';
 
 import SearchForm from './SearchForm';
@@ -10,11 +10,19 @@ const Div = styled.div`
 `
 
 const Homepage =() => {
+    const [searchData, setSearchData] = useState({
+        searchResults: []
+    })
+
+    console.log(searchData);
+
     return (
         <div>
-            <SearchForm />
-            {/* <ResultsList /> */}
-            <MapContainer />
+            <SearchForm sendResults={setSearchData} />
+            <Div>
+                <ResultsList searchResults={searchData.searchResults} />
+                <MapContainer />
+            </Div>
         </div>
     )
 }
