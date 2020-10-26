@@ -15,10 +15,10 @@ const SearchForm = (props) => {
 
     const handleSearch = (e) => {
         e.preventDefault();
-        // make sure spaces in city are replaced by underscores
-        // make sure stae names use underscore 
         // make sure zip code is 5 digit number
-        // make sure spaces in brewery name are replaced by underscores
+        if (!isValidZipCode()) {
+            console.log("baddddddddddd zip!")
+        }
 
         let searchURL = 'https://api.openbrewerydb.org/breweries?'
 
@@ -41,6 +41,15 @@ const SearchForm = (props) => {
         axios(searchURL).then(resp => props.sendResults({searchResults: resp.data}));
 
     }
+
+    const isValidZipCode = () => {
+        if (searchData.zipCode) {
+            // return /^\d{5}(-\d{4})?$/.test(searchData.zipCode);
+            return /^\d{0,5}$/.test(searchData.zipCode);
+        } else {
+            return false;
+        }
+     }
 
     const handleInputChange = (e) => {
         searchData[e.target.name] = e.target.value
