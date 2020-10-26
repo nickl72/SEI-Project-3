@@ -9,10 +9,12 @@ const Div = styled.div`
     display: flex;
 `
 
+
+
 const Homepage =() => {
-    const [searchData, setSearchData] = useState({
-        searchResults: []
-    })
+    const [searchData, setSearchData] = useState({searchResults: []})
+    const [activeBrewery, setActiveBrewery] = useState({location: null, index: null}) 
+
 
     console.log(searchData);
 
@@ -20,7 +22,11 @@ const Homepage =() => {
         <div>
             <SearchForm sendResults={setSearchData} />
             <Div>
-                <ResultsList searchResults={searchData.searchResults} />
+                <ResultsList 
+                    searchResults={searchData.searchResults} 
+                    activeBrewery={activeBrewery} 
+                    setActiveBrewery={setActiveBrewery}
+                />
                 <MapContainer /*BrewList={searchResults}*//>
             </Div>
         </div>
