@@ -6,7 +6,7 @@ const Header = () => {
     return (
         <div>
             <h1>Puzzles</h1>
-            {/* <SearchForm sendResults={setSearchData} /> */}
+            <SearchForm />
         </div>
     )
 }

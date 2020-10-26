@@ -5,7 +5,11 @@ import axios from 'axios';
 import MapContainer from './MapContainer';
 import StateNames from '../stateNames';
 
+import { useDispatch } from 'react-redux'
+import { loadResults } from '../features/breweryListSlice'
+
 const SearchForm = (props) => {
+    const dispatch = useDispatch();
     const [searchData, setSearchData] = useState({
         city: '',
         state: '',
@@ -23,7 +27,7 @@ const SearchForm = (props) => {
     const handleSearch = (e) => {
         e.preventDefault();
         axios(buildSearchUrl())
-        .then(resp => props.sendResults({searchResults: resp.data}))
+        .then(resp => dispatch(loadResults(resp.data)))
         .catch(err => console.error(err));
     }
 
@@ -52,7 +56,6 @@ const SearchForm = (props) => {
            searchData.breweryType !== '') {
             searchURL = searchURL + `&by_type=${searchData.breweryType}`;
         }
-
 
         searchURL = searchURL + `&sort=-name`
 
