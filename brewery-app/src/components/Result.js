@@ -1,5 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import { activateBrewery, deactivateBrewery, selectBrewery } from '../features/activeBrewerySlice';
+import { useSelector, useDispatch } from 'react-redux';
+
 
 
 const Div = styled.div`
@@ -23,25 +26,24 @@ const Div = styled.div`
 `
 
 const Result = (props) => {
+    const dispatch = useDispatch();
+    const brewery = useSelector(selectBrewery);
+
+    const isActiveBrewery = (props.result.id === brewery.id);
 
      // Sends brewery details up to hompage level and highlights the active div based on the index
+     // Sets redux state for active brewery
      const handleClick = (e) => {
-        if (props.active) {
-            props.setActiveBrewery({
-                location: null,
-                index: null
-            })
+        if (isActiveBrewery) {
+            dispatch(deactivateBrewery());
         } else {
-            props.setActiveBrewery({
-                location: {latitude: props.result.latitude, longitude: props.result.longitude},
-                index: props.index
-            })
+            dispatch(activateBrewery(props.result));
         }
     }
 
     return (
         <Div className='result' onClick={(e) => handleClick(e)}>
-            <div className={props.active ? 'active' : ''}> 
+            <div className={isActiveBrewery ? 'active' : ''}> 
                 <h3>Brewery: {props.result.name}</h3>
                 <h4>Location: {props.result.street}, {props.result.city}, {props.result.state}</h4>
             </div>
