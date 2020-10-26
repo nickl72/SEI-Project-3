@@ -11,7 +11,8 @@ const SearchForm = (props) => {
         zipCode: '',
         breweryName: '',
         breweryType: '',
-        resultsPerPage: 10
+        resultsPerPage: 10,
+        resultPage: 1
     })
 
     const [errorMessage, setErrorMessage] = useState({
@@ -26,7 +27,7 @@ const SearchForm = (props) => {
     }
 
     const buildSearchUrl = () => {
-        let searchURL = `https://api.openbrewerydb.org/breweries?per_page=${searchData.resultsPerPage}`
+        let searchURL = `https://api.openbrewerydb.org/breweries?per_page=${searchData.resultsPerPage}&page=${searchData.resultsPerPage}`
 
         if(searchData.city) {
             searchURL = searchURL + `&by_city=${searchData.city}`;
