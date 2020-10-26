@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+
 const Div = styled.div`
     border: 2px solid black;
     border-radius: 5px;
@@ -13,7 +14,7 @@ const Div = styled.div`
     &:active {
         box-shadow: inset 2px 2px 10px 2px grey;
     }
-    .clicked {
+    .active {
         background: red;
     }
     div > *{
