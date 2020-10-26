@@ -7,7 +7,6 @@ const Header = () => {
 
     const toggleShowSearch = (e) => {
         if (e.target === e.currentTarget) {
-            console.log(showSearch);
             setShowSearch(!showSearch)
         }
     }
@@ -20,8 +19,9 @@ const Header = () => {
                     className='search-button'
                     onClick={toggleShowSearch}
                 >
+                </div>
+                <div>
                     { showSearch && <SearchForm /> }
-                    
                 </div>
             </nav>
         </header>

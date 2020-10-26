@@ -17,7 +17,7 @@ export const StyledForm = Styled.form`
     min-height: 150px;
     position: absolute;
     z-index: 1;
-    // transform: translate(50vw, 0);
+    // transform: translate(0, 10vh);
     animation: ${slideInDownAnimation} 1s 1;
 
 `

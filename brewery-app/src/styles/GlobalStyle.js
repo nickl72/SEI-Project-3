@@ -1,5 +1,4 @@
-import {css, keyframes, createGlobalStyle} from 'styled-components';
-import { slideInDown } from 'react-animations';
+import {createGlobalStyle} from 'styled-components';
 
 
 export const GlobalStyle = createGlobalStyle`
@@ -9,6 +8,7 @@ export const GlobalStyle = createGlobalStyle`
 
   header {
     display: flex;
+    height: 10vh;
   }
 
   h1 {
@@ -19,7 +19,7 @@ export const GlobalStyle = createGlobalStyle`
   .search-button {
     background: green;
     width: 50px;
-    height: 50px;
+    height: 100%;
   }
   .search-button:hover {
     background: red;
