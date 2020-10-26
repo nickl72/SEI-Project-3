@@ -1,6 +1,6 @@
 import React, {useState, setState} from "react";
 import styled from "styled-components";
-import {Bold, } from "../styles/BreweryDisplaySyle";
+import {Bold, } from "../styles/BreweryDisplayStyle";
 
 const Holder = styled.div`
     display: flex;

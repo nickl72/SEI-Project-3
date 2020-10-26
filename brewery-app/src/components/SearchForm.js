@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import * as S from '../styles/SearchFormStyles';
 import axios from 'axios';
+import MapContainer from './MapContainer';
 
 const SearchForm = (props) => {
     const [searchData, setSearchData] = useState({
@@ -39,7 +40,7 @@ const SearchForm = (props) => {
             searchURL = searchURL + `&by_type=${searchData.breweryType}`;
         }
         axios(searchURL).then(resp => props.sendResults({searchResults: resp.data}));
-
+        
     }
 
     const handleInputChange = (e) => {
@@ -58,12 +59,13 @@ const SearchForm = (props) => {
                         name='city'
                         placeholder='City'
                         onChange={handleInputChange}
+                        
                     />
                     <S.StyledSelect 
                         name='state'
                         onChange={handleInputChange}
                     > 
-                        <option selected disabled hidden>State</option>
+                        <option selected disabled hidden >State</option>
                         <option>Iowa</option>
                     </S.StyledSelect>
                     <S.StyledInput 

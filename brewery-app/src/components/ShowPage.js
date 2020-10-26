@@ -3,7 +3,7 @@ import styled from "styled-components";
 // import Header from "./Header";
 // import Footer from ".Footer";
 
-import {ShowPageContainer, BreweryName, BrewImage, BrewStats, BrewDiv, Bold} from "../styles/BreweryDisplaySyle";
+import {ShowPageContainer, BreweryName, BrewImage, BrewStats, BrewDiv, Bold} from "../styles/BreweryDisplayStyle";
 
 const brewery = {
     id: 299,
