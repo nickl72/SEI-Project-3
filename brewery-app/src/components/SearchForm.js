@@ -83,9 +83,12 @@ const SearchForm = (props) => {
                         {StateNames.Names.map((state, id) => (
                             <option key={id}>{state}</option>
                         ))}
-                        {/* <option>Iowa</option> */}
                     </S.StyledSelect>
-                    {errorMessage.zipCodeMessage && <p>{errorMessage.zipCodeMessage}</p>}
+                    {errorMessage.zipCodeMessage && 
+                        <S.ErrorMessage message={errorMessage.zipCodeMessage}>
+                            {errorMessage.zipCodeMessage}
+                        </S.ErrorMessage>
+                    }
                     <S.StyledInput 
                         type='text' 
                         name='zipCode'
@@ -100,7 +103,6 @@ const SearchForm = (props) => {
                         name='breweryName'
                         placeholder='Brewery name'
                         onChange={handleInputChange}
-                        message={errorMessage.zipCodeMessage}
                     />
                     <S.StyledSelect 
                         name='breweryType'
