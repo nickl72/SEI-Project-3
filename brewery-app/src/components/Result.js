@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const Div = styled.div`
@@ -23,20 +23,24 @@ const Div = styled.div`
 
 const Result = (props) => {
 
-    const [resultData, setResultData] = useState({
-        clicked: false
-    })
-
-    const handleClick = (e) => {
-        setResultData({
-            clicked: !resultData.clicked
-        })
+     // Sends brewery details up to hompage level and highlights the active div based on the index
+     const handleClick = (e) => {
+        if (props.active) {
+            props.setActiveBrewery({
+                location: null,
+                index: null
+            })
+        } else {
+            props.setActiveBrewery({
+                location: {latitude: props.result.latitude, longitude: props.result.longitude},
+                index: props.index
+            })
+        }
     }
 
-    console.log(props)
     return (
         <Div className='result' onClick={(e) => handleClick(e)}>
-            <div className={resultData.clicked ? 'clicked' : ''}>
+            <div className={props.active ? 'active' : ''}> 
                 <h3>Brewery: {props.result.name}</h3>
                 <h4>Location: {props.result.street}, {props.result.city}, {props.result.state}</h4>
             </div>
