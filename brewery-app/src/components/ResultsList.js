@@ -4,10 +4,10 @@ import  styled  from 'styled-components';
 
 
 const Div = styled.div` 
-    border: 5px solid black;
-    min-height: 80vh;
-    min-width: 30vw;
-    margin: 10px;
+    border: solid 5px #6f3c05;
+    height: 100%;
+    width: 25%;
+    background: #f2a743;
 `
 
 const ResultsList = (props) => {

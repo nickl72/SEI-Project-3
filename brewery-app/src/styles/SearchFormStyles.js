@@ -6,10 +6,14 @@ const headShakeAnimation = keyframes`${headShake}`;
 
 
 export const StyledForm = Styled.form`
-    border: solid black 5px;
-    width: 80%;
     margin: 0 auto;
     padding: 5px;
+    background: #f2a743;
+    border: solid 5px #6f3c05;
+    width: 30%;
+    height: 20vh;
+    min-width: 300px;
+    min-height: 150px;
 `
 
 export const FormTitle = Styled.h2`
@@ -26,18 +30,20 @@ export const FormInputs = Styled.div`
 export const InputContainer = Styled.div`
     display: flex;
     flex-flow: column wrap;
+    width: 45%;
+    align-items: center;
 `
 
 
 export const StyledInput = Styled.input`
     animation: ${(props) => props.message ? css`${headShakeAnimation} 2s 1` : "none"};
     margin: 3px;
-    width: 30vw;
+    width: 10vw;
 `
 
 export const StyledSelect = Styled.select`
     margin: 5px;
-    width: 30vw;
+    width: 10vw;
 `
 
 export const ErrorMessage = Styled.p`

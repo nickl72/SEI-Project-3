@@ -7,6 +7,12 @@ import ResultsList from './ResultsList';
 
 const Div = styled.div`
     display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 75vh;
+    margin: 0 auto;
 `
 
 
