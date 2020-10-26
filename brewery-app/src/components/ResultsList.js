@@ -11,6 +11,7 @@ const Div = styled.div`
 `
 
 const ResultsList = (props) => {
+    console.log(props.searchResults)
     return (
         <Div className='Result-list'>
             <h3>Search Results</h3>

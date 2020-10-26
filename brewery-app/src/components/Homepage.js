@@ -16,7 +16,7 @@ const Homepage =() => {
     const [activeBrewery, setActiveBrewery] = useState({location: null, index: null}) 
 
 
-    console.log(searchData);
+    console.log(searchData.searchResults);
 
     return (
         <div>
@@ -27,7 +27,7 @@ const Homepage =() => {
                     activeBrewery={activeBrewery} 
                     setActiveBrewery={setActiveBrewery}
                 />
-                <MapContainer /*BrewList={searchResults}*//>
+                <MapContainer searchResults={searchData.searchResults}/>
             </Div>
         </div>
     )
