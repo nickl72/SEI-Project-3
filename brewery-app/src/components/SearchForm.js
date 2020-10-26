@@ -20,12 +20,12 @@ const SearchForm = (props) => {
     const handleSearch = (e) => {
         e.preventDefault();
 
-        let searchURL = 'https://api.openbrewerydb.org/breweries?'
+        let searchURL = 'https://api.openbrewerydb.org/breweries?per_page=50'
 
         if(searchData.city) {
             searchURL = searchURL + `&by_city=${searchData.city}`;
         }
-        if(searchData.state !== 'State' &&
+        if(searchData.state !== 'Any' &&
            searchData.state !== '') {
             searchURL = searchURL + `&by_state=${searchData.state}`;
         }
@@ -41,7 +41,8 @@ const SearchForm = (props) => {
         if(searchData.breweryName) {
             searchURL = searchURL + `&by_name=${searchData.breweryName}`;
         }
-        if(searchData.breweryType !== '') {
+        if(searchData.breweryType !== 'All' &&
+           searchData.breweryType !== '') {
             searchURL = searchURL + `&by_type=${searchData.breweryType}`;
         }
         axios(searchURL).then(resp => props.sendResults({searchResults: resp.data}));
@@ -80,6 +81,7 @@ const SearchForm = (props) => {
                         // defaultValue='#option-tag' // todo get rid of warning by using this
                     > 
                         <option selected disabled hidden>State</option>
+                        <option>Any</option>
                         {StateNames.Names.map((state, id) => (
                             <option key={id}>{state}</option>
                         ))}
@@ -108,10 +110,14 @@ const SearchForm = (props) => {
                         name='breweryType'
                         onChange={handleInputChange}
                     > 
-                        <option selected disabled>Brewery type</option>
-                        {/* todo, breweries must be of types:
-                            micro, regional, brewpub, large, planning, bar, contract, proprietor
-                        */}
+                        <option selected disabled hidden>Brewery type</option>
+                        <option >All</option>
+                        <option >Micro</option>
+                        <option >Regional</option>
+                        <option >Brewpub</option>
+                        <option >Large</option>
+                        <option >Contract</option>
+                        <option >Proprietor</option>
                     </S.StyledSelect>
                     {/* todo per_page, sort by one or more fields */}
 
