@@ -39,6 +39,7 @@ Application users may search for breweries in an area and learn more about what 
 - React
 - React Router
 - Axios
+- Redux
 
 
 ### Approach taken 
