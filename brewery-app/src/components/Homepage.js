@@ -16,8 +16,6 @@ const Homepage =() => {
     const [activeBrewery, setActiveBrewery] = useState({location: null, index: null}) 
 
 
-    console.log(searchData.searchResults);
-
     return (
         <div>
             <SearchForm sendResults={setSearchData} />
