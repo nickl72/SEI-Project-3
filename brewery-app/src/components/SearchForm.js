@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 
 import * as S from '../styles/SearchFormStyles';
 import axios from 'axios';
+import StateNames from '../stateNames';
 
 const SearchForm = (props) => {
     const [searchData, setSearchData] = useState({
-        // todo import states names to not need 50 lines
         city: '',
         state: '',
         zipCode: '',
@@ -62,9 +62,13 @@ const SearchForm = (props) => {
                     <S.StyledSelect 
                         name='state'
                         onChange={handleInputChange}
+                        // defaultValue='#option-tag' // todo get rid of warning by using this
                     > 
                         <option selected disabled hidden>State</option>
-                        <option>Iowa</option>
+                        {StateNames.Names.map((state, id) => (
+                            <option key={id}>{state}</option>
+                        ))}
+                        {/* <option>Iowa</option> */}
                     </S.StyledSelect>
                     <S.StyledInput 
                         type='text' 
