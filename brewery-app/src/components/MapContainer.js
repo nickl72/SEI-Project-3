@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import GoogleMapReact from 'google-map-react';
 import Styled from 'styled-components';
 
+import { useSelector } from 'react-redux';
+import { selectBreweryList } from '../features/breweryListSlice'
+
 import MapModal from "./MapModal";
 import axios from "axios";
 require('dotenv').config();
@@ -16,7 +19,8 @@ const StyledMap = Styled.div`
 const ResultPin = ({brewery}) => <MapModal brewery={brewery} />;
  
 const MapContainer = (props) => {
-  console.log(props.searchResults)
+  const breweryList = useSelector(selectBreweryList)
+  console.log(breweryList)
   
   const calcCenter = (set, type) => {
     if(set.length === 1 && set[0]!== " "){
@@ -54,7 +58,7 @@ const MapContainer = (props) => {
 
   // Setting map center based on center of results, will only change on newSet of results
   useEffect(() => {
-    {props.searchResults.map((brew) => {
+    {breweryList.map((brew) => {
       if(brew.latitude) {
         mapData.activeLats.push(brew.latitude);
         mapData.activeLngs.push(brew.longitude);
@@ -88,7 +92,7 @@ const MapContainer = (props) => {
     })
     console.log([calcCenter(mapData.activeLats, "lat"), calcCenter(mapData.activeLngs, "lng")])
 
-  }, [props.searchResults])
+  }, [breweryList])
   
 
   
@@ -104,7 +108,7 @@ const MapContainer = (props) => {
         center={mapData.center}
         zoom={mapData.zoom}
       >
-        {props.searchResults.map((brew, index) => {
+        {breweryList.map((brew, index) => {
            return (
             <ResultPin
               lat={parseFloat(brew.latitude)}
