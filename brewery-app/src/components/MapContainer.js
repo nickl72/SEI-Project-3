@@ -18,7 +18,7 @@ const StyledMap = Styled.div`
 
 const ResultPin = ({brewery}) => <MapModal brewery={brewery} />;
  
-const MapContainer = (props) => {
+const MapContainer = () => {
   const breweryList = useSelector(selectBreweryList)
   console.log(breweryList)
   
@@ -114,6 +114,7 @@ const MapContainer = (props) => {
               lat={parseFloat(brew.latitude)}
               lng={parseFloat(brew.longitude)}
               brewery={brew}
+              key={index}
             />
             )
         })}
