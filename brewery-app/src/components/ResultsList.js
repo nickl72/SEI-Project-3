@@ -21,12 +21,8 @@ const ResultsList = (props) => {
                 <Result 
                     result={result} 
                     key={index} 
-                    active={props.activeBrewery.index===index ? true: false}
-                    setActiveBrewery={props.setActiveBrewery} // passed function from Homepage
-                    index={index} // used when setActiveBrewery is called
                 /> 
             ))}
-            {/* {props.results && props.results.map((result, key) => <Result result={result} key={key}/> )} */}
         </Div>
     )
 }

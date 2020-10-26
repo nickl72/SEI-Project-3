@@ -34,7 +34,6 @@ const Result = (props) => {
      // Sends brewery details up to hompage level and highlights the active div based on the index
      // Sets redux state for active brewery
      const handleClick = (e) => {
-
         if (isActiveBrewery) {
             dispatch(deactivateBrewery());
         } else {
@@ -44,7 +43,7 @@ const Result = (props) => {
 
     return (
         <Div className='result' onClick={(e) => handleClick(e)}>
-            <div className={isActiveBrewery && 'active'}> 
+            <div className={isActiveBrewery ? 'active' : ''}> 
                 <h3>Brewery: {props.result.name}</h3>
                 <h4>Location: {props.result.street}, {props.result.city}, {props.result.state}</h4>
             </div>
