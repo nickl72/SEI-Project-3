@@ -3,6 +3,8 @@ import styled from "styled-components";
 // import Header from "./Header";
 // import Footer from ".Footer";
 
+import {ShowPageContainer, BreweryName, BrewImage, BrewStats, BrewDiv, Bold} from "../styles/BreweryDisplaySyle";
+
 const brewery = {
     id: 299,
     name: "Almanac Beer Company",
@@ -19,31 +21,6 @@ const brewery = {
     updated_at: "2018-08-23T23:24:11.758Z"
 }
 
-const ShowPageContainer = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    align-items: center;
-`
-
-const BreweryName = styled.div`
-    
-`
-const BrewImage = styled.img`
-
-`
-
-const BrewStats = styled.div`
-
-`
-
-const BrewDiv = styled.div`
-
-`
-
-const Bold = styled.span`
-    font-weight: bold;
-`
 function ShowPage(props) {
     const [showpageData, setShowpageData] = useState({
         brewery: brewery
@@ -79,7 +56,7 @@ function ShowPage(props) {
                     <ul>
                         <li><Bold>Address: </Bold>{showpageData.brewery.street}, {showpageData.brewery.city}, {showpageData.brewery.state} {showpageData.brewery.postal_code.substring(0,5)}</li>
                         <li><Bold>Phone: </Bold>{formatPhoneNumber(showpageData.brewery.phone)}</li>
-                        <li><Bold>Website: </Bold><a href={showpageData.brewery.website_url}> {showpageData.brewery.website_url.replace("http://","")}</a></li>
+                        <li><Bold>Website: </Bold><a href={showpageData.brewery.website_url} target="_blank"> {showpageData.brewery.website_url.replace("http://","")}</a></li>
                     </ul>
                 </BrewDiv>
                 <BrewDiv className="Reviews">

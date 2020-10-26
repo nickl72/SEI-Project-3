@@ -19,7 +19,8 @@ const MapContainer = (props) => {
       lat: 36,
       lng: -89
     },
-    zoom: 11
+    zoom: 11,
+    
   })
 
   return (
