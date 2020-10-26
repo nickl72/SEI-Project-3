@@ -13,12 +13,12 @@ const SearchForm = (props) => {
         breweryType: ''
     })
 
+    const [errorMessage, setErrorMessage] = useState({
+        zipCodeMessage: null
+    })
+
     const handleSearch = (e) => {
         e.preventDefault();
-        // make sure zip code is 5 digit number
-        if (!isValidZipCode()) {
-            console.log("baddddddddddd zip!")
-        }
 
         let searchURL = 'https://api.openbrewerydb.org/breweries?'
 
@@ -30,7 +30,13 @@ const SearchForm = (props) => {
             searchURL = searchURL + `&by_state=${searchData.state}`;
         }
         if(searchData.zipCode) {
-            searchURL = searchURL + `&by_postal=${searchData.zipCode}`;
+            if (!isValidZipCode()) {
+                console.log("baddddddddddd zip!");
+                setErrorMessage({zipCodeMessage: 'please input up to five numbers'})
+            } else {
+                setErrorMessage({zipCodeMessage: null})
+                searchURL = searchURL + `&by_postal=${searchData.zipCode}`;
+            }
         }
         if(searchData.breweryName) {
             searchURL = searchURL + `&by_name=${searchData.breweryName}`;
@@ -79,11 +85,13 @@ const SearchForm = (props) => {
                         ))}
                         {/* <option>Iowa</option> */}
                     </S.StyledSelect>
+                    {errorMessage.zipCodeMessage && <p>{errorMessage.zipCodeMessage}</p>}
                     <S.StyledInput 
                         type='text' 
                         name='zipCode'
                         placeholder='Zip code'
                         onChange={handleInputChange}
+                        message={errorMessage.zipCodeMessage}
                     />
                 </S.InputContainer>
                 <S.InputContainer>
@@ -92,6 +100,7 @@ const SearchForm = (props) => {
                         name='breweryName'
                         placeholder='Brewery name'
                         onChange={handleInputChange}
+                        message={errorMessage.zipCodeMessage}
                     />
                     <S.StyledSelect 
                         name='breweryType'
