@@ -1,9 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-export const brewerySlice = createSlice({
-    name: 'brewery',
+export const activeBrewerySlice = createSlice({
+    name: 'activeBrewery',
     initialState: {
-        breweryList: [],
         activeBrewery: {id: null}
     },
     reducers: {
@@ -12,16 +11,13 @@ export const brewerySlice = createSlice({
         },
         deactivateBrewery: state => {
             state.activeBrewery = {id: null}
-        },
-        loadResults: (state, action) => {
-            state.breweryList = action.payload
         }
     }
 });
 
-export const { activateBrewery, deactivateBrewery, loadResults } = brewerySlice.actions;
+export const { activateBrewery, deactivateBrewery } = activeBrewerySlice.actions;
 
 export const selectBrewery = state => state.brewery.activeBrewery;
-export const selectBreweryList = state => state.brewery.breweryList;
 
-export default brewerySlice.reducer;
+
+export default activeBrewerySlice.reducer;

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { activateBrewery, deactivateBrewery, selectBrewery } from '../features/brewerySlice';
+import { activateBrewery, deactivateBrewery, selectBrewery } from '../features/activeBrewerySlice';
 import { useSelector, useDispatch } from 'react-redux';
 
 

@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { brewerySlice } from '../features/brewerySlice';
+import { activeBrewerySlice } from '../features/activeBrewerySlice';
+import { breweryListSlice } from '../features/breweryListSlice';
 
 
 export default configureStore({
     reducer: {
-        brewery: brewerySlice.reducer
+        brewery: activeBrewerySlice.reducer,
+        breweryList: breweryListSlice.reducer
     }
 });

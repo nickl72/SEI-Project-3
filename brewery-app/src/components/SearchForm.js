@@ -5,7 +5,7 @@ import axios from 'axios';
 import StateNames from '../stateNames';
 
 import { useDispatch } from 'react-redux'
-import { loadResults } from '../features/brewerySlice'
+import { loadResults } from '../features/breweryListSlice'
 
 const SearchForm = (props) => {
     const dispatch = useDispatch();
