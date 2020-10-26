@@ -21,7 +21,7 @@ const Homepage =() => {
             <SearchForm sendResults={setSearchData} />
             <Div>
                 <ResultsList searchResults={searchData.searchResults} />
-                <MapContainer />
+                <MapContainer /*BrewList={searchResults}*//>
             </Div>
         </div>
     )
