@@ -53,5 +53,6 @@ Application users may search for breweries in an area and learn more about what 
 - [Open Brewery DB](https://www.openbrewerydb.org/)
 - [Brewery DB: sandbox](https://www.brewerydb.com/developers/docs)
 - [google-map-react Library](https://www.npmjs.com/package/google-map-react)
+- [styled-components documantation](https://styled-components.com/docs/basics)
 
 
