@@ -9,7 +9,7 @@ const Homepage =() => {
         <div>
             <SearchForm />
             {/* <ResultsList /> */}
-            <MapContainer />
+            <MapContainer /*BrewList={searchResults}*//>
         </div>
     )
 }
