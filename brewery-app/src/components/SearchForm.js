@@ -52,6 +52,9 @@ const SearchForm = (props) => {
             searchURL = searchURL + `&by_type=${searchData.breweryType}`;
         }
 
+
+        searchURL = searchURL + `&sort=-name`
+
         return searchURL;
     }
 
