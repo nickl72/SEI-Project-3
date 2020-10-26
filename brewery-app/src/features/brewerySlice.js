@@ -4,11 +4,14 @@ export const brewerySlice = createSlice({
     name: 'brewery',
     initialState: {
         breweryList: [],
-        activeBrewery: null
+        activeBrewery: {id: null}
     },
     reducers: {
         activateBrewery: (state, action) => {
             state.activeBrewery = action.payload;
+        },
+        deactivateBrewery: state => {
+            state.activeBrewery = {id: null}
         },
         loadResults: (state, action) => {
             state.breweryList = action.payload
@@ -16,7 +19,7 @@ export const brewerySlice = createSlice({
     }
 });
 
-export const { activateBrewery, loadResults } = brewerySlice.actions;
+export const { activateBrewery, deactivateBrewery, loadResults } = brewerySlice.actions;
 
 export const selectBrewery = state => state.brewery.activeBrewery;
 export const selectBreweryList = state => state.brewery.breweryList;

@@ -42,10 +42,9 @@ const SearchForm = (props) => {
         if(searchData.breweryType !== '') {
             searchURL = searchURL + `&by_type=${searchData.breweryType}`;
         }
-        axios(searchURL).then(resp => dispatch(loadResults(resp.data)));
 
-        // console.log('\n\nsearchResults: \n')
-        // console.log(response)
+        // After retrieving API data, dispatch list to Redux
+        axios(searchURL).then(resp => dispatch(loadResults(resp.data)));
 
     }
 
