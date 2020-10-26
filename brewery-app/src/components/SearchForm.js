@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 import * as S from '../styles/SearchFormStyles';
 import axios from 'axios';
-import MapContainer from './MapContainer';
 import StateNames from '../stateNames';
 
 import { useDispatch } from 'react-redux'

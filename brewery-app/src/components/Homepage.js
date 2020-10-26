@@ -22,14 +22,10 @@ const Div = styled.div`
 const Homepage =() => {
     const breweryList = useSelector(selectBreweryList);
     return (
-        <div>
-            <Header />
-            <Div>
-                <ResultsList />    
-                <MapContainer searchResults={breweryList}/>
-
-            </Div>
-        </div>
+        <Div>
+            <ResultsList />    
+            <MapContainer searchResults={breweryList}/>
+        </Div>
     )
 }
 

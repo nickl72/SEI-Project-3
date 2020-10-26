@@ -1,13 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SearchForm from './SearchForm';
 
 
 const Header = () => {
+    const [showSearch, setShowSearch] = useState(false)
+
+    const toggleShowSearch = () => {
+        console.log(showSearch);
+        setShowSearch(!showSearch)
+    }
+
     return (
-        <div>
+        <header>
             <h1>Puzzles</h1>
-            <SearchForm />
-        </div>
+            <nav>
+                <div 
+                    className='search-button'
+                    onClick={toggleShowSearch}
+                >
+                    
+                </div>
+            </nav>
+            { showSearch && <SearchForm /> }
+        </header>
     )
 }
 

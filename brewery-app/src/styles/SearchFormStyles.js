@@ -1,8 +1,9 @@
 import Styled, {css, keyframes} from 'styled-components';
-import { headShake } from 'react-animations';
+import { headShake, slideInDown } from 'react-animations';
 
 
 const headShakeAnimation = keyframes`${headShake}`;
+const slideInDownAnimation = keyframes`${slideInDown}`;
 
 
 export const StyledForm = Styled.form`
@@ -14,6 +15,8 @@ export const StyledForm = Styled.form`
     height: 20vh;
     min-width: 300px;
     min-height: 150px;
+    animation: ${slideInDownAnimation} 1s 1;
+
 `
 
 export const FormTitle = Styled.h2`
