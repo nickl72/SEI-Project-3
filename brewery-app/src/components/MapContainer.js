@@ -10,6 +10,7 @@ const StyledMap = Styled.div`
   height: 100%;
   width: 75%;
   border-radius: 10px;
+
 `
 
 const ResultPin = ({brewery}) => <MapModal brewery={brewery} />;

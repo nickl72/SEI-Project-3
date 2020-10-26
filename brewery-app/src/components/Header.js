@@ -5,9 +5,11 @@ import SearchForm from './SearchForm';
 const Header = () => {
     const [showSearch, setShowSearch] = useState(false)
 
-    const toggleShowSearch = () => {
-        console.log(showSearch);
-        setShowSearch(!showSearch)
+    const toggleShowSearch = (e) => {
+        if (e.target === e.currentTarget) {
+            console.log(showSearch);
+            setShowSearch(!showSearch)
+        }
     }
 
     return (
@@ -18,10 +20,10 @@ const Header = () => {
                     className='search-button'
                     onClick={toggleShowSearch}
                 >
+                    { showSearch && <SearchForm /> }
                     
                 </div>
             </nav>
-            { showSearch && <SearchForm /> }
         </header>
     )
 }
