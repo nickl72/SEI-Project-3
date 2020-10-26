@@ -1,27 +1,6 @@
 import React, {useState, setState} from "react";
 import styled from "styled-components";
-import {Bold, } from "../styles/BreweryDisplayStyle";
-
-const Holder = styled.div`
-    display: flex;
-`
-const Icon = styled.img`
-    height: 1.5em;
-    width: 1.5em;
-    position: relative;
-`
-
-const Modal = styled.div`
-    position: absolute;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    transform: translate(2.5em, 0);
-    background: white;
-    border: solid black 2px;
-    border-radius: 3px;
-`
-
+import {Bold, Holder, Icon, Modal} from "../styles/BreweryDisplayStyle";
 
 function MapModal(props) {
     const [MapData, setMapData] = useState({
@@ -32,10 +11,23 @@ function MapModal(props) {
     let IconURL;
     switch(MapData.brewery.brewery_type) {
         case "micro":
-            IconURL = "./beer-mug-emoji.png";
+            IconURL = "./beer-mug_1f37a.png";
+            break;
+        case "regional":
+            IconURL = "./triangular-flag-on-post_1f6a9.png";
+            break;
+        case "brewpub":
+            IconURL = "./fork-and-knife-with-plate_1f37d.png";
+            break;
+        case "large":
+            IconURL = "./factory_1f3ed.png";
+            break;
+        case "contract":
+        case "proprietor":
+            IconURL = "./clinking-beer-mugs.png";
             break;
         default:
-            IconURL = "./beer-mug-emoji.png";
+            IconURL = "./beer-mug_1f37a.png";
             break;
     }
 

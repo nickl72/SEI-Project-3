@@ -4,6 +4,7 @@ import Styled from 'styled-components';
 
 import MapModal from "./MapModal";
 import axios from "axios";
+
 require('dotenv').config();
 
 const StyledMap = Styled.div`
@@ -52,6 +53,11 @@ const MapContainer = (props) => {
     activeLngs: []
   })
 
+
+   async function getCoords(geocodeURL) {
+    await axios.get(geocodeURL)
+      .then(resp => console.log(resp))
+  }
   // Setting map center based on center of results, will only change on newSet of results
   useEffect(() => {
     {props.searchResults.map((brew) => {
@@ -62,12 +68,13 @@ const MapContainer = (props) => {
         let geocodeURL = "https://maps.googleapis.com/maps/api/geocode/json?"
         let street = brew.street;
         street = street.split("Ste")[0];
-        let address = `${street}, ${brew.city} ${brew.state}`;
-        address = address.split(" ").join("%20")
+        let address = `${street}, ${brew.city}, ${brew.state}`;
+        address = address.split(" ").join("+")
         geocodeURL = `${geocodeURL}address=${address}&key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`
-  
-        axios.get(geocodeURL)
-          .then(resp => console.log(resp))
+        
+        
+        
+        getCoords(geocodeURL)
       }
     })}
 
@@ -78,7 +85,7 @@ const MapContainer = (props) => {
         lng: calcCenter(mapData.activeLngs, "lng")
       },
       zoom: 11,
-      default: {
+      default: { /*set Map center to users local default center*/
         lat: 41.559,
         lng: -90.483,
         zoom: 11
