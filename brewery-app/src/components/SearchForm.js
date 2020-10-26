@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 
 import * as S from '../styles/SearchFormStyles';
+import axios from 'axios';
 
-const SearchForm = () => {
+const SearchForm = (props) => {
     const [searchData, setSearchData] = useState({
         // todo import states names to not need 50 lines
         city: '',
@@ -37,8 +38,7 @@ const SearchForm = () => {
         if(searchData.breweryType !== '') {
             searchURL = searchURL + `&by_type=${searchData.breweryType}`;
         }
-
-        console.log(searchURL);
+        axios(searchURL).then(resp => props.sendResults({searchResults: resp.data}));
 
     }
 
