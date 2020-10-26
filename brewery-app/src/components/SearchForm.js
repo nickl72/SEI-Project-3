@@ -10,7 +10,8 @@ const SearchForm = (props) => {
         state: '',
         zipCode: '',
         breweryName: '',
-        breweryType: ''
+        breweryType: '',
+        resultsPerPage: 10
     })
 
     const [errorMessage, setErrorMessage] = useState({
@@ -19,8 +20,13 @@ const SearchForm = (props) => {
 
     const handleSearch = (e) => {
         e.preventDefault();
+        axios(buildSearchUrl())
+        .then(resp => props.sendResults({searchResults: resp.data}))
+        .catch(err => console.error(err));
+    }
 
-        let searchURL = 'https://api.openbrewerydb.org/breweries?per_page=50'
+    const buildSearchUrl = () => {
+        let searchURL = `https://api.openbrewerydb.org/breweries?per_page=${searchData.resultsPerPage}`
 
         if(searchData.city) {
             searchURL = searchURL + `&by_city=${searchData.city}`;
@@ -31,7 +37,6 @@ const SearchForm = (props) => {
         }
         if(searchData.zipCode) {
             if (!isValidZipCode()) {
-                console.log("baddddddddddd zip!");
                 setErrorMessage({zipCodeMessage: 'please input up to five numbers'})
             } else {
                 setErrorMessage({zipCodeMessage: null})
@@ -45,13 +50,12 @@ const SearchForm = (props) => {
            searchData.breweryType !== '') {
             searchURL = searchURL + `&by_type=${searchData.breweryType}`;
         }
-        axios(searchURL).then(resp => props.sendResults({searchResults: resp.data}));
 
+        return searchURL;
     }
 
     const isValidZipCode = () => {
         if (searchData.zipCode) {
-            // return /^\d{5}(-\d{4})?$/.test(searchData.zipCode);
             return /^\d{0,5}$/.test(searchData.zipCode);
         } else {
             return false;
