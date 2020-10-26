@@ -1,6 +1,8 @@
 import React from 'react';
 import Result from './Result';
 import  styled  from 'styled-components';
+import { useSelector } from 'react-redux';
+import { selectBreweryList } from '../features/brewerySlice';
 
 
 const Div = styled.div` 
@@ -11,10 +13,11 @@ const Div = styled.div`
 `
 
 const ResultsList = (props) => {
+    const searchResults = useSelector(selectBreweryList);
     return (
         <Div className='Result-list'>
             <h3>Search Results</h3>
-            {props.searchResults.map((result, index) => (
+            {searchResults.map((result, index) => (
                 <Result 
                     result={result} 
                     key={index} 

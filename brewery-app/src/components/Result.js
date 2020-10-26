@@ -1,5 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import { activateBrewery, selectBrewery } from '../features/brewerySlice';
+import { useSelector, useDispatch } from 'react-redux';
+
 
 
 const Div = styled.div`
@@ -23,9 +26,17 @@ const Div = styled.div`
 `
 
 const Result = (props) => {
+    const dispatch = useDispatch();
+    const brewery = useSelector(selectBrewery);
 
      // Sends brewery details up to hompage level and highlights the active div based on the index
      const handleClick = (e) => {
+         dispatch(activateBrewery(props.result));
+         console.log('\n\n results:')
+         console.log(props.result)
+         console.log('\n\n activeBrewery:')
+         console.log(brewery)
+
         if (props.active) {
             props.setActiveBrewery({
                 location: null,

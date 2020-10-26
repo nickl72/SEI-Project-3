@@ -3,7 +3,11 @@ import React, { useState } from 'react';
 import * as S from '../styles/SearchFormStyles';
 import axios from 'axios';
 
+import { useDispatch } from 'react-redux'
+import { loadResults } from '../features/brewerySlice'
+
 const SearchForm = (props) => {
+    const dispatch = useDispatch();
     const [searchData, setSearchData] = useState({
         // todo import states names to not need 50 lines
         city: '',
@@ -38,7 +42,10 @@ const SearchForm = (props) => {
         if(searchData.breweryType !== '') {
             searchURL = searchURL + `&by_type=${searchData.breweryType}`;
         }
-        axios(searchURL).then(resp => props.sendResults({searchResults: resp.data}));
+        axios(searchURL).then(resp => dispatch(loadResults(resp.data)));
+
+        // console.log('\n\nsearchResults: \n')
+        // console.log(response)
 
     }
 
