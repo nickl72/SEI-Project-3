@@ -3,7 +3,6 @@ import Result from './Result';
 import  styled  from 'styled-components';
 import { useSelector } from 'react-redux';
 import { selectBreweryList } from '../features/breweryListSlice';
-import store from '../app/store';
 
 
 const Div = styled.div` 

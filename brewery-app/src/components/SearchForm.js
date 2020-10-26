@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import * as S from '../styles/SearchFormStyles';
 import axios from 'axios';
+import MapContainer from './MapContainer';
 import StateNames from '../stateNames';
 
 import { useDispatch } from 'react-redux'
@@ -85,6 +86,7 @@ const SearchForm = (props) => {
                         name='city'
                         placeholder='City'
                         onChange={handleInputChange}
+                        
                     />
                     <S.StyledSelect 
                         name='state'
