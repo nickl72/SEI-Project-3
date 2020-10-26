@@ -27,7 +27,7 @@ const SearchForm = (props) => {
     }
 
     const buildSearchUrl = () => {
-        let searchURL = `https://api.openbrewerydb.org/breweries?per_page=${searchData.resultsPerPage}&page=${searchData.resultsPerPage}`
+        let searchURL = `https://api.openbrewerydb.org/breweries?per_page=${searchData.resultsPerPage}&page=${searchData.resultPage}`
 
         if(searchData.city) {
             searchURL = searchURL + `&by_city=${searchData.city}`;
