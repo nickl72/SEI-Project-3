@@ -33,6 +33,7 @@ export const Icon = styled.img`
     height: 2em;
     width: 2em;
     position: relative;
+    cursor: pointer;
 `
 
 export const Modal = styled.div`

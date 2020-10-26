@@ -5,8 +5,15 @@ import {Bold, Holder, Icon, Modal} from "../styles/BreweryDisplayStyle";
 function MapModal(props) {
     const [MapData, setMapData] = useState({
         brewery: props.brewery,
-        show: false
+        show: false,
     })
+
+    const toggleModal = (e) => {
+        setMapData({
+            brewery: props.brewery,
+            show: !MapData.show
+        })
+    }
 
     let IconURL;
     switch(MapData.brewery.brewery_type) {
@@ -33,11 +40,13 @@ function MapModal(props) {
 
     return(
         <Holder>
-            <Icon src={IconURL}/>
+            <Icon src={IconURL} onClick={toggleModal}/>
+            {MapData.show ? 
             <Modal>
                 <Bold>{MapData.brewery.name}</Bold>
                 <a href={MapData.brewery.website_url} target="_blank"> {MapData.brewery.website_url.replace("http://","")}</a>
             </Modal>
+            : null }
             
         </Holder>
     )
