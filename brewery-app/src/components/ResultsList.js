@@ -12,7 +12,7 @@ const Div = styled.div`
     margin: 10px;
 `
 
-const ResultsList = (props) => {
+const ResultsList = () => {
     const searchResults = useSelector(selectBreweryList);
     return (
         <Div className='Result-list'>

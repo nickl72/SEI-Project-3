@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import styled from 'styled-components';
 
 import SearchForm from './SearchForm';
@@ -12,21 +12,12 @@ const Div = styled.div`
 
 
 const Homepage =() => {
-    const [searchData, setSearchData] = useState({searchResults: []})
-    const [activeBrewery, setActiveBrewery] = useState({location: null, index: null}) 
-
-
-    console.log(searchData);
 
     return (
         <div>
-            <SearchForm sendResults={setSearchData} />
+            <SearchForm />
             <Div>
-                <ResultsList 
-                    searchResults={searchData.searchResults} 
-                    activeBrewery={activeBrewery} 
-                    setActiveBrewery={setActiveBrewery}
-                />
+                <ResultsList />
                 <MapContainer /*BrewList={searchResults}*//>
             </Div>
         </div>
