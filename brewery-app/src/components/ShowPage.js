@@ -1,11 +1,12 @@
 import React, {useState} from "react";
-import styled from "styled-components";
+import { selectBrewery, activateBrewery } from '../features/activeBrewerySlice';
+import { useSelector, useDispatch } from 'react-redux';
 // import Header from "./Header";
 // import Footer from ".Footer";
 
 import {ShowPageContainer, BreweryName, BrewImage, BrewStats, BrewDiv, Bold} from "../styles/BreweryDisplayStyle";
 
-const brewery = {
+let brewery = {
     id: 299,
     name: "Almanac Beer Company",
     brewery_type: "micro",
@@ -25,6 +26,8 @@ function ShowPage(props) {
     const [showpageData, setShowpageData] = useState({
         brewery: brewery
     })
+    useDispatch(activateBrewery(brewery));
+    brewery = useSelector(selectBrewery);
 
     function formatPhoneNumber(phoneNumber) {
         let match = phoneNumber.match(/^(\d{3})(\d{3})(\d{4})$/)
@@ -38,7 +41,7 @@ function ShowPage(props) {
             {/* <Header /> */}
             <ShowPageContainer>
                 <BreweryName>
-                    <h1>{showpageData.brewery.name}</h1>
+                    <h1>{brewery.name}</h1>
                 </BreweryName>
                 <BrewImage />
                 <BrewStats>
@@ -46,7 +49,7 @@ function ShowPage(props) {
 
                     </div>
                     <div>
-                        <p><Bold>Brewery Type:</Bold>{showpageData.brewery.brewery_type}</p>
+                        <p><Bold>Brewery Type:</Bold>{brewery.brewery_type}</p>
                     </div>
                     <div className ="Price">
 
@@ -54,9 +57,9 @@ function ShowPage(props) {
                 </BrewStats>
                 <BrewDiv className="about">
                     <ul>
-                        <li><Bold>Address: </Bold>{showpageData.brewery.street}, {showpageData.brewery.city}, {showpageData.brewery.state} {showpageData.brewery.postal_code.substring(0,5)}</li>
-                        <li><Bold>Phone: </Bold>{formatPhoneNumber(showpageData.brewery.phone)}</li>
-                        <li><Bold>Website: </Bold><a href={showpageData.brewery.website_url} target="_blank"> {showpageData.brewery.website_url.replace("http://","")}</a></li>
+                        <li><Bold>Address: </Bold>{brewery.street}, {brewery.city}, {brewery.state} {brewery.postal_code.substring(0,5)}</li>
+                        <li><Bold>Phone: </Bold>{formatPhoneNumber(brewery.phone)}</li>
+                        <li><Bold>Website: </Bold><a href={brewery.website_url} target="_blank"> {brewery.website_url.replace("http://","")}</a></li>
                     </ul>
                 </BrewDiv>
                 <BrewDiv className="Reviews">

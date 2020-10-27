@@ -13,8 +13,8 @@ function App() {
       <main>
         <Route exact path="/" component={Homepage} />
         <Route 
-          path="/show/:brewid"
-          render={(props) => <ShowPage /*PropsHere*/ />}
+          path="/show"
+          render={(props) => <ShowPage />}
           />
       </main>
       
