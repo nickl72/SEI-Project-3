@@ -23,7 +23,7 @@ const Homepage =() => {
     return (
         <Div>
             <ResultsList />    
-            <MapContainer />
+            <MapContainer searchResults={breweryList}/>
         </Div>
     )
 }
