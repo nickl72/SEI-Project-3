@@ -31,8 +31,8 @@ const SearchForm = (props) => {
             console.log(resp.data)
             const data = resp.data;
             console.log("Going to Clean")
-            cleanData(data)
-            dispatch(loadResults(resp.data))
+            let cleanedData = cleanData(data)
+            dispatch(loadResults(cleanedData))
         }
             )
         .catch(err => console.error(err));
