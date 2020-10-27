@@ -43,15 +43,19 @@ const SearchForm = (props) => {
         //Check for planning and closed breweries
         data = data.filter(point => point.brewery_type !== "planning");
         data = data.filter(point => point.brewery_type !== "closed");
+        console.log(typeof data)
         let data2Fix = data.filter(point => point.latitude === null);
+        data = data.filter(point => point.latitude !== null);
         let fixedData = fixLatLong(data2Fix);
-        console.log(data[6].latitude === null)
+        fixedData.forEach(result => data.push(result));
+        console.log(data)
+        
     }
 
     const fixLatLong = (data) => {
         console.log("I'm fixing the coordinates");
         
-        let newdata = data.map((data) => {
+        let newData = data.map((data) => {
             let fixedData=[];
             let copyData=Object.assign({},data);
             let geocodeURL = "https://maps.googleapis.com/maps/api/geocode/json?"
@@ -73,19 +77,9 @@ const SearchForm = (props) => {
             return fixedData
         })
 
-        console.log(newdata)
-       
-        
-        
+        console.log(newData)
+        return newData 
     }
-
-    async function getCoords(geocodeURL) {
-        let data = await axios.get(geocodeURL)
-          .then (resp => {
-            console.log()
-          })
-          return data
-          }
 
     const buildSearchUrl = () => {
         let searchURL = `https://api.openbrewerydb.org/breweries?per_page=${searchData.resultsPerPage}&page=${searchData.resultPage}`
