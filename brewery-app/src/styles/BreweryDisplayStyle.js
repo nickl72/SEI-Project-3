@@ -1,4 +1,9 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+import {rotateOutUpRight, rotateInDownRight, bounceIn, merge} from "react-animations";
+import rotateIn from "react-animations/lib/rotate-in";
+
+const drinkIn = merge(rotateOutUpRight, rotateInDownRight);
+const bounceInAnimation = keyframes`${bounceIn}`;
 
 export const ShowPageContainer = styled.div`
     display: flex;
@@ -41,9 +46,12 @@ export const Icon = styled.img`
     cursor: pointer;
     border-radius: 5px;
     background: radial-gradient(darkgray 15%, transparent);
+    animation: 1s ${bounceInAnimation};
     &.light {
+        animation: 1s ${drinkIn};
         box-shadow: 0px 0px .5vmin .5vmin navy;
         background: navy;
+        
     }
 `
 export const CloseIcon = styled(Holder) `
