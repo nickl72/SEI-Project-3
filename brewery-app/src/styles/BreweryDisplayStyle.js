@@ -39,6 +39,7 @@ export const Icon = styled.img`
     position: relative;
     cursor: pointer;
     border-radius: 5px;
+    background: radial-gradient(darkgray 15%, transparent);
     &.light {
         box-shadow: 0px 0px .5vmin .5vmin navy;
         background: navy;

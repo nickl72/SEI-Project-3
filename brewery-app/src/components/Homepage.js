@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import MapContainer from './MapContainer';
 import ResultsList from './ResultsList';
-import { useSelector } from 'react-redux'
+import { useSelector } from 'react-redux';
 import { selectBreweryList } from '../features/breweryListSlice';
 
 const Div = styled.div`

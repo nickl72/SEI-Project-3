@@ -7,14 +7,12 @@ import { selectBreweryList } from '../features/breweryListSlice'
 
 import MapModal from "./MapModal";
 import axios from "axios";
-
 require('dotenv').config();
 
 const StyledMap = Styled.div`
   height: 100%;
   width: 75%;
   border-radius: 10px;
-
 `
 
 const ResultPin = ({brewery}) => <MapModal brewery={brewery} />;
@@ -57,10 +55,6 @@ const MapContainer = () => {
     activeLngs: []
   })
 
-   async function getCoords(geocodeURL) {
-    await axios.get(geocodeURL)
-      .then(resp => console.log(resp))
-  }
   // Setting map center based on center of results, will only change on newSet of results
   useEffect(() => {
     breweryList.map((brew) => {
@@ -68,15 +62,7 @@ const MapContainer = () => {
         mapData.activeLats.push(brew.latitude);
         mapData.activeLngs.push(brew.longitude);
       } else {
-        let geocodeURL = "https://maps.googleapis.com/maps/api/geocode/json?"
-        let street = brew.street;
-        street = street.split("Ste")[0];
-        let address = `${street}, ${brew.city}, ${brew.state}`;
-        address = address.split(" ").join("+")
-
-        geocodeURL = `${geocodeURL}address=${address}&key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`
-        
-        getCoords(geocodeURL)
+        console.error("Your data parsed incorrectly");
       }
 
       return 0;
@@ -89,7 +75,7 @@ const MapContainer = () => {
         lng: calcCenter(mapData.activeLngs, "lng")
       },
       zoom: 11,
-      default: { /*set Map center to users local default center*/
+      default: {
         lat: 41.559,
         lng: -90.483,
         zoom: 11
