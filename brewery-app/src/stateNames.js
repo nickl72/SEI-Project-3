@@ -1,6 +1,4 @@
-
-
-const Names = [
+export const Names = [
     'Alabama',
     'Alaska',
     'Arizona',
@@ -52,5 +50,3 @@ const Names = [
     'Wisconsin',
     'Wyoming',
 ]
-
-export default { Names }

@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 
 import * as S from '../styles/SearchFormStyles';
 import axios from 'axios';
-import StateNames from '../stateNames';
-
+import { Names as StateNames} from '../stateNames';
 import { useDispatch } from 'react-redux'
 import { loadResults, addResults } from '../features/breweryListSlice'
+
 
 const SearchForm = () => {
     const dispatch = useDispatch();
@@ -129,7 +129,7 @@ const SearchForm = () => {
                     > 
                         <option selected disabled hidden>State</option>
                         <option>Any</option>
-                        {StateNames.Names.map((state, id) => (
+                        {StateNames.map((state, id) => (
                             <option key={id}>{state}</option>
                         ))}
                     </S.StyledSelect>
