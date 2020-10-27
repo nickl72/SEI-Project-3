@@ -8,10 +8,10 @@ import axios from "axios";
 require('dotenv').config();
 
 const StyledMap = Styled.div`
-  height: 70vh;
-  width: 50%;
-  border: solid brown 20px;
+  height: 100%;
+  width: 75%;
   border-radius: 10px;
+
 `
 
 const ResultPin = ({brewery}) => <MapModal brewery={brewery} />;
