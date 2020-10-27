@@ -11,7 +11,8 @@ require('dotenv').config();
 const StyledMap = Styled.div`
   height: 100%;
   width: 75%;
-  border-radius: 10px;
+  z-index: -5;
+
 `
 
 const ResultPin = ({brewery}) => <MapModal brewery={brewery} />;

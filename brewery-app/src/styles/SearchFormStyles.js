@@ -9,7 +9,6 @@ const slideOutUpAnimation = keyframes`${slideOutUp}`;
 
 export const StyledForm = Styled.form`
     margin: 0 auto;
-    padding: 5px;
     background: #f2a743;
     border: solid 5px #6f3c05;
     width: 39%;
@@ -17,11 +16,11 @@ export const StyledForm = Styled.form`
     min-width: 300px;
     min-height: 150px;
     position: absolute;
-    z-index: 1;
+    z-index: -1;
     border-radius: 8px;
-    animation: ${slideInDownAnimation} 1s 1;
-    // animation: ${slideOutUpAnimation} 1s 1;
-    `
+    animation: ${slideInDownAnimation} .3s 1;
+    // animation: ${slideOutUpAnimation} .3s 1;
+`
 
 export const FormTitle = Styled.h3`
     text-align: center;

@@ -48,5 +48,5 @@ export const SearchFormAnchor = Styled.div`
 export const NavTitle = Styled.h2`
     margin: 0;
     text-align: center;
-    padding: 20px;
+    padding: 25px;
 `
