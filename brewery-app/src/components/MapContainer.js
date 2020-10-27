@@ -6,7 +6,6 @@ import { useSelector } from 'react-redux';
 import { selectBreweryList } from '../features/breweryListSlice'
 
 import MapModal from "./MapModal";
-import axios from "axios";
 require('dotenv').config();
 
 const StyledMap = Styled.div`
@@ -22,14 +21,7 @@ const MapContainer = () => {
   console.log(breweryList)
   
   const calcCenter = (set, type) => {
-    if(set.length === 1 && set[0]!== " "){
-      return set[0]
-    }
-    // todo: check with town of one
-    if(set.length > 1) {
-      if(set[1]==="" || set[1]===" ") {
-        set.shift();
-      }
+    if(set.length > 0) {
       return set.reduce((a,b) => parseFloat(a) + parseFloat(b), 0) / set.length;
     } else {
       if(type === "lat") {
@@ -84,6 +76,7 @@ const MapContainer = () => {
     })
     // console.log([calcCenter(mapData.activeLats, "lat"), calcCenter(mapData.activeLngs, "lng")]) // todo remove before turning in
 
+    // Keep here to suppress dependency warning
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [breweryList])
 
