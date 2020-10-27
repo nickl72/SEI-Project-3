@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import {Bold, Holder, Icon, Modal, CloseIcon} from "../styles/BreweryDisplayStyle";
 import { useSelector, useDispatch } from "react-redux";
-import { selectBrewery, activateBrewery, deactivateBrewery, } from "../features/activeBrewerySlice";
+import { selectBrewery, activateBrewery } from "../features/activeBrewerySlice";
 
 
 
@@ -16,6 +16,7 @@ function MapModal(props) {
         show: false
     })
 
+    //Toggle the modal on selecting new active brewery from list
     useEffect(() => {
         let showVar = ((props.brewery.id === activeBrew.id) ? true : false);
         setMapData({
@@ -25,10 +26,8 @@ function MapModal(props) {
     }, [activeBrew])
 
     const isActiveBrewery = (MapData.brewery.id === activeBrew.id);
-    console.log(`Active ID: ${activeBrew.id}`)
-    console.log(props.brewery.id === activeBrew.id)
-    console.log(`${MapData.brewery.name} ${MapData.show}`)
 
+    //Show will allow forced turn on for the modal;    
     const toggleModal = (show = "default") => {
         let showVar = (show === "show" ? true : !MapData.show)
         setMapData({
