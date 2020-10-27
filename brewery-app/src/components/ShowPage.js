@@ -1,7 +1,7 @@
 import React from "react";
 import { selectBrewery } from '../features/activeBrewerySlice';
 import { useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 // import Header from "./Header";
 // import Footer from ".Footer";
 
@@ -23,6 +23,7 @@ function ShowPage(props) {
             {/* <Header /> */}
             {brewery.id ?
                 <ShowPageContainer>
+                    <Link to='/'>Return to search results</Link>
                     <BreweryName>
                         <h1>{brewery.name}</h1>
                     </BreweryName>
