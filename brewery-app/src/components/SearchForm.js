@@ -31,8 +31,7 @@ const SearchForm = () => {
             const data = resp.data;
             let cleanedData = cleanData(data)
             dispatch(loadResults(cleanedData))
-        }
-            )
+        })
         .catch(err => console.error(err));
     }
 
@@ -57,7 +56,9 @@ const SearchForm = () => {
             let street = data.street.split(" Ste")[0];
             let address = `${street}, ${data.city}, ${data.state}`;
             address = address.split(" ").join("+")
+            
             geocodeURL = `${geocodeURL}address=${address}&key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`;
+
             await axios(geocodeURL)
             .then(resp => {
                 copyData.latitude = resp.data.results[0].geometry.location.lat;

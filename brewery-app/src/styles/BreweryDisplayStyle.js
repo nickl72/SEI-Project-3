@@ -28,14 +28,15 @@ export const Bold = styled.span`
 
 export const Holder = styled.div`
     display: flex;
+    width: 25px;
     &.row{
         width: 100%;
         justify-content: space-between;
     }
 `
 export const Icon = styled.img`
-    height: 2em;
-    width: 2em;
+    height: 22px;
+    width: 22px;
     position: relative;
     cursor: pointer;
     border-radius: 5px;
@@ -44,14 +45,11 @@ export const Icon = styled.img`
         box-shadow: 0px 0px .5vmin .5vmin navy;
         background: navy;
     }
-    
 `
 export const CloseIcon = styled(Holder) `
-    height: 1em;
-    width: 1em;
-    
+    height: 22px;
+    width: 22px;
     cursor: pointer;
-    
 `
 
 export const Modal = styled.div`

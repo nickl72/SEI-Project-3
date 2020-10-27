@@ -68,7 +68,6 @@ const MapContainer = () => {
       return 0;
     })
 
-    
     setMapData({
       center: {
         lat: calcCenter(mapData.activeLats, "lat"),
@@ -83,7 +82,7 @@ const MapContainer = () => {
       activeLats: [],
       activeLngs: []
     })
-    console.log([calcCenter(mapData.activeLats, "lat"), calcCenter(mapData.activeLngs, "lng")])
+    // console.log([calcCenter(mapData.activeLats, "lat"), calcCenter(mapData.activeLngs, "lng")]) // todo remove before turning in
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [breweryList])
