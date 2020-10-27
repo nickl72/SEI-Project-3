@@ -21,7 +21,7 @@ export const StyledForm = Styled.form`
 
 `
 
-export const FormTitle = Styled.h2`
+export const FormTitle = Styled.h3`
     text-align: center;
     margin: 0;
 `

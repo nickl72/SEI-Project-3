@@ -20,7 +20,7 @@ const Header = () => {
                         className='search-button'
                         onClick={toggleShowSearch}
                     >
-                        <h2>Search breweries</h2>
+                        <h2 onClick={toggleShowSearch}>Search breweries</h2>
                     </div>
                     <div>
                         { showSearch && <SearchForm /> }
