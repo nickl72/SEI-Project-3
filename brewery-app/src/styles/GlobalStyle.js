@@ -10,6 +10,7 @@ export const GlobalStyle = createGlobalStyle`
     display: flex;
     justify-content: flex-start;
     height: 10vh;
+    width: 100%;
     min-height: 80px;
     z-index: 2;
   }
@@ -21,6 +22,7 @@ export const GlobalStyle = createGlobalStyle`
 
   nav {
     height: 100%;
+    width: 30%;
   }
 
   .search-button-container {
@@ -41,6 +43,8 @@ export const GlobalStyle = createGlobalStyle`
 
   h2 {
     margin: 0;
+    text-align: center;
+    padding: 20px;
   }
 
 `;

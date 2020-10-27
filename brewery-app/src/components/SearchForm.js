@@ -7,10 +7,10 @@ import StateNames from '../stateNames';
 import { useDispatch } from 'react-redux'
 import { loadResults, addResults } from '../features/breweryListSlice'
 
-const SearchForm = (props) => {
+const SearchForm = () => {
     const dispatch = useDispatch();
     
-    const [searchData, setSearchData] = useState({
+    const [searchData] = useState({
         city: '',
         state: '',
         zipCode: '',

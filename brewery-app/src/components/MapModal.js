@@ -1,5 +1,4 @@
-import React, {useState, setState} from "react";
-import styled from "styled-components";
+import React, {useState} from "react";
 import {Bold, Holder, Icon, Modal, CloseIcon} from "../styles/BreweryDisplayStyle";
 import { useSelector } from "react-redux";
 import { selectBrewery } from "../features/activeBrewerySlice";
@@ -18,7 +17,6 @@ function MapModal(props) {
         })
     }
     const activeBrew = useSelector(selectBrewery);
-    console.log(activeBrew)
     let IconURL;
     switch(MapData.brewery.brewery_type) {
         case "micro":
@@ -42,9 +40,6 @@ function MapModal(props) {
             break;
     }
 
-    console.log(MapData.brewery.id)
-    console.log(activeBrew.id)
-    console.log(MapData.brewery.id === activeBrew.id)
     return(
         <Holder>
             <Icon 
@@ -61,7 +56,7 @@ function MapModal(props) {
                     </svg>
                     </CloseIcon>
                 </Holder>
-                <a href={MapData.brewery.website_url} target="_blank"> {MapData.brewery.website_url.replace("http://","")}</a>
+                <a href={MapData.brewery.website_url} target="_blank" rel="noreferrer"> {MapData.brewery.website_url.replace("http://","")}</a>
             </Modal>
             : null }
             
