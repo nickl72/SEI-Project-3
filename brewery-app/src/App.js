@@ -3,6 +3,7 @@ import { Route } from 'react-router';
 // import Header from './components/Header';
 import Homepage from './components/Homepage';
 import ShowPage from './components/ShowPage';
+import AboutPage from './components/AboutPage';
 // import Footer from './components/Footer';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           path="/show"
           render={(props) => <ShowPage />}
           />
+          <Route path="/about" component={AboutPage} />
       </main>
       
       {/* <Footer /> */}
