@@ -43,7 +43,7 @@ function ShowPage(props) {
                         <ul>
                             <li><Bold>Address: </Bold>{brewery.street}, {brewery.city}, {brewery.state} {brewery.postal_code.substring(0,5)}</li>
                             <li><Bold>Phone: </Bold>{formatPhoneNumber(brewery.phone)}</li>
-                            <li><Bold>Website: </Bold><a href={brewery.website_url} target="_blank"> {brewery.website_url.replace("http://","")}</a></li>
+                            <li><Bold>Website: </Bold><a href={brewery.website_url} target="_blank" rel="noreferrer"> {brewery.website_url.replace("http://","")}</a></li>
                         </ul>
                     </BrewDiv>
                     <BrewDiv className="Reviews">

@@ -57,22 +57,16 @@ const MapContainer = () => {
 
   // Setting map center based on center of results, will only change on newSet of results
   useEffect(() => {
-    {breweryList.map((brew) => {
+    breweryList.map((brew) => {
       if(brew.latitude) {
         mapData.activeLats.push(brew.latitude);
         mapData.activeLngs.push(brew.longitude);
       } else {
-        let geocodeURL = "https://maps.googleapis.com/maps/api/geocode/json?"
-        let street = brew.street;
-        street = street.split("Ste")[0];
-        let address = `${street}, ${brew.city} ${brew.state}`;
-        address = address.split(" ").join("%20")
-        geocodeURL = `${geocodeURL}address=${address}&key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`
-  
-        axios.get(geocodeURL)
-          .then(resp => console.log(resp))
+        console.error("Your data parsed incorrectly");
       }
-    })}
+
+      return 0;
+    })
 
     
     setMapData({
@@ -91,15 +85,10 @@ const MapContainer = () => {
     })
     console.log([calcCenter(mapData.activeLats, "lat"), calcCenter(mapData.activeLngs, "lng")])
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [breweryList])
-  
-
-  
-  
 
   return (
-    
-    
     <StyledMap>
       <GoogleMapReact 
         // todo look into other parameters to use
@@ -117,7 +106,6 @@ const MapContainer = () => {
             />
             )
         })}
-       
       </GoogleMapReact>
     </StyledMap>
   );

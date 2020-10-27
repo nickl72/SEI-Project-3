@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 
 import * as S from '../styles/SearchFormStyles';
 import axios from 'axios';
-import StateNames from '../stateNames';
-
+import { Names as StateNames} from '../stateNames';
 import { useDispatch } from 'react-redux'
 import { loadResults, addResults } from '../features/breweryListSlice'
 
-const SearchForm = (props) => {
+
+const SearchForm = () => {
     const dispatch = useDispatch();
     
-    const [searchData, setSearchData] = useState({
+    const [searchData] = useState({
         city: '',
         state: '',
         zipCode: '',
@@ -128,11 +128,11 @@ const SearchForm = (props) => {
                     <S.StyledSelect 
                         name='state'
                         onChange={handleInputChange}
-                        // defaultValue='#option-tag' // todo get rid of warning by using this
+                        defaultValue='State' // todo get rid of warning by using this
                     > 
-                        <option selected disabled hidden>State</option>
+                        <option disabled hidden>State</option>
                         <option>Any</option>
-                        {StateNames.Names.map((state, id) => (
+                        {StateNames.map((state, id) => (
                             <option key={id}>{state}</option>
                         ))}
                     </S.StyledSelect>
@@ -159,8 +159,9 @@ const SearchForm = (props) => {
                     <S.StyledSelect 
                         name='breweryType'
                         onChange={handleInputChange}
+                        defaultValue='Brewery type'
                     > 
-                        <option selected disabled hidden>Brewery type</option>
+                        <option disabled hidden>Brewery type</option>
                         <option >All</option>
                         <option >Micro</option>
                         <option >Regional</option>
