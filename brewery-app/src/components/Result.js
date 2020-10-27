@@ -47,7 +47,7 @@ const Result = (props) => {
             <div className={isActiveBrewery ? 'active' : ''}> 
                 <h3>Brewery: {props.result.name}</h3>
                 <h4>Location: {props.result.street}, {props.result.city}, {props.result.state}</h4>
-                <Link to={`/show/${props.result.name}`}>More info</Link>
+                <Link to={`/show/${props.result.name.split(' ').join('')}`}>More info</Link> { /* brewery name in URL is for visual purposes only. showPage uses Redux state */ }
             </div>
         </Div>
     )
