@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {Bold, Holder, Icon, Modal, CloseIcon} from "../styles/BreweryDisplayStyle";
 import { useSelector, useDispatch } from "react-redux";
 import { selectBrewery, activateBrewery, deactivateBrewery, } from "../features/activeBrewerySlice";
@@ -13,24 +13,36 @@ function MapModal(props) {
 
     const [MapData, setMapData] = useState({
         brewery: props.brewery,
-        show: false,
+        show: false
     })
 
-    const isActiveBrewery = (MapData.brewery.id === activeBrew.id);
-
-    const toggleModal = (e) => {
+    useEffect(() => {
+        let showVar = ((props.brewery.id === activeBrew.id) ? true : false);
         setMapData({
             brewery: props.brewery,
-            show: !MapData.show
+            show: showVar
+        })
+    }, [activeBrew])
+
+    const isActiveBrewery = (MapData.brewery.id === activeBrew.id);
+    console.log(`Active ID: ${activeBrew.id}`)
+    console.log(props.brewery.id === activeBrew.id)
+    console.log(`${MapData.brewery.name} ${MapData.show}`)
+
+    const toggleModal = (show = "default") => {
+        let showVar = (show === "show" ? true : !MapData.show)
+        setMapData({
+            brewery: props.brewery,
+            show: showVar
         })
     }
 
     const handleIconClick = (e) => {
-        toggleModal();
         if (isActiveBrewery) {
-            dispatch(deactivateBrewery());
+            toggleModal();
         } else {
             dispatch(activateBrewery(MapData.brewery));
+            toggleModal("show");
         }
     }
     
