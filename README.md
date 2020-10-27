@@ -39,6 +39,7 @@ Application users may search for breweries in an area and learn more about what 
 - React
 - React Router
 - Axios
+- Redux
 
 
 ### Approach taken 
@@ -54,5 +55,7 @@ Application users may search for breweries in an area and learn more about what 
 - [Brewery DB: sandbox](https://www.brewerydb.com/developers/docs)
 - [google-map-react Library](https://www.npmjs.com/package/google-map-react)
 - [styled-components documantation](https://styled-components.com/docs/basics)
+- [Google Places Details API](https://developers.google.com/places/web-service/details)
+- [Google Places Place Search API](https://developers.google.com/places/web-service/search)
 
 

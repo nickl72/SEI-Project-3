@@ -6,10 +6,10 @@ import { selectBreweryList } from '../features/breweryListSlice';
 
 
 const Div = styled.div` 
-    border: 5px solid black;
-    min-height: 80vh;
-    min-width: 30vw;
-    margin: 10px;
+    border: solid 5px #6f3c05;
+    height: 100%;
+    width: 25%;
+    background: #f2a743;
 `
 
 const ResultsList = () => {
@@ -17,7 +17,7 @@ const ResultsList = () => {
     return (
         <Div className='Result-list'>
             <h3>Search Results</h3>
-            {searchResults.map((result, index) => (
+            {searchResults && searchResults.map((result, index) => (
                 <Result 
                     result={result} 
                     key={index} 

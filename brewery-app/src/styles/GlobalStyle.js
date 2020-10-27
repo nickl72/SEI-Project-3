@@ -1,8 +1,46 @@
-import { createGlobalStyle } from "styled-components";
+import {createGlobalStyle} from 'styled-components';
 
 
 export const GlobalStyle = createGlobalStyle`
   body {
-    background: lightblue;
+    background: #f9efc1;
   }
+
+  header {
+    display: flex;
+    justify-content: flex-start;
+    height: 10vh;
+    min-height: 80px;
+    z-index: 2;
+  }
+
+  h1 {
+    margin: 20px;
+    width: 30%;
+  }
+
+  nav {
+    height: 100%;
+  }
+
+  .search-button-container {
+    height: 100%;
+
+  }
+
+  .search-button {
+    background: #fbdc81;
+    width: 50px;
+    height: 100%;
+    width: 30vw;
+
+  }
+  .search-button:hover {
+    background: #e78c11;
+  }
+
+  h2 {
+    margin: 0;
+  }
+
 `;
