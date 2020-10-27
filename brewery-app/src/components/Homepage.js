@@ -1,10 +1,11 @@
 import React from 'react'
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import MapContainer from './MapContainer';
 import ResultsList from './ResultsList';
+import { useSelector } from 'react-redux'
 import { selectBreweryList } from '../features/breweryListSlice';
-import { useSelector } from 'react-redux';
 
 const Div = styled.div`
     display: flex;
@@ -21,10 +22,14 @@ const Div = styled.div`
 const Homepage =() => {
     const breweryList = useSelector(selectBreweryList);
     return (
-        <Div>
-            <ResultsList />    
-            <MapContainer searchResults={breweryList}/>
-        </Div>
+        <div>
+            <Link to='/about'>About Us</Link>
+            <SearchForm />
+            <Div>
+                <ResultsList />    
+                <MapContainer searchResults={breweryList}/>
+            </Div>
+        </div>
     )
 }
 
