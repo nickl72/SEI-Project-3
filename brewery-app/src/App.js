@@ -16,7 +16,7 @@ function App() {
   return (
     <div className="App">
       {ofAge ? 
-      <>
+        <>
           <Header />
           <main>
             <Route exact path="/" component={Homepage} />
@@ -28,7 +28,11 @@ function App() {
           </main>
         </>
         :
-        ofAge ===null ? <VerifyAge /> : <Redirect to='/kids' />}
+        ofAge === null ? 
+          <VerifyAge /> 
+          : 
+          <Redirect to='/kids' />
+        }
         <Route path='/kids' component={KidsPage} />
         </div>
   );
