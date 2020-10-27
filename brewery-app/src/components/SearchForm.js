@@ -27,8 +27,22 @@ const SearchForm = (props) => {
     const handleSearch = (e) => {
         e.preventDefault();
         axios(buildSearchUrl())
-        .then(resp => dispatch(loadResults(resp.data)))
+        .then(resp => {
+            console.log(resp.data)
+            const data = resp.data;
+            console.log("Going to Clean")
+            cleanData(data)
+            dispatch(loadResults(resp.data))
+        }
+            )
         .catch(err => console.error(err));
+    }
+
+    const cleanData = (data) => {
+        console.log("Got to Function")
+        //Check for planning and closed breweries
+        data = data.filter(point => point.brewery_type !== "planning");
+        console.log(data)
     }
 
     const buildSearchUrl = () => {
