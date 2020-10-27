@@ -17,7 +17,7 @@ const ResultsList = () => {
     return (
         <Div className='Result-list'>
             <h3>Search Results</h3>
-            {searchResults.map((result, index) => (
+            {searchResults && searchResults.map((result, index) => (
                 <Result 
                     result={result} 
                     key={index} 

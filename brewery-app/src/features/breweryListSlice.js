@@ -8,11 +8,16 @@ export const breweryListSlice = createSlice({
     reducers: {
         loadResults: (state, action) => {
             state.breweryList = action.payload
+        },
+        addResults: (state, action) => {
+            const list = state.breweryList;
+            list.push(action.payload);
+            state.breweryList = list;
         }
     }
 });
 
-export const { loadResults } = breweryListSlice.actions;
+export const { loadResults, addResults } = breweryListSlice.actions;
 
 export const selectBreweryList = state => state.breweryList.breweryList;
 
