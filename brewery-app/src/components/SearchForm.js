@@ -125,9 +125,9 @@ const SearchForm = () => {
                     <S.StyledSelect 
                         name='state'
                         onChange={handleInputChange}
-                        // defaultValue='#option-tag' // todo get rid of warning by using this
+                        defaultValue='State' // todo get rid of warning by using this
                     > 
-                        <option selected disabled hidden>State</option>
+                        <option disabled hidden>State</option>
                         <option>Any</option>
                         {StateNames.map((state, id) => (
                             <option key={id}>{state}</option>
@@ -156,8 +156,9 @@ const SearchForm = () => {
                     <S.StyledSelect 
                         name='breweryType'
                         onChange={handleInputChange}
+                        defaultValue='Brewery type'
                     > 
-                        <option selected disabled hidden>Brewery type</option>
+                        <option disabled hidden>Brewery type</option>
                         <option >All</option>
                         <option >Micro</option>
                         <option >Regional</option>

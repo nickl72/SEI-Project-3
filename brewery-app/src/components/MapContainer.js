@@ -99,6 +99,7 @@ const MapContainer = () => {
     })
     console.log([calcCenter(mapData.activeLats, "lat"), calcCenter(mapData.activeLngs, "lng")])
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [breweryList])
 
   return (
