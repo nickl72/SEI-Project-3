@@ -14,7 +14,6 @@ const AboutPage = () => {
                 <li><img/> Bar</li>
                 <li><img/> Contract</li>
                 <li><img/> Proprieter</li>
-
             </ul>
             <Link to='/'>Return to Search Page</Link>
         </div>
