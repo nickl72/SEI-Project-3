@@ -13,7 +13,6 @@ import { selectVerifyAge } from './features/verifyAgeSlice';
 
 function App() {
   const ofAge = useSelector(selectVerifyAge)
-  console.log(ofAge);
   return (
     <div className="App">
       {ofAge ? 
