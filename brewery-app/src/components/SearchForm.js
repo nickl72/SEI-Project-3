@@ -37,10 +37,13 @@ const SearchForm = (props) => {
     }
 
     const cleanData = (data) => {
+        console.log("I'm cleaning the data")
         //Check for planning and closed breweries
         data = data.filter(point => (point.brewery_type !== "planning" && point.brewery_type !== "closed" ));
-        data = data.filter(point => point.latitude !== null);
+
         let data2Fix = data.filter(point => point.latitude === null);
+        data = data.filter(point => point.latitude !== null);
+
         fixLatLong(data2Fix);
 
         return data
