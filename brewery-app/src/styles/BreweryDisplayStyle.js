@@ -34,6 +34,12 @@ export const Icon = styled.img`
     width: 2em;
     position: relative;
     cursor: pointer;
+    border-radius: 5px;
+    &.light {
+        box-shadow: 0px 0px .5vmin .5vmin navy;
+        background: navy;
+    }
+    
 `
 
 export const Modal = styled.div`
@@ -45,4 +51,6 @@ export const Modal = styled.div`
     background: white;
     border: solid black 2px;
     border-radius: 3px;
+    padding: 5px;
+    width: 150px;
 `
