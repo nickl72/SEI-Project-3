@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
 
-import Header from './Header';
 import MapContainer from './MapContainer';
 import ResultsList from './ResultsList';
 import { selectBreweryList } from '../features/breweryListSlice';
@@ -24,7 +23,7 @@ const Homepage =() => {
     return (
         <Div>
             <ResultsList />    
-            <MapContainer searchResults={breweryList}/>
+            <MapContainer />
         </Div>
     )
 }

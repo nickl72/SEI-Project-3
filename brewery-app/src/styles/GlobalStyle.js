@@ -8,12 +8,15 @@ export const GlobalStyle = createGlobalStyle`
 
   header {
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     height: 10vh;
+    min-height: 80px;
+    z-index: 2;
   }
 
   h1 {
     margin: 20px;
+    width: 30%;
   }
 
   nav {
@@ -22,17 +25,18 @@ export const GlobalStyle = createGlobalStyle`
 
   .search-button-container {
     height: 100%;
+
   }
 
   .search-button {
-    background: green;
+    background: #fbdc81;
     width: 50px;
     height: 100%;
-    width: 250px;
+    width: 30vw;
 
   }
   .search-button:hover {
-    background: red;
+    background: #e78c11;
   }
 
   h2 {

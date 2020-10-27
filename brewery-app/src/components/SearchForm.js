@@ -134,7 +134,7 @@ const SearchForm = (props) => {
                     {/* todo per_page, sort by one or more fields */}
 
                 </S.InputContainer>
-                <S.StyledInput 
+                <S.SubmitButton 
                     type='submit' 
                     value='Search'
                 />

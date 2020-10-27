@@ -11,13 +11,12 @@ export const StyledForm = Styled.form`
     padding: 5px;
     background: #f2a743;
     border: solid 5px #6f3c05;
-    width: 30%;
+    width: 30vw;
     height: 20vh;
     min-width: 300px;
     min-height: 150px;
     position: absolute;
     z-index: 1;
-    // transform: translate(0, 10vh);
     animation: ${slideInDownAnimation} 1s 1;
 
 `
@@ -43,13 +42,21 @@ export const InputContainer = Styled.div`
 
 export const StyledInput = Styled.input`
     animation: ${(props) => props.message ? css`${headShakeAnimation} 2s 1` : "none"};
-    margin: 3px;
+    margin: 5px;
     width: 10vw;
+    min-width: 125px;
 `
 
 export const StyledSelect = Styled.select`
     margin: 5px;
     width: 10vw;
+    min-width: 125px;
+`
+
+export const SubmitButton = Styled.input`
+    width: 150px;
+    margin: 10px;
+
 `
 
 export const ErrorMessage = Styled.p`
