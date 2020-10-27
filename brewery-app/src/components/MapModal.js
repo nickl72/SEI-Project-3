@@ -1,14 +1,22 @@
 import React, {useState} from "react";
 import {Bold, Holder, Icon, Modal, CloseIcon} from "../styles/BreweryDisplayStyle";
-import { useSelector } from "react-redux";
-import { selectBrewery } from "../features/activeBrewerySlice";
+import { useSelector, useDispatch } from "react-redux";
+import { selectBrewery, activateBrewery, deactivateBrewery, } from "../features/activeBrewerySlice";
+
 
 
 function MapModal(props) {
+    const activeBrew = useSelector(selectBrewery);
+    const dispatch = useDispatch();
+
+    
+
     const [MapData, setMapData] = useState({
         brewery: props.brewery,
         show: false,
     })
+
+    const isActiveBrewery = (MapData.brewery.id === activeBrew.id);
 
     const toggleModal = (e) => {
         setMapData({
@@ -17,7 +25,17 @@ function MapModal(props) {
         })
     }
 
-    const activeBrew = useSelector(selectBrewery);
+    const handleIconClick = (e) => {
+        toggleModal();
+        if (isActiveBrewery) {
+            dispatch(deactivateBrewery());
+        } else {
+            dispatch(activateBrewery(MapData.brewery));
+        }
+    }
+    
+
+    
     let IconURL;
     switch(MapData.brewery.brewery_type) {
         case "micro":
@@ -45,7 +63,7 @@ function MapModal(props) {
         <Holder>
             <Icon 
                 src={IconURL} 
-                onClick={toggleModal} 
+                onClick={handleIconClick} 
                 className={MapData.brewery.id === activeBrew.id ? "light" : null}
                 />
             {MapData.show ? 
