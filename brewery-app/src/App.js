@@ -1,4 +1,4 @@
-import { Redirect, Route } from 'react-router';
+import { Redirect, Route, Switch } from 'react-router';
 
 import Header from './components/Header';
 import Homepage from './components/Homepage';
@@ -28,8 +28,11 @@ function App() {
           </main>
         </>
         :
-        ofAge === null ? 
-          <VerifyAge /> 
+        ofAge === null ?
+          <Switch>
+            <Route path='/kids' component={KidsPage} />
+            <Route path='/' component={VerifyAge} />
+          </Switch>
           : 
           <Redirect to='/kids' />
         }

@@ -1,18 +1,19 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+import { fadeIn } from 'react-animations';
+
+const fadeInAnimation = keyframes`${fadeIn}`;
+
 
 const Div = styled.div`
     height: 100vh;
     width: 100vw;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background: #f9efc1;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1;
+    animation: ${fadeInAnimation} 2s 1;
 `
+
 const KidsPage = () => {
     return (
         <Div>
