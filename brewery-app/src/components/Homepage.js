@@ -24,7 +24,6 @@ const Homepage =() => {
     return (
         <div>
             <Link to='/about'>About Us</Link>
-            <SearchForm />
             <Div>
                 <ResultsList />    
                 <MapContainer searchResults={breweryList}/>
