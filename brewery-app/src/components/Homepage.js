@@ -26,7 +26,7 @@ const Homepage =() => {
             <Link to='/about'>About Us</Link>
             <Div>
                 <ResultsList />    
-                {/* <MapContainer searchResults={breweryList}/> */}
+                <MapContainer searchResults={breweryList}/>
             </Div>
         </div>
     )
