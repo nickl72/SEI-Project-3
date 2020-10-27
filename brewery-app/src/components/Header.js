@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import SearchForm from './SearchForm';
+import * as S from '../styles/HeaderStyles';
+import { Link } from 'react-router-dom';
 
 
 const Header = () => {
@@ -12,23 +14,26 @@ const Header = () => {
     }
 
     return (
-        <header>
-            <h1>Puzzles</h1>
-            <nav>
-                <div className='search-button-container'>
-                    <div 
+        <S.PageHeader>
+            <S.PageTitle>
+                <Link to='/'>Puzzles</Link>
+            </S.PageTitle>
+            <S.NavBar>
+                <S.SearchButtonContainer>
+                    <S.SearchButton 
                         className='search-button'
                         onClick={toggleShowSearch}
                     >
-                        <h2 onClick={toggleShowSearch}>Search breweries</h2>
-                    </div>
-                    <div>
+                        <S.NavTitle onClick={toggleShowSearch}>
+                            Search breweries
+                        </S.NavTitle>
+                    </S.SearchButton>
+                    <S.SearchFormAnchor>
                         { showSearch && <SearchForm /> }
-                    </div>
-
-                </div>
-            </nav>
-        </header>
+                    </S.SearchFormAnchor>
+                </S.SearchButtonContainer>
+            </S.NavBar>
+        </S.PageHeader>
     )
 }
 

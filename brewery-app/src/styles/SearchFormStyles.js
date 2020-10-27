@@ -11,14 +11,14 @@ export const StyledForm = Styled.form`
     padding: 5px;
     background: #f2a743;
     border: solid 5px #6f3c05;
-    width: 30vw;
+    width: 39%;
     height: 20vh;
     min-width: 300px;
     min-height: 150px;
     position: absolute;
     z-index: 1;
     animation: ${slideInDownAnimation} 1s 1;
-
+    border-radius: 8px;
 `
 
 export const FormTitle = Styled.h3`

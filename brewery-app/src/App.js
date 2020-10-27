@@ -15,8 +15,8 @@ function App() {
         <Route 
           path="/show"
           render={(props) => <ShowPage />}
-          />
-          <Route path="/about" component={AboutPage} />
+        />
+        <Route path="/about" component={AboutPage} />
       </main>
     </div>
   );
