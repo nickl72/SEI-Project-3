@@ -6,10 +6,11 @@ import MapContainer from './MapContainer';
 import StateNames from '../stateNames';
 
 import { useDispatch } from 'react-redux'
-import { loadResults } from '../features/breweryListSlice'
+import { loadResults, addResults } from '../features/breweryListSlice'
 
 const SearchForm = (props) => {
     const dispatch = useDispatch();
+    
     const [searchData, setSearchData] = useState({
         city: '',
         state: '',
@@ -28,9 +29,7 @@ const SearchForm = (props) => {
         e.preventDefault();
         axios(buildSearchUrl())
         .then(resp => {
-            console.log(resp.data)
             const data = resp.data;
-            console.log("Going to Clean")
             let cleanedData = cleanData(data)
             dispatch(loadResults(cleanedData))
         }
@@ -39,46 +38,32 @@ const SearchForm = (props) => {
     }
 
     const cleanData = (data) => {
-        console.log("Got to Function")
         //Check for planning and closed breweries
-        data = data.filter(point => point.brewery_type !== "planning");
-        data = data.filter(point => point.brewery_type !== "closed");
-        console.log(typeof data)
-        let data2Fix = data.filter(point => point.latitude === null);
+        data = data.filter(point => (point.brewery_type !== "planning" && point.brewery_type !== "closed" ));
         data = data.filter(point => point.latitude !== null);
-        let fixedData = fixLatLong(data2Fix);
-        fixedData.forEach(result => data.push(result));
-        console.log(data)
-        
+        let data2Fix = data.filter(point => point.latitude === null);
+        fixLatLong(data2Fix);
+
+        return data
     }
 
     const fixLatLong = (data) => {
-        console.log("I'm fixing the coordinates");
-        
-        let newData = data.map((data) => {
-            let fixedData=[];
-            let copyData=Object.assign({},data);
+        //Finds the coordinates with google geocode API and sends to state
+        data.map( async (data) => {
+            let copyData = Object.assign({},data);
             let geocodeURL = "https://maps.googleapis.com/maps/api/geocode/json?"
-            let street = data.street;
-            street = street.split(" Ste")[0];
+            let street = data.street.split(" Ste")[0];
             let address = `${street}, ${data.city}, ${data.state}`;
             address = address.split(" ").join("+")
             geocodeURL = `${geocodeURL}address=${address}&key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`;
-            axios(geocodeURL)
+            await axios(geocodeURL)
             .then(resp => {
-                console.log(resp.data)
-                copyData.latitude=resp.data.results[0].geometry.location.lat;
-                copyData.longitude=resp.data.results[0].geometry.location.lng;
-                console.log(copyData)
-                fixedData.push(copyData)
-                return fixedData
+                copyData.latitude = resp.data.results[0].geometry.location.lat;
+                copyData.longitude = resp.data.results[0].geometry.location.lng;
+                dispatch(addResults(copyData))
             })
-            console.log(copyData)
-            return fixedData
+            .catch(err => console.error(err));
         })
-
-        console.log(newData)
-        return newData 
     }
 
     const buildSearchUrl = () => {

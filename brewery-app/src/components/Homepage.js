@@ -20,7 +20,7 @@ const Homepage =() => {
             <SearchForm />
             <Div>
                 <ResultsList />    
-                {/* <MapContainer searchResults={breweryList}/> */}
+                <MapContainer searchResults={breweryList}/>
 
             </Div>
         </div>
