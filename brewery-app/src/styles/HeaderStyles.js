@@ -3,7 +3,7 @@ import Styled from "styled-components";
 
 export const PageHeader = Styled.header`
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-around;
     height: 10vh;
     width: 100%;
     min-height: 80px;
@@ -18,6 +18,8 @@ export const PageTitle = Styled.h1`
 export const NavBar = Styled.nav`
     height: 100%;
     width: 40%;
+    display: flex;
+    flex-flow: row nowrap;
 `
 
 export const SearchButtonContainer = Styled.div`
@@ -25,10 +27,10 @@ export const SearchButtonContainer = Styled.div`
     width: 100%;
     display: flex;
     flex-flow: column nowrap;
-    align-items: stretch;    
+    align-items: center;    
 `
 
-export const SearchButton = Styled.div`
+export const NavButton = Styled.div`
     margin: 0;
     background: #fbdc81;
     height: 100%;

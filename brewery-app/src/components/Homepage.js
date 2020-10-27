@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 import MapContainer from './MapContainer';
 import ResultsList from './ResultsList';
@@ -23,7 +22,6 @@ const Homepage =() => {
     const breweryList = useSelector(selectBreweryList);
     return (
         <div>
-            <Link to='/about'>About Us</Link>
             <Div>
                 <ResultsList />    
                 <MapContainer searchResults={breweryList}/>

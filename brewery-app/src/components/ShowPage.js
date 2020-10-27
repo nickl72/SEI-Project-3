@@ -18,7 +18,8 @@ function ShowPage(props) {
 
     return(
         <div>
-            {brewery.id ?
+            {brewery.id 
+            ?
                 <ShowPageContainer>
                     <Link to='/'>Return to search results</Link>
                     <BreweryName>

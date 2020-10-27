@@ -12,26 +12,39 @@ const Header = () => {
             setShowSearch(!showSearch)
         }
     }
-
+    const hideSearch = (e) => {
+        setShowSearch(false)
+    }
+    
     return (
         <S.PageHeader>
-            <S.PageTitle>
-                <Link to='/'>Puzzles</Link>
-            </S.PageTitle>
+            <Link to='/'>
+                <S.PageTitle>
+                    Puzzles
+                </S.PageTitle>
+            </Link>
             <S.NavBar>
                 <S.SearchButtonContainer>
-                    <S.SearchButton 
-                        className='search-button'
-                        onClick={toggleShowSearch}
-                    >
-                        <S.NavTitle onClick={toggleShowSearch}>
-                            Search breweries
-                        </S.NavTitle>
-                    </S.SearchButton>
+                    <S.NavButton onClick={toggleShowSearch}>
+                        <Link to='/'>
+                            <S.NavTitle onClick={toggleShowSearch}>
+                                Search breweries
+                            </S.NavTitle>
+                        </Link>
+                    </S.NavButton>
                     <S.SearchFormAnchor>
                         { showSearch && <SearchForm /> }
                     </S.SearchFormAnchor>
                 </S.SearchButtonContainer>
+                
+                <S.NavButton onClick={hideSearch}>
+                    <Link to='/about'>
+                        <S.NavTitle>
+                            About Us
+                        </S.NavTitle>
+                    </Link>
+                </S.NavButton>
+
             </S.NavBar>
         </S.PageHeader>
     )
