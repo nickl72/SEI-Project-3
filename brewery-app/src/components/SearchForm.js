@@ -5,7 +5,6 @@ import axios from 'axios';
 import { Names as StateNames} from '../stateNames';
 import { useDispatch } from 'react-redux'
 import { loadResults, addResults } from '../features/breweryListSlice'
-import { Link } from 'react-router-dom';
 
 
 const SearchForm = () => {

@@ -1,9 +1,10 @@
 import Styled, {css, keyframes} from 'styled-components';
-import { headShake, slideInDown } from 'react-animations';
+import { headShake, slideInDown, slideOutUp } from 'react-animations';
 
 
 const headShakeAnimation = keyframes`${headShake}`;
 const slideInDownAnimation = keyframes`${slideInDown}`;
+const slideOutUpAnimation = keyframes`${slideOutUp}`;
 
 
 export const StyledForm = Styled.form`
@@ -17,9 +18,10 @@ export const StyledForm = Styled.form`
     min-height: 150px;
     position: absolute;
     z-index: 1;
-    animation: ${slideInDownAnimation} 1s 1;
     border-radius: 8px;
-`
+    animation: ${slideInDownAnimation} 1s 1;
+    // animation: ${slideOutUpAnimation} 1s 1;
+    `
 
 export const FormTitle = Styled.h3`
     text-align: center;

@@ -7,7 +7,6 @@ export const PageHeader = Styled.header`
     height: 10vh;
     width: 100%;
     min-height: 80px;
-    z-index: 2;
 `
 
 export const PageTitle = Styled.h1`
@@ -27,7 +26,7 @@ export const SearchButtonContainer = Styled.div`
     width: 100%;
     display: flex;
     flex-flow: column nowrap;
-    align-items: center;    
+    align-items: center;
 `
 
 export const NavButton = Styled.div`
@@ -42,6 +41,8 @@ export const NavButton = Styled.div`
 
 export const SearchFormAnchor = Styled.div`
     width: 100%;
+    height: 0;
+    display: flex;
 `
 
 export const NavTitle = Styled.h2`
