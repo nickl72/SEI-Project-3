@@ -6,8 +6,14 @@ import { fadeIn } from 'react-animations';
 import { StyledSubmit, StyledInput } from '../styles/FormStyles';
 
 const BigStyledSubmit = styled(StyledSubmit)`
-            font-size: 2em;
+    font-size: 2em;
 
+`
+
+const BigStyledInput = styled(StyledInput)`
+    font-size: 2em;
+    width: 4em;
+    height: 2em;
 `
 
 const animation = keyframes`${fadeIn}`;
@@ -27,37 +33,6 @@ const Div = styled.div`
         flex-direction: column;
         justify-content: space-evenly;
         animation: ${animation} 2s 1;
-    }
-    .date { 
-        margin: 1em;
-        background: silver;
-        padding: 0 0.3em; 
-        color: #532b04;
-        background: #e78c11; 
-        ::-webkit-outer-spin-button,
-        ::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
-        font-size: 2em;
-        width: 4em;
-        height: 2em;
-        font-weight: 600;
-        text-align: center;
-        border-radius: 5px;
-    }
-    .submit {
-        font-size: 2em;
-        height: 2em;
-        font-weight: 600;
-        width: 8em;
-        background: #331a04;
-        color: #fbdc81;
-        cursor: pointer;
-        &:hover {
-            background: #532b04;
-        }
-
     }
     h3 {
         text-align: center;
@@ -115,9 +90,9 @@ function VerifyAge() {
             <form onSubmit={(e) => checkAge(e)} autoComplete='off'>
                 <h3>Enter your birthday to proceed to site</h3>
                 <div>
-                    <input className='date' type='text' placeholder='MM' name='month' maxLength='2' />
-                    <input className='date' type='text' placeholder='DD' name='day' maxLength='2'/>
-                    <input className='date year' type='text' placeholder='YYYY' name='year' minLength='4' maxLength='4'/>
+                    <BigStyledInput className='date' type='text' placeholder='MM' name='month' maxLength='2' />
+                    <BigStyledInput className='date' type='text' placeholder='DD' name='day' maxLength='2'/>
+                    <BigStyledInput className='date year' type='text' placeholder='YYYY' name='year' minLength='4' maxLength='4'/>
                 </div>
                 <div>
                     <BigStyledSubmit className='submit' type='submit' value='Verify Age'/>

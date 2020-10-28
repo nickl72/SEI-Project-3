@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { useSelector } from 'react-redux';
 import { barCrawl } from '../features/barCrawlSlice';
 import sendEmail from '../app/email';
-import { StyledEmailForm, StyledSubmit, StyledInput } from '../styles/FormStyles'
+import { StyledEmailForm, StyledSubmit, StyledInput, ModalDiv } from '../styles/FormStyles'
 
 
 const EmailForm = () => {
@@ -72,13 +72,15 @@ const EmailForm = () => {
     }
     
     return (
-        <StyledEmailForm onSubmit={sendList}>
-            <h3>Send List In Email</h3>
-            <StyledInput type='text' name='Name' placeholder='name'/>
-            <StyledInput type='email' name='Email'  placeholder='email'/>
-            <StyledSubmit type='submit' value='Email List' />
-            {error && <p>Please fill in all Fields</p>}
-        </StyledEmailForm>
+        <ModalDiv>
+            <StyledEmailForm onSubmit={sendList}>
+                <h3>Send List In Email</h3>
+                <StyledInput type='text' name='name' placeholder='Name'/>
+                <StyledInput type='email' name='email'  placeholder='Email'/>
+                <StyledSubmit type='submit' value='Email List' />
+                {error ? <p>Please fill in all Fields</p>:<p></p>}
+            </StyledEmailForm>
+        </ModalDiv>
     )
 }
 

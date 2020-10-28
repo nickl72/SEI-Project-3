@@ -12,6 +12,7 @@ const Div = styled.div`
     height: 90vh;
     width: 25%;
     background: #f2a743;
+    position: relative;
 `
 const ResultHead = styled.div`
     height: 25px;
@@ -92,17 +93,22 @@ const ResultsList = () => {
                             <h5>Time to get planning!</h5> 
                         </ResultHolder>
                         :
-                        barCrawlList.map((brew, index) => (
+                        <ResultHolder>
+                       { barCrawlList.map((brew, index) => (
                             <Result
                                 result={brew}
                                 key={index}
                             />
-                        ))
+                        ))}
+                        </ResultHolder>
+
                     }
-                                        <EmailForm />
+                    
+
 
                 </ResultHolder>
             }
+            <EmailForm />
         </Div>
     )
 }
