@@ -31,7 +31,7 @@ const EmailForm = () => {
     const sendList = (e) => {
         e.preventDefault();
         console.log('list');
-        let htmlMessage = ''
+        let htmlMessage = `<div>`
         barCrawlList.forEach(bar => {
             htmlMessage = htmlMessage + `
                 <br/>
@@ -44,13 +44,14 @@ const EmailForm = () => {
                 <p>${bar.phone}</p>
                 `
         })
-        console.log(htmlMessage);
+        htmlMessage = htmlMessage + `</div>`
+        sendEmail(e.target.name.value, htmlMessage, e.target.email.value)
     }
     
     return (
         <form onSubmit={sendList}>
-            <input type='email' name='email'  />
-            <input type='text' name='name' />
+            <input type='email' name='email'  placeholder='email'/>
+            <input type='text' name='name' placeholder='name'/>
             <input type='submit' value='Send List' />
         </form>
     )

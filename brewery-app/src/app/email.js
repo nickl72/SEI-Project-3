@@ -15,7 +15,7 @@ const sendEmail = (to_name, htmlMessage, sendToEmail) => {
 
 
     
-    console.log(emailParams);
+    console.log(emailParams.htmlMessage);
     // emailjs.send(
     //     process.env.REACT_APP_SERVICE_ID,
     //     'template_BarCrawl',
