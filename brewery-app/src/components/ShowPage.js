@@ -2,8 +2,6 @@ import React from "react";
 import { selectBrewery } from '../features/activeBrewerySlice';
 import { useSelector } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
-// import Header from "./Header";
-// import Footer from ".Footer";
 
 import {ShowPageContainer, BreweryName, BrewImage, BrewStats, BrewDiv, Bold} from "../styles/BreweryDisplayStyle";
 
@@ -20,8 +18,8 @@ function ShowPage(props) {
 
     return(
         <div>
-            {/* <Header /> */}
-            {brewery.id ?
+            {brewery.id 
+            ?
                 <ShowPageContainer>
                     <Link to='/'>Return to search results</Link>
                     <BreweryName>
@@ -51,7 +49,6 @@ function ShowPage(props) {
                     </BrewDiv>
                 </ShowPageContainer>
             : <Redirect to='/' />}
-            {/* <Footer /> */}
         </div>
     )
 }

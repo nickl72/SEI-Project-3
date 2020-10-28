@@ -36,8 +36,7 @@ const SearchForm = () => {
     }
 
     const cleanData = (data) => {
-        console.log("I'm cleaning the data")
-        //Check for planning and closed breweries
+        //exclude planning and closed breweries
         data = data.filter(point => (point.brewery_type !== "planning" && point.brewery_type !== "closed" ));
 
         let data2Fix = data.filter(point => point.latitude === null);
@@ -124,12 +123,11 @@ const SearchForm = () => {
                         name='city'
                         placeholder='City'
                         onChange={handleInputChange}
-                        
                     />
                     <S.StyledSelect 
                         name='state'
                         onChange={handleInputChange}
-                        defaultValue='State' // todo get rid of warning by using this
+                        defaultValue='State'
                     > 
                         <option disabled hidden>State</option>
                         <option>Any</option>
@@ -174,8 +172,8 @@ const SearchForm = () => {
                     {/* todo per_page, sort by one or more fields */}
 
                 </S.InputContainer>
-                <S.SubmitButton 
-                    type='submit' 
+                <S.SubmitButton
+                    type='submit'
                     value='Search'
                 />
             </S.FormInputs>

@@ -1,24 +1,24 @@
 import Styled, {css, keyframes} from 'styled-components';
-import { headShake, slideInDown } from 'react-animations';
+import { headShake, slideInDown, slideOutUp } from 'react-animations';
 
 
 const headShakeAnimation = keyframes`${headShake}`;
 const slideInDownAnimation = keyframes`${slideInDown}`;
+const slideOutUpAnimation = keyframes`${slideOutUp}`;
 
 
 export const StyledForm = Styled.form`
     margin: 0 auto;
-    padding: 5px;
     background: #f2a743;
-    border: solid 5px #6f3c05;
-    width: 30vw;
+    // border: solid 5px #6f3c05;
+    width: 40%;
     height: 20vh;
     min-width: 300px;
     min-height: 150px;
     position: absolute;
     z-index: 1;
-    animation: ${slideInDownAnimation} 1s 1;
-
+    animation: ${slideInDownAnimation} .3s 1;
+    // animation: ${slideOutUpAnimation} .3s 1;
 `
 
 export const FormTitle = Styled.h3`
@@ -30,6 +30,8 @@ export const FormInputs = Styled.div`
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
+    // z-index: auto;
+
 `
 
 export const InputContainer = Styled.div`
@@ -56,7 +58,6 @@ export const StyledSelect = Styled.select`
 export const SubmitButton = Styled.input`
     width: 150px;
     margin: 10px;
-
 `
 
 export const ErrorMessage = Styled.p`
