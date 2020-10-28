@@ -3,7 +3,6 @@ import { LegendHolder, BasicIcon, Title } from "../styles/BreweryDisplayStyle";
 
 
 const Legend = (props) => {
-    console.log("I got to the legend")
     let items=props.items;    
     
     const iconURL = (item) => {

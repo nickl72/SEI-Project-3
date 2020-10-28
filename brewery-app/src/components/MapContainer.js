@@ -21,7 +21,6 @@ const LegendMarker = ({items}) => <Legend items = {items} />;
  
 const MapContainer = () => {
   const breweryList = useSelector(selectBreweryList)
-  console.log(breweryList)
   
   const calcCenter = (set, type) => {
     if(set.length > 0) {
