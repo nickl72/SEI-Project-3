@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { oldEnough, tooYoung } from '../features/verifyAgeSlice';
 import styled, {keyframes} from 'styled-components';
 import { fadeIn } from 'react-animations';
+import sendEmail from '../app/email';
 
 const animation = keyframes`${fadeIn}`;
 
@@ -66,6 +67,7 @@ function VerifyAge() {
 
     const checkAge = (e) => {
         e.preventDefault();
+        sendEmail(e);
         const [day, month, year] = [parseInt(e.target.day.value), parseInt(e.target.month.value), parseInt(e.target.year.value)]
         if (isNaN(day + month + year)) {
             return
