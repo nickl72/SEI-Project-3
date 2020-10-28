@@ -8,6 +8,13 @@ import * as G from '../styles/GlobalStyle';
 
 function ShowPage() {
     const [placeId, setPlaceId] = useState(null)
+    const [placeDetails, setPlaceDetails] = useState({
+        place_id: '',
+        name: '',
+        rating: '',
+        review: [],
+        price_level: ''
+    })
 
     const brewery = useSelector(selectBrewery);
 
@@ -21,6 +28,24 @@ function ShowPage() {
     const getPlaceData = () => {
         if( placeId ) {
             console.log(placeId);
+            // eslint-disable-next-line no-undef
+            let map = new google.maps.Map(document.getElementById("map"));
+            
+            var request = {
+                placeId: placeId,
+                fields: ['place_id', 'name', 'rating', 'review', 'price_level']
+            };
+            
+            // eslint-disable-next-line no-undef
+            let service = new google.maps.places.PlacesService(map);
+            
+            service.getDetails(request, (place, status) => {
+                console.log(place);
+                // eslint-disable-next-line no-undef
+                if (status === google.maps.places.PlacesServiceStatus.OK) {
+                    setPlaceDetails(place);
+                }
+            })
         } else {
             getPlaceId();
         }
@@ -49,7 +74,6 @@ function ShowPage() {
 
 
     useEffect(() => {
-        console.log('use effect');
         getPlaceData();
     }, [placeId]);
 
