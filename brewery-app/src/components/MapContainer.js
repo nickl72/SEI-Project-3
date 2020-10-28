@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { selectBreweryList } from '../features/breweryListSlice'
 
 import MapModal from "./MapModal";
+import Legend from "./Legend";
 require('dotenv').config();
 
 const StyledMap = Styled.div`
@@ -16,6 +17,7 @@ const StyledMap = Styled.div`
 `
 
 const ResultPin = ({brewery}) => <MapModal brewery={brewery} />;
+const LegendMarker = ({items}) => <Legend items = {items} />;
  
 const MapContainer = () => {
   const breweryList = useSelector(selectBreweryList)
@@ -33,6 +35,17 @@ const MapContainer = () => {
     }
   }
 
+  const [legendData, setLegendData ] = useState({
+    activeTypes:[]
+  })
+
+  const addUnique = (item, list) => {
+    if(list.indexOf(item) === -1) {
+      list.push(item)
+    }
+    return list
+  }
+
   const [mapData, setMapData] = useState({
     center: {
       lat: 41.559,
@@ -48,19 +61,29 @@ const MapContainer = () => {
     activeLngs: []
   })
 
+  
   // Setting map center based on center of results, will only change on newSet of results
   useEffect(() => {
+    setLegendData({activeTypes:[]});
+    let newLegend =  legendData.activeTypes;
+    
     breweryList.map((brew) => {
       if(brew.latitude) {
         mapData.activeLats.push(brew.latitude);
         mapData.activeLngs.push(brew.longitude);
+        addUnique(brew.brewery_type, newLegend);
+        
       } else {
         console.error("Your data parsed incorrectly");
       }
-
+      
       return 0;
     })
-
+    
+    setLegendData({
+      activeTypes: newLegend
+    })
+    
     setMapData({
       center: {
         lat: calcCenter(mapData.activeLats, "lat"),
@@ -81,8 +104,12 @@ const MapContainer = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [breweryList])
 
+  
   return (
     <StyledMap>
+      <LegendMarker 
+          items={legendData.activeTypes}
+          />
       <GoogleMapReact 
         // todo look into other parameters to use
         bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY }}
@@ -99,6 +126,7 @@ const MapContainer = () => {
             />
             )
         })}
+        
       </GoogleMapReact>
     </StyledMap>
   );
