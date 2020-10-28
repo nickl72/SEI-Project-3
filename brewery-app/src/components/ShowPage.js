@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { selectBrewery } from '../features/activeBrewerySlice';
 import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import axios from 'axios';
+// import axios from 'axios';
 
 import * as S from "../styles/ShowPageStyles";
 import * as G from '../styles/GlobalStyle';
@@ -18,11 +18,24 @@ function ShowPage() {
     }
 
     const getPlaceData = () => {
-        axios(`https://maps.googleapis.com/maps/api/place/findplacefromtext/json?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}&input=exile+brewing,+Des+Moines,+Iowa&inputtype=textquery&fields=user_ratings_total,rating,price_level,place_id,photos`)
-        .then(resp => {
-            console.log(resp.data);
+        // eslint-disable-next-line no-undef
+        let map = new google.maps.Map(document.getElementById("map"));
+
+        const request = {
+            query: 'Museum of Contemporary Art Australia',
+            fields: ['name', 'geometry'],
+          };
+        
+        // eslint-disable-next-line no-undef
+        let service = new google.maps.places.PlacesService(map);
+        
+        service.findPlaceFromQuery(request, (place, status) => {
+            console.log(place);
+            // eslint-disable-next-line no-undef
+            if (status === google.maps.places.PlacesServiceStatus.OK) {
+              console.log(place.reviews);
+            }
         })
-        .catch(err => console.error(err));
     }
 
 
@@ -37,6 +50,7 @@ function ShowPage() {
             {brewery.id 
             ?
                 <S.ShowPageContainer>
+                    <div id="map"></div>
                     <S.BreweryName>{brewery.name}</S.BreweryName>
                     <S.BreweryImage />
                     <S.BreweryStats>

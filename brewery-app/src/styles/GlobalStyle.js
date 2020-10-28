@@ -23,6 +23,11 @@ export const GlobalStyle = createGlobalStyle`
   a:visited {
     color: #331a04;
   }
+
+  #map {
+    height: 100%;
+  }
+  
 `
 
 export const Bold = Styled.span`
