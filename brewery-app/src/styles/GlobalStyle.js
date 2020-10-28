@@ -4,47 +4,23 @@ import {createGlobalStyle} from 'styled-components';
 export const GlobalStyle = createGlobalStyle`
   body {
     background: #f9efc1;
+    height: 100%;
   }
 
-  header {
+  .App {
     display: flex;
-    justify-content: flex-start;
-    height: 10vh;
-    width: 100%;
-    min-height: 80px;
-    z-index: 2;
+    flex-flow: column nowrap;
   }
 
-  h1 {
-    margin: 20px;
-    width: 30%;
+  main {
+    height: 90vh;
   }
 
-  nav {
-    height: 100%;
-    width: 30%;
+  a {
+    color: #331a04;
+    text-decoration: none
   }
-
-  .search-button-container {
-    height: 100%;
-
+  a:visited {
+    color: #331a04;
   }
-
-  .search-button {
-    background: #fbdc81;
-    width: 50px;
-    height: 100%;
-    width: 30vw;
-
-  }
-  .search-button:hover {
-    background: #e78c11;
-  }
-
-  h2 {
-    margin: 0;
-    text-align: center;
-    padding: 20px;
-  }
-
-`;
+`

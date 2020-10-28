@@ -10,9 +10,10 @@ import Legend from "./Legend";
 require('dotenv').config();
 
 const StyledMap = Styled.div`
-  height: 100%;
+  height: 90vh;
   width: 75%;
-  border-radius: 10px;
+  z-index: 0;
+
 `
 
 const ResultPin = ({brewery}) => <MapModal brewery={brewery} />;

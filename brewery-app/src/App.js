@@ -37,7 +37,7 @@ function App() {
           <Redirect to='/kids' />
         }
         <Route path='/kids' component={KidsPage} />
-        </div>
+    </div>
   );
 }
 
