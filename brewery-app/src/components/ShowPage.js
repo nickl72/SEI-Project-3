@@ -1,13 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { selectBrewery } from '../features/activeBrewerySlice';
 import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-// import axios from 'axios';
 
 import * as S from "../styles/ShowPageStyles";
 import * as G from '../styles/GlobalStyle';
 
 function ShowPage() {
+    const [placeId, setPlaceId] = useState(null)
+
     const brewery = useSelector(selectBrewery);
 
     function formatPhoneNumber(phoneNumber) {
@@ -18,22 +19,30 @@ function ShowPage() {
     }
 
     const getPlaceData = () => {
+        if( placeId ) {
+            console.log(placeId);
+        } else {
+            getPlaceId();
+        }
+    }
+    
+    const getPlaceId = () => {
         // eslint-disable-next-line no-undef
         let map = new google.maps.Map(document.getElementById("map"));
-
+        
         const request = {
-            query: 'Museum of Contemporary Art Australia',
-            fields: ['name', 'geometry'],
-          };
+            query: brewery.name,
+            fields: ['name', 'place_id'],
+        };
         
         // eslint-disable-next-line no-undef
         let service = new google.maps.places.PlacesService(map);
         
         service.findPlaceFromQuery(request, (place, status) => {
-            console.log(place);
+            console.log(place[0]);
             // eslint-disable-next-line no-undef
             if (status === google.maps.places.PlacesServiceStatus.OK) {
-              console.log(place.reviews);
+                setPlaceId(place[0].place_id);
             }
         })
     }
@@ -42,7 +51,7 @@ function ShowPage() {
     useEffect(() => {
         console.log('use effect');
         getPlaceData();
-    }, []);
+    }, [placeId]);
 
 
     return (
