@@ -85,11 +85,12 @@ export const LegendHolder = styled.div`
     margin: 10px;
     padding: 8px;
     border-radius: 2px;
-    box-shadow: 0px 0px 8px gray;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
     min-width: 50px;
     z-index: 2;
     min-height: 12px;
     position: absolute;
+    color: rgba(0, 0, 0, .87);
 
     .legendRow {
         display: flex;
