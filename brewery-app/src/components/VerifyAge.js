@@ -1,7 +1,10 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { oldEnough, tooYoung } from '../features/verifyAgeSlice';
-import styled from 'styled-components';
+import styled, {keyframes} from 'styled-components';
+import { fadeIn } from 'react-animations';
+
+const animation = keyframes`${fadeIn}`;
 
 const Div = styled.div`
     height: 100vh;
@@ -9,30 +12,44 @@ const Div = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    form {
+    form div {
         display: flex;
         justify-content: center;
+        align-items: center;
+    }
+    form {
+        flex-direction: column;
+        justify-content: space-evenly;
+        animation: ${animation} 2s 1;
     }
     .date { 
         margin: 1em;
         background: silver;
         padding: 0 0.3em; 
-        color: #0d0404;
-        background: orange; 
+        color: #532b04;
+        background: #e78c11; 
         ::-webkit-outer-spin-button,
         ::-webkit-inner-spin-button {
             -webkit-appearance: none;
             margin: 0;
         }
         font-size: 2em;
-        width: 2em;
+        width: 4em;
         height: 2em;
         font-weight: 600;
         text-align: center;
     }
-    .year {
-        width: 4em;
-
+    .submit {
+        font-size: 2em;
+        height: 2em;
+        font-weight: 600;
+        width: 8em;
+    }
+    h3 {
+        text-align: center;
+        font-size: 3em;
+        font-weight: 700;
+        color: #331a04
     }
 `
 
@@ -84,10 +101,15 @@ function VerifyAge() {
     return (
         <Div>
             <form onSubmit={(e) => checkAge(e)} autoComplete='off'>
-                <input className='date' type='text' placeholder='MM' name='month' maxLength='2'/>
-                <input className='date' type='text' placeholder='DD' name='day' maxLength='2'/>
-                <input className='date year' type='text' placeholder='YYYY' name='year' minLength='4' maxLength='4'/>
-                <input type='submit' />
+                <h3>Enter your birthday to proceed to site</h3>
+                <div>
+                    <input className='date' type='text' placeholder='MM' name='month' maxLength='2'/>
+                    <input className='date' type='text' placeholder='DD' name='day' maxLength='2'/>
+                    <input className='date year' type='text' placeholder='YYYY' name='year' minLength='4' maxLength='4'/>
+                </div>
+                <div>
+                    <input className='submit' type='submit' value='Verify Age'/>
+                </div>
             </form>
         </Div>
     )
