@@ -12,10 +12,10 @@ const sendEmail = (to_name, htmlMessage, sendToEmail) => {
         htmlMessage, //message: `<h1>This isin an h1</h1>`,
         sendToEmail
     }
-
-
     
-    console.log(emailParams.htmlMessage);
+    // console.log(emailParams.htmlMessage);
+
+
     // emailjs.send(
     //     process.env.REACT_APP_SERVICE_ID,
     //     'template_BarCrawl',
