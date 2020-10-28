@@ -3,6 +3,12 @@ import { useDispatch } from 'react-redux';
 import { oldEnough, tooYoung } from '../features/verifyAgeSlice';
 import styled, {keyframes} from 'styled-components';
 import { fadeIn } from 'react-animations';
+import { StyledSubmit, StyledInput } from '../styles/FormStyles';
+
+const BigStyledSubmit = styled(StyledSubmit)`
+            font-size: 2em;
+
+`
 
 const animation = keyframes`${fadeIn}`;
 
@@ -114,7 +120,7 @@ function VerifyAge() {
                     <input className='date year' type='text' placeholder='YYYY' name='year' minLength='4' maxLength='4'/>
                 </div>
                 <div>
-                    <input className='submit' type='submit' value='Verify Age'/>
+                    <BigStyledSubmit className='submit' type='submit' value='Verify Age'/>
                 </div>
             </form>
         </Div>

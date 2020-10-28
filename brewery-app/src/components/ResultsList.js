@@ -4,6 +4,7 @@ import  styled  from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectBreweryList } from '../features/breweryListSlice';
 import { barCrawl, view, setView } from "../features/barCrawlSlice";
+import EmailForm from './EmailForm';
 
 
 const Div = styled.div` 
@@ -98,6 +99,8 @@ const ResultsList = () => {
                             />
                         ))
                     }
+                                        <EmailForm />
+
                 </ResultHolder>
             }
         </Div>
