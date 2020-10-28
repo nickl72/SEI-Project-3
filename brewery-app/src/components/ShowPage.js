@@ -8,13 +8,7 @@ import * as G from '../styles/GlobalStyle';
 
 function ShowPage() {
     const [placeId, setPlaceId] = useState(null)
-    const [placeDetails, setPlaceDetails] = useState({
-        place_id: '',
-        name: '',
-        rating: '',
-        review: [],
-        price_level: ''
-    })
+    const [placeDetails, setPlaceDetails] = useState(null)
 
     const brewery = useSelector(selectBrewery);
 
@@ -27,7 +21,6 @@ function ShowPage() {
 
     const getPlaceData = () => {
         if( placeId ) {
-            console.log(placeId);
             // eslint-disable-next-line no-undef
             let map = new google.maps.Map(document.getElementById("map"));
             
@@ -40,7 +33,6 @@ function ShowPage() {
             let service = new google.maps.places.PlacesService(map);
             
             service.getDetails(request, (place, status) => {
-                console.log(place);
                 // eslint-disable-next-line no-undef
                 if (status === google.maps.places.PlacesServiceStatus.OK) {
                     setPlaceDetails(place);
@@ -64,7 +56,6 @@ function ShowPage() {
         let service = new google.maps.places.PlacesService(map);
         
         service.findPlaceFromQuery(request, (place, status) => {
-            console.log(place[0]);
             // eslint-disable-next-line no-undef
             if (status === google.maps.places.PlacesServiceStatus.OK) {
                 setPlaceId(place[0].place_id);
@@ -86,26 +77,51 @@ function ShowPage() {
                     <div id="map"></div>
                     <S.BreweryName>{brewery.name}</S.BreweryName>
                     <S.BreweryImage />
-                    <S.BreweryStats>
-                        <div className = "stars">
-
-                        </div>
-                        <div>
-                            <p><G.Bold>Brewery Type: </G.Bold><G.Capitalize>{brewery.brewery_type}</G.Capitalize></p>
-                        </div>
-                        <div className ="Price">
-
-                        </div>
-                    </S.BreweryStats>
+                    {placeDetails
+                    &&
+                        <S.BreweryStats>
+                            {placeDetails.rating 
+                            &&
+                                <div className = "stars">
+                                    Rating: {placeDetails.rating}
+                                </div>
+                            }
+                            <div>
+                                <p><G.Bold>Brewery Type: </G.Bold><G.Capitalize>{brewery.brewery_type}</G.Capitalize></p>
+                            </div>
+                            {placeDetails.price_level 
+                            &&
+                                <div className ="Price">
+                                    Price Level: {placeDetails.price_level}
+                                </div>
+                            }
+                        </S.BreweryStats>
+                    }
                     <S.BreweryContactInfo>
                         <ul>
-                            <li><G.Bold>Address: </G.Bold>{brewery.street}, {brewery.city}, {brewery.state} {brewery.postal_code.substring(0,5)}</li>
-                            <li><G.Bold>Phone: </G.Bold>{formatPhoneNumber(brewery.phone)}</li>
-                            <li><G.Bold>Website: </G.Bold><a href={brewery.website_url} target="_blank" rel="noreferrer"> {brewery.website_url.replace("http://","")}</a></li>
+                            {brewery.street
+                            &&
+                                <li><G.Bold>Address: </G.Bold>{brewery.street}, {brewery.city}, {brewery.state} {brewery.postal_code.substring(0,5)}</li>
+                            }
+                            {brewery.phone
+                            &&
+                                <li><G.Bold>Phone: </G.Bold>{formatPhoneNumber(brewery.phone)}</li>
+                            }
+                            {brewery.website_url
+                            &&
+                                <li><G.Bold>Website: </G.Bold><a href={brewery.website_url} target="_blank" rel="noreferrer"> {brewery.website_url.replace("http://","")}</a></li>
+                            }
                         </ul>
                     </S.BreweryContactInfo>
                     <S.BreweryReviews>
-
+                        {placeDetails.reviews 
+                        &&
+                            <ul className='reviews'>
+                                {placeDetails.reviews.map(review => {
+                                    console.log(review);
+                                })}
+                            </ul>
+                        }
                     </S.BreweryReviews>
                 </S.ShowPageContainer>
             : <Redirect to='/' />}
