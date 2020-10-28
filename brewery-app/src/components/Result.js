@@ -6,7 +6,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 
-
 const Div = styled.div`
     border: 2px solid black;
     border-radius: 5px;
@@ -32,7 +31,6 @@ const Result = (props) => {
     const brewery = useSelector(selectBrewery);
 
     const isActiveBrewery = (props.result.id === brewery.id);
-
      // Sends brewery details up to hompage level and highlights the active div based on the index
      // Sets redux state for active brewery
      const handleClick = (e) => {
@@ -52,9 +50,10 @@ const Result = (props) => {
             <div className={isActiveBrewery ? 'active' : ''}> 
                 <h3>Brewery: {props.result.name}</h3>
                 <h4>Location: {props.result.street}, {props.result.city}, {props.result.state}</h4>
+                { /* brewery name in URL is for visual purposes only. showPage uses Redux state */ }
                 <Link to={`/show/${props.result.name.split(' ').join('')}`} onClick={hideForm}>
                     More info
-                </Link> { /* brewery name in URL is for visual purposes only. showPage uses Redux state */ }
+                </Link> 
             </div>
         </Div>
     )

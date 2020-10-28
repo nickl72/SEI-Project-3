@@ -28,3 +28,7 @@ export const GlobalStyle = createGlobalStyle`
 export const Bold = Styled.span`
     font-weight: bold;
 `
+
+export const Capitalize = Styled.span`
+  text-transform: capitalize;
+`

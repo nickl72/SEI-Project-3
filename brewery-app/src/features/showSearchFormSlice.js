@@ -7,7 +7,6 @@ export const showSearchFormSlice = createSlice({
     },
     reducers: {
         showSearch: state => {
-            console.log('showsearchSLIceeeeee');
             state.showSearch = true;
         },
         hideSearch: state => {
