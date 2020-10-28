@@ -46,6 +46,11 @@ const Div = styled.div`
         width: 8em;
         background: #331a04;
         color: #fbdc81;
+        cursor: pointer;
+        &:hover {
+            background: #532b04;
+        }
+
     }
     h3 {
         text-align: center;
