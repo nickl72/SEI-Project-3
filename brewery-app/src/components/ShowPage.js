@@ -6,6 +6,8 @@ import { Redirect } from 'react-router-dom';
 import * as S from "../styles/ShowPageStyles";
 import * as G from '../styles/GlobalStyle';
 
+import Review from './Review';
+
 function ShowPage() {
     const [placeId, setPlaceId] = useState(null)
     const [placeDetails, setPlaceDetails] = useState(null)
@@ -71,10 +73,10 @@ function ShowPage() {
 
     return (
         <S.ShowPage>
+            <div id="map"></div>
             {brewery.id 
             ?
                 <S.ShowPageContainer>
-                    <div id="map"></div>
                     <S.BreweryName>{brewery.name}</S.BreweryName>
                     <S.BreweryImage />
                     {placeDetails
@@ -117,9 +119,9 @@ function ShowPage() {
                         {(placeDetails && placeDetails.reviews)
                         &&
                             <ul className='reviews'>
-                                {placeDetails.reviews.map(review => {
-                                    console.log(review);
-                                })}
+                                {placeDetails.reviews.map((review, id) =>
+                                    <Review review={review} key={id} />
+                                )}
                             </ul>
                         }
                     </S.BreweryReviews>

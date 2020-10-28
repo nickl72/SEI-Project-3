@@ -27,5 +27,7 @@ export const BreweryContactInfo = Styled.div`
 `
 
 export const BreweryReviews = Styled.div`
-
+    display: flex;
+    flex-flow: column nowrap;
+    width: 50%;
 `
