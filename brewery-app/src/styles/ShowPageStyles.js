@@ -1,26 +1,30 @@
-import styled from "styled-components";
+import Styled from "styled-components";
 
 
-export const ShowPageContainer = styled.div`
+export const ShowPage = Styled.div`
+`
+
+export const ShowPageContainer = Styled.div`
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
+    flex-flow: column wrap;
     align-items: center;
 `
 
-export const BrewDiv = styled.div`
-
-`
-
-export const BrewImage = styled.img`
-
-`
-
-export const BrewStats = styled.div`
-
-`
-
-
-export const BreweryName = styled.div`
+export const BreweryName = Styled.h1`
     
+`
+
+export const BreweryImage = Styled.img`
+
+`
+
+export const BreweryStats = Styled.div`
+
+`
+
+export const BreweryContactInfo = Styled.div`
+
+`
+export const BreweryReviews = Styled.div`
+
 `

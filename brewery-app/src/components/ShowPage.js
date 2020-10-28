@@ -1,12 +1,12 @@
 import React from "react";
 import { selectBrewery } from '../features/activeBrewerySlice';
 import { useSelector } from 'react-redux';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
-import {ShowPageContainer, BreweryName, BrewImage, BrewStats, BrewDiv} from "../styles/ShowPageStyles";
+import  * as S  from "../styles/ShowPageStyles";
 import { Bold } from '../styles/GlobalStyle';
 
-function ShowPage(props) {
+function ShowPage() {
     const brewery = useSelector(selectBrewery);
 
     function formatPhoneNumber(phoneNumber) {
@@ -16,17 +16,14 @@ function ShowPage(props) {
         }
     }
 
-    return(
-        <div>
+    return (
+        <S.ShowPage>
             {brewery.id 
             ?
-                <ShowPageContainer>
-                    <Link to='/'>Return to search results</Link>
-                    <BreweryName>
-                        <h1>{brewery.name}</h1>
-                    </BreweryName>
-                    <BrewImage />
-                    <BrewStats>
+                <S.ShowPageContainer>
+                    <S.BreweryName>{brewery.name}</S.BreweryName>
+                    <S.BreweryImage />
+                    <S.BreweryStats>
                         <div className = "stars">
 
                         </div>
@@ -36,20 +33,20 @@ function ShowPage(props) {
                         <div className ="Price">
 
                         </div>
-                    </BrewStats>
-                    <BrewDiv className="about">
+                    </S.BreweryStats>
+                    <S.BreweryContactInfo>
                         <ul>
                             <li><Bold>Address: </Bold>{brewery.street}, {brewery.city}, {brewery.state} {brewery.postal_code.substring(0,5)}</li>
                             <li><Bold>Phone: </Bold>{formatPhoneNumber(brewery.phone)}</li>
                             <li><Bold>Website: </Bold><a href={brewery.website_url} target="_blank" rel="noreferrer"> {brewery.website_url.replace("http://","")}</a></li>
                         </ul>
-                    </BrewDiv>
-                    <BrewDiv className="Reviews">
+                    </S.BreweryContactInfo>
+                    <S.BreweryReviews>
 
-                    </BrewDiv>
-                </ShowPageContainer>
+                    </S.BreweryReviews>
+                </S.ShowPageContainer>
             : <Redirect to='/' />}
-        </div>
+        </S.ShowPage>
     )
 }
 
