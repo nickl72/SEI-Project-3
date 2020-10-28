@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Result from './Result';
 import  styled  from 'styled-components';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { selectBreweryList } from '../features/breweryListSlice';
-import { barCrawl } from "../features/barCrawlSlice";
+import { barCrawl, view, setView } from "../features/barCrawlSlice";
 
 
 const Div = styled.div` 
@@ -40,35 +40,39 @@ const ViewButton = styled.div `
         border-right: 2px solid #f2a743;
     }
 `
-
+const ResultHolder = styled.div `
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &.message {
+        padding: 15px;
+        text-align: center;
+    }
+`
 
 const ResultsList = () => {
-    const [viewState, setViewState] = useState({
-        view: "results"
-    })
-
     const viewClick = (view) => {
-        setViewState({
-            view
-        })
+        dispatch(setView(view))
     }
-
+    const dispatch = useDispatch();
     const searchResults = useSelector(selectBreweryList);
     const barCrawlList = useSelector(barCrawl);
+    const activeView = useSelector(view);
+
     return (
         <Div className='Result-list'>
             <ResultHead>
                 <ViewButton 
                     onClick={() => viewClick("results")}
-                    className={viewState.view==="results" ? "active" : "inactive"}
+                    className={activeView==="results" ? "active" : "inactive"}
                 >Search Results</ViewButton>
                 <ViewButton 
                     onClick={() => viewClick("barCrawl")}
-                    className={viewState.view==="barCrawl" ? "active" : "inactive"}
+                    className={activeView==="barCrawl" ? "active" : "inactive"}
                 >Bar Crawl List</ViewButton>
             </ResultHead>
-            {viewState.view === "results" ?
-                <div>
+            {activeView === "results" ?
+                <ResultHolder>
                     <h3>Search Results</h3>
                     {searchResults && searchResults.map((result, index) => (
                     <Result 
@@ -76,16 +80,16 @@ const ResultsList = () => {
                         key={index} 
                     /> 
                     ))}
-                </div> 
+                </ResultHolder> 
                 
             :
-                <div>
+                <ResultHolder>
                     <h3>Bar Crawl List</h3>
                     {barCrawlList.length === 0 ? 
-                        <div>
+                        <ResultHolder className="message">
                             <h4>You haven't pick any breweries yet...</h4>
                             <h5>Time to get planning!</h5> 
-                        </div>
+                        </ResultHolder>
                         :
                         barCrawlList.map((brew, index) => (
                             <Result
@@ -94,7 +98,7 @@ const ResultsList = () => {
                             />
                         ))
                     }
-                </div>
+                </ResultHolder>
             }
         </Div>
     )

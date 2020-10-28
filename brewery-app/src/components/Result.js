@@ -54,7 +54,6 @@ const Result = (props) => {
     let onList = isOnList(props.result.id, barCrawlList);
 
     const updateListClick = (e) => {
-        console.log(e.target)
         let onList = isOnList(props.result.id, barCrawlList);
         if(onList) {
             dispatch(removeBrewery(props.result));

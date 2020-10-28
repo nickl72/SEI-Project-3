@@ -3,7 +3,8 @@ import GoogleMapReact from 'google-map-react';
 import Styled from 'styled-components';
 
 import { useSelector } from 'react-redux';
-import { selectBreweryList } from '../features/breweryListSlice'
+import { selectBreweryList } from '../features/breweryListSlice';
+import { barCrawl, view } from "../features/barCrawlSlice";
 
 import MapModal from "./MapModal";
 import Legend from "./Legend";
@@ -21,6 +22,9 @@ const LegendMarker = ({items}) => <Legend items = {items} />;
  
 const MapContainer = () => {
   const breweryList = useSelector(selectBreweryList)
+  const barCrawlList = useSelector(barCrawl);
+  const activeView = useSelector(view);
+
   console.log(breweryList)
   
   const calcCenter = (set, type) => {
@@ -116,16 +120,29 @@ const MapContainer = () => {
         center={mapData.center}
         zoom={mapData.zoom}
       >
-        {breweryList.map((brew, index) => {
-           return (
-            <ResultPin
-              lat={parseFloat(brew.latitude)}
-              lng={parseFloat(brew.longitude)}
-              brewery={brew}
-              key={index}
-            />
-            )
+        {(activeView === "results") && breweryList.map((brew, index) => {
+          return (
+          <ResultPin
+            lat={parseFloat(brew.latitude)}
+            lng={parseFloat(brew.longitude)}
+            brewery={brew}
+            key={index}
+          />
+          )
         })}
+        {(activeView === "barCrawl") && barCrawlList.map((brew, index) => {
+          return (
+          <ResultPin
+            lat={parseFloat(brew.latitude)}
+            lng={parseFloat(brew.longitude)}
+            brewery={brew}
+            key={index}
+          />
+          )
+        })}
+          
+      
+        
         
       </GoogleMapReact>
     </StyledMap>
