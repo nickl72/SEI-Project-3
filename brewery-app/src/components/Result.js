@@ -10,9 +10,10 @@ import { Link } from 'react-router-dom';
 const Div = styled.div`
     border: 2px solid black;
     border-radius: 5px;
-    margin: 5px;
+    margin: 10px 5px ;
     padding: 0;
     box-shadow: 2px 2px 10px 2px grey;
+    width: 85%;
     &:hover {
         box-shadow: none;
     }

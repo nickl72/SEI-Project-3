@@ -8,7 +8,7 @@ import { barCrawl, view, setView } from "../features/barCrawlSlice";
 
 const Div = styled.div` 
     // border: solid 5px #6f3c05;
-    height: 90vh;
+    height: 87vh;
     width: 25%;
     background: #f2a743;
 `
@@ -42,8 +42,10 @@ const ViewButton = styled.div `
 `
 const ResultHolder = styled.div `
     display: flex;
+    height: calc(87vh - 30px);
     flex-direction: column;
     align-items: center;
+    overflow: auto;
     &.message {
         padding: 15px;
         text-align: center;
@@ -74,12 +76,14 @@ const ResultsList = () => {
             {activeView === "results" ?
                 <ResultHolder>
                     <h3>Search Results</h3>
-                    {searchResults && searchResults.map((result, index) => (
-                    <Result 
-                        result={result} 
-                        key={index} 
-                    /> 
-                    ))}
+                    <ResultHolder className="results">
+                        {searchResults && searchResults.map((result, index) => (
+                        <Result 
+                            result={result} 
+                            key={index} 
+                        /> 
+                        ))}
+                    </ResultHolder>
                 </ResultHolder> 
                 
             :
@@ -92,11 +96,13 @@ const ResultsList = () => {
                         </ResultHolder>
                         :
                         barCrawlList.map((brew, index) => (
-                            <Result
-                                result={brew}
-                                key={index}
-                            />
-                        ))
+                            <ResultHolder className="results">
+                                <Result
+                                    result={brew}
+                                    key={index}
+                                />
+                            </ResultHolder>
+                            ))                            
                     }
                 </ResultHolder>
             }

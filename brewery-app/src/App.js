@@ -6,6 +6,7 @@ import ShowPage from './components/ShowPage';
 import AboutPage from './components/AboutPage';
 import VerifyAge from './components/VerifyAge';
 import KidsPage from './components/KidsPage';
+import Footer from "./components/Footer";
 
 import { useSelector } from 'react-redux';
 import { selectVerifyAge } from './features/verifyAgeSlice';
@@ -26,6 +27,7 @@ function App() {
               />
             <Route path="/about" component={AboutPage} />
           </main>
+          <Footer />
         </>
         :
         ofAge === null ?
