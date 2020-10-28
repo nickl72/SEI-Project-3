@@ -114,7 +114,7 @@ function ShowPage() {
                         </ul>
                     </S.BreweryContactInfo>
                     <S.BreweryReviews>
-                        {placeDetails.reviews 
+                        {(placeDetails && placeDetails.reviews)
                         &&
                             <ul className='reviews'>
                                 {placeDetails.reviews.map(review => {
