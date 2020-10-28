@@ -38,6 +38,7 @@ const Div = styled.div`
         height: 2em;
         font-weight: 600;
         text-align: center;
+        border-radius: 5px;
     }
     .submit {
         font-size: 2em;
