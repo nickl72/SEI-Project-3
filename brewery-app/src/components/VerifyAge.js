@@ -66,14 +66,12 @@ function VerifyAge() {
     const checkAge = (e) => {
         e.preventDefault();
         const [day, month, year] = [parseInt(e.target.day.value), parseInt(e.target.month.value), parseInt(e.target.year.value)]
-        console.log(isNaN(day + month + year))
-        console.log(month+ day)
         if (isNaN(day + month + year)) {
             return
         }
 
         // splits js date into YYYY-MM-DD... -> [YYYY, MM, DD...]
-        const today = (new Date).toISOString().split('-');
+        const today = (new Date()).toISOString().split('-');
         console.log(today)
 
         if (parseInt(today[0])-year > 21) { // year
@@ -110,7 +108,7 @@ function VerifyAge() {
             <form onSubmit={(e) => checkAge(e)} autoComplete='off'>
                 <h3>Enter your birthday to proceed to site</h3>
                 <div>
-                    <input className='date' type='text' placeholder='MM' name='month' maxLength='2'/>
+                    <input className='date' type='text' placeholder='MM' name='month' maxLength='2' />
                     <input className='date' type='text' placeholder='DD' name='day' maxLength='2'/>
                     <input className='date year' type='text' placeholder='YYYY' name='year' minLength='4' maxLength='4'/>
                 </div>

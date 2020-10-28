@@ -17,7 +17,7 @@ const Div = styled.div`
 const KidsPage = () => {
     return (
         <Div>
-            <img src='https://media1.tenor.com/images/16ccbfc83e392ca0c393084764533764/tenor.gif' />
+            <img src='https://media1.tenor.com/images/16ccbfc83e392ca0c393084764533764/tenor.gif' alt='Kid spills drink gif'/>
         </Div>
     )
 }
