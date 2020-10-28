@@ -44,6 +44,8 @@ const Div = styled.div`
         height: 2em;
         font-weight: 600;
         width: 8em;
+        background: #331a04;
+        color: #fbdc81;
     }
     h3 {
         text-align: center;
