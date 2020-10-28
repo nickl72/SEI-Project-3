@@ -13,7 +13,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   main {
-    height: 90vh;
+    height: 87vh;
   }
 
   a {

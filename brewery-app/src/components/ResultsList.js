@@ -50,6 +50,9 @@ const ResultHolder = styled.div `
         padding: 15px;
         text-align: center;
     }
+    h3 {
+        margin: 10px;
+    }
 `
 
 const ResultsList = () => {

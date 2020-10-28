@@ -4,16 +4,26 @@ import Styled from "styled-components";
 export const PageHeader = Styled.header`
     display: flex;
     justify-content: space-around;
-    height: 10vh;
+    height: 8vh;
     width: 100%;
     min-height: 80px;
     
     z-index: 200;
 `
-
+export const TitleDiv = Styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`
 export const PageTitle = Styled.h1`
     margin: 20px;
     width: 40%;
+`
+
+export const PageIcon = Styled.img`
+    height: 70px;
+    widht: 70px;
+    object-fit: cover;
 `
 
 export const NavBar = Styled.nav`
@@ -39,6 +49,9 @@ export const NavButton = Styled.div`
     &:hover {
         background: #e78c11;
     }
+    display: flex;
+    align-items:center;
+    justify-content: center;
 `
 
 export const SearchFormAnchor = Styled.div`

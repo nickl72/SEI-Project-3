@@ -19,9 +19,12 @@ const Header = () => {
     return (
         <S.PageHeader>
             <Link to='/'>
-                <S.PageTitle>
-                    Puzzles
-                </S.PageTitle>
+                <S.TitleDiv>
+                    <S.PageIcon src="./brew_puzzle.png" alt="Puzzles Icon" />
+                    <S.PageTitle>
+                        Puzzles
+                    </S.PageTitle>
+                </S.TitleDiv>
             </Link>
             <S.NavBar>
                 <S.SearchButtonContainer>
