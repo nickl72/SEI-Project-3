@@ -40,6 +40,7 @@ Application users may search for breweries in an area and learn more about what 
 - React Router
 - Axios
 - Redux
+- EmailJS
 
 
 ### Approach taken 
