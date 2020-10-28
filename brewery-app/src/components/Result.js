@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { activateBrewery, deactivateBrewery, selectBrewery } from '../features/activeBrewerySlice';
+import { addBrewery, barCrawl } from "../features/barCrawlSlice";
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -29,6 +30,7 @@ const Div = styled.div`
 const Result = (props) => {
     const dispatch = useDispatch();
     const brewery = useSelector(selectBrewery);
+    const barCrawlList = useSelector(barCrawl);
 
     const isActiveBrewery = (props.result.id === brewery.id);
 
@@ -41,6 +43,13 @@ const Result = (props) => {
             dispatch(activateBrewery(props.result));
         }
     }
+    console.log(barCrawlList);
+    
+
+    const addClick = (e) => {
+            dispatch(addBrewery(props.result));
+        
+    }
 
     return (
         <Div className='result' onClick={(e) => handleClick(e)}>
@@ -48,6 +57,7 @@ const Result = (props) => {
                 <h3>Brewery: {props.result.name}</h3>
                 <h4>Location: {props.result.street}, {props.result.city}, {props.result.state}</h4>
                 <Link to={`/show/${props.result.name.split(' ').join('')}`}>More info</Link> { /* brewery name in URL is for visual purposes only. showPage uses Redux state */ }
+                <button onClick={(e) => addClick(e)}>Add to Bar Crawl</button>
             </div>
         </Div>
     )
