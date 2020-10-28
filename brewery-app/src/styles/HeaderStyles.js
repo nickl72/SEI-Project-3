@@ -7,6 +7,8 @@ export const PageHeader = Styled.header`
     height: 10vh;
     width: 100%;
     min-height: 80px;
+    
+    z-index: 200;
 `
 
 export const PageTitle = Styled.h1`

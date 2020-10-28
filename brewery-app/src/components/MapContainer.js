@@ -11,7 +11,7 @@ require('dotenv').config();
 const StyledMap = Styled.div`
   height: 90vh;
   width: 75%;
-  z-index: -5;
+  z-index: 0;
 
 `
 

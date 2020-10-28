@@ -15,4 +15,12 @@ export const GlobalStyle = createGlobalStyle`
   main {
     height: 90vh;
   }
+
+  a {
+    color: #331a04;
+    text-decoration: none
+  }
+  a:visited {
+    color: #331a04;
+  }
 `

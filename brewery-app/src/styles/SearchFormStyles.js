@@ -16,7 +16,7 @@ export const StyledForm = Styled.form`
     min-width: 300px;
     min-height: 150px;
     position: absolute;
-    z-index: -1;
+    z-index: 1;
     animation: ${slideInDownAnimation} .3s 1;
     // animation: ${slideOutUpAnimation} .3s 1;
 `
@@ -30,7 +30,7 @@ export const FormInputs = Styled.div`
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
-    z-index: auto;
+    // z-index: auto;
 
 `
 
