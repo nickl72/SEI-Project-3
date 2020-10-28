@@ -127,7 +127,7 @@ const SearchForm = () => {
                     <S.StyledSelect 
                         name='state'
                         onChange={handleInputChange}
-                        defaultValue='State' // todo get rid of warning by using this
+                        defaultValue='State'
                     > 
                         <option disabled hidden>State</option>
                         <option>Any</option>

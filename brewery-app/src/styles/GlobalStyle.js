@@ -7,7 +7,12 @@ export const GlobalStyle = createGlobalStyle`
     height: 100%;
   }
 
+  .App {
+    display: flex;
+    flex-flow: column nowrap;
+  }
+
   main {
-    height: 80vh;
+    height: 90vh;
   }
 `

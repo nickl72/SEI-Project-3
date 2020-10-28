@@ -9,7 +9,7 @@ import MapModal from "./MapModal";
 require('dotenv').config();
 
 const StyledMap = Styled.div`
-  height: 100%;
+  height: 90vh;
   width: 75%;
   z-index: -5;
 

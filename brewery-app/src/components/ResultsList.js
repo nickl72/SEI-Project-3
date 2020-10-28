@@ -6,8 +6,8 @@ import { selectBreweryList } from '../features/breweryListSlice';
 
 
 const Div = styled.div` 
-    border: solid 5px #6f3c05;
-    height: 100%;
+    // border: solid 5px #6f3c05;
+    height: 90vh;
     width: 25%;
     background: #f2a743;
 `
