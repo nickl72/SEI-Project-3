@@ -14,6 +14,7 @@ export const StyledEmailForm = styled.form`
         height: 1em;
     }
     z-index: 1;
+    box-shadow: .2em .2em 1em .2em black;
 `
 export const StyledSubmit = styled.input`
     font-size: 1em;
