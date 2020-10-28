@@ -8,11 +8,14 @@ export const barCrawlSlice = createSlice({
     reducers: {
         addBrewery: (state, action) => {
             state.crawlList.push(action.payload) 
+        },
+        removeBrewery: (state, action) => {
+            state.crawlList = state.crawlList.filter(item => item.id !== action.payload.id)
         }
     }
 })
 
-export const { addBrewery, } = barCrawlSlice.actions;
+export const { addBrewery, removeBrewery } = barCrawlSlice.actions;
 
 export const barCrawl = state => state.barCrawl.crawlList;
 

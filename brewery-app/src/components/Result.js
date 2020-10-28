@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { activateBrewery, deactivateBrewery, selectBrewery } from '../features/activeBrewerySlice';
-import { addBrewery, barCrawl } from "../features/barCrawlSlice";
+import { addBrewery, barCrawl, removeBrewery } from "../features/barCrawlSlice";
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -53,10 +53,12 @@ const Result = (props) => {
 
     let onList = isOnList(props.result.id, barCrawlList);
 
-    const addClick = (e) => {
+    const updateListClick = (e) => {
         console.log(e.target)
         let onList = isOnList(props.result.id, barCrawlList);
-        if(!onList) {
+        if(onList) {
+            dispatch(removeBrewery(props.result));
+        } else {
             dispatch(addBrewery(props.result));
         }
         
@@ -69,7 +71,7 @@ const Result = (props) => {
                 <h3>Brewery: {props.result.name}</h3>
                 <h4>Location: {props.result.street}, {props.result.city}, {props.result.state}</h4>
                 <Link to={`/show/${props.result.name.split(' ').join('')}`}>More info</Link> { /* brewery name in URL is for visual purposes only. showPage uses Redux state */ }
-                <button onClick={(e) => addClick(e)}>
+                <button onClick={(e) => updateListClick(e)}>
                     {onList ? "Remove from Bar Crawl" : "Add to Bar Crawl"}
                 </button>
             </div>
