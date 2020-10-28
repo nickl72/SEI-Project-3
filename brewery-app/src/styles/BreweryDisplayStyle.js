@@ -29,7 +29,7 @@ export const Icon = Styled(BasicIcon)`
     background: radial-gradient(darkgray 15%, transparent);
     animation: 2s ${bounceInAnimation};
     &.light {
-        animation: 1s ${merger};
+        animation: 1s ${drinkIn};
         box-shadow: 0px 0px .5vmin .5vmin navy;
         background: navy;
         
@@ -60,11 +60,12 @@ export const LegendHolder = Styled.div`
     margin: 10px;
     padding: 8px;
     border-radius: 2px;
-    box-shadow: 0px 0px 8px gray;
-    min-width: 50px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
+    min-width: 100px;
     z-index: 2;
     min-height: 12px;
     position: absolute;
+    color: rgba(0, 0, 0, .87);
 
     .legendRow {
         display: flex;

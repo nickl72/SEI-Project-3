@@ -3,7 +3,8 @@ import GoogleMapReact from 'google-map-react';
 import Styled from 'styled-components';
 
 import { useSelector } from 'react-redux';
-import { selectBreweryList } from '../features/breweryListSlice'
+import { selectBreweryList } from '../features/breweryListSlice';
+import { barCrawl, view } from "../features/barCrawlSlice";
 
 import MapModal from "./MapModal";
 import Legend from "./Legend";
@@ -21,6 +22,10 @@ const LegendMarker = ({items}) => <Legend items = {items} />;
  
 const MapContainer = () => {
   const breweryList = useSelector(selectBreweryList)
+  const barCrawlList = useSelector(barCrawl);
+  const activeView = useSelector(view);
+
+  console.log(breweryList)
   
   const calcCenter = (set, type) => {
     if(set.length > 0) {
@@ -63,7 +68,6 @@ const MapContainer = () => {
   
   // Setting map center based on center of results, will only change on newSet of results
   useEffect(() => {
-    setLegendData({activeTypes:[]});
     let newLegend =  legendData.activeTypes;
     
     breweryList.map((brew) => {
@@ -103,6 +107,26 @@ const MapContainer = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [breweryList])
 
+  useEffect(() => {
+    let newLegend = [];
+    console.log("updating legend")
+    console.log(activeView === "results")
+    if(activeView === "results") {
+      console.log("got in results")
+      breweryList.map((brew) => {
+        addUnique(brew.brewery_type, newLegend)
+      })
+    } else {
+      barCrawlList.map((brew) => {addUnique(brew.brewery_type, newLegend)})
+    }
+
+    setLegendData({
+      activeTypes: newLegend
+    })
+
+
+
+  }, [activeView])
   
   return (
     <StyledMap>
@@ -115,16 +139,29 @@ const MapContainer = () => {
         center={mapData.center}
         zoom={mapData.zoom}
       >
-        {breweryList.map((brew, index) => {
-           return (
-            <ResultPin
-              lat={parseFloat(brew.latitude)}
-              lng={parseFloat(brew.longitude)}
-              brewery={brew}
-              key={index}
-            />
-            )
+        {(activeView === "results") && breweryList.map((brew, index) => {
+          return (
+          <ResultPin
+            lat={parseFloat(brew.latitude)}
+            lng={parseFloat(brew.longitude)}
+            brewery={brew}
+            key={index}
+          />
+          )
         })}
+        {(activeView === "barCrawl") && barCrawlList.map((brew, index) => {
+          return (
+          <ResultPin
+            lat={parseFloat(brew.latitude)}
+            lng={parseFloat(brew.longitude)}
+            brewery={brew}
+            key={index}
+          />
+          )
+        })}
+          
+      
+        
         
       </GoogleMapReact>
     </StyledMap>

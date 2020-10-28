@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { activateBrewery, deactivateBrewery, selectBrewery } from '../features/activeBrewerySlice';
 import { hideSearch } from '../features/showSearchFormSlice';
+import { addBrewery, barCrawl, removeBrewery } from "../features/barCrawlSlice";
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -29,6 +30,7 @@ const Div = styled.div`
 const Result = (props) => {
     const dispatch = useDispatch();
     const brewery = useSelector(selectBrewery);
+    const barCrawlList = useSelector(barCrawl);
 
     const isActiveBrewery = (props.result.id === brewery.id);
      // Sends brewery details up to hompage level and highlights the active div based on the index
@@ -39,6 +41,26 @@ const Result = (props) => {
         } else {
             dispatch(activateBrewery(props.result));
         }
+    }
+    console.log(barCrawlList);
+    
+    const isOnList = (brewid, list) => {
+        let index = list.findIndex(x => x.id === brewid);
+        let onList = (index === -1 ? false : true);
+        return onList;
+    }
+
+    let onList = isOnList(props.result.id, barCrawlList);
+
+    const updateListClick = (e) => {
+        let onList = isOnList(props.result.id, barCrawlList);
+        if(onList) {
+            dispatch(removeBrewery(props.result));
+        } else {
+            dispatch(addBrewery(props.result));
+        }
+        
+        
     }
 
     const hideForm = () => {
@@ -54,6 +76,9 @@ const Result = (props) => {
                 <Link to={`/show/${props.result.name.split(' ').join('')}`} onClick={hideForm}>
                     More info
                 </Link> 
+                <button onClick={(e) => updateListClick(e)}>
+                    {onList ? "Remove from Bar Crawl" : "Add to Bar Crawl"}
+                </button>
             </div>
         </Div>
     )

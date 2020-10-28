@@ -5,7 +5,7 @@ import axios from 'axios';
 import { Names as StateNames} from '../stateNames';
 import { useDispatch } from 'react-redux'
 import { loadResults, addResults } from '../features/breweryListSlice'
-
+import { setView } from "../features/barCrawlSlice";
 
 const SearchForm = () => {
     const dispatch = useDispatch();
@@ -31,6 +31,7 @@ const SearchForm = () => {
             const data = resp.data;
             let cleanedData = cleanData(data)
             dispatch(loadResults(cleanedData))
+            dispatch(setView("results"))
         })
         .catch(err => console.error(err));
     }
