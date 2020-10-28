@@ -14,7 +14,6 @@ export const barCrawlSlice = createSlice({
             state.crawlList = state.crawlList.filter(item => item.id !== action.payload.id)
         }, 
         setView: (state, action) => {
-            console.log(action);
             state.view = action.payload;
         }
     }

@@ -68,14 +68,14 @@ const MapContainer = () => {
   
   // Setting map center based on center of results, will only change on newSet of results
   useEffect(() => {
-    setLegendData({activeTypes:[]});
-    let newLegend =  legendData.activeTypes;
+    // setLegendData({activeTypes:[]});
+    // let newLegend =  legendData.activeTypes;
     
     breweryList.map((brew) => {
       if(brew.latitude) {
         mapData.activeLats.push(brew.latitude);
         mapData.activeLngs.push(brew.longitude);
-        addUnique(brew.brewery_type, newLegend);
+        // addUnique(brew.brewery_type, newLegend);
         
       } else {
         console.error("Your data parsed incorrectly");
@@ -84,9 +84,9 @@ const MapContainer = () => {
       return 0;
     })
     
-    setLegendData({
-      activeTypes: newLegend
-    })
+    // setLegendData({
+    //   activeTypes: newLegend
+    // })
     
     setMapData({
       center: {
@@ -108,6 +108,27 @@ const MapContainer = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [breweryList])
 
+  useEffect(() => {
+    // setLegendData({activeTypes: []});
+    let newLegend = [];
+    console.log("updating legend")
+    console.log(activeView === "results")
+    if(activeView === "results") {
+      console.log("got in results")
+      breweryList.map((brew) => {
+        addUnique(brew.brewery_type, newLegend)
+      })
+    } else {
+      barCrawlList.map((brew) => {addUnique(brew.brewery_type, newLegend)})
+    }
+
+    setLegendData({
+      activeTypes: newLegend
+    })
+
+
+
+  }, [activeView])
   
   return (
     <StyledMap>
