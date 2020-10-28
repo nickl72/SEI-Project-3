@@ -45,9 +45,21 @@ const Result = (props) => {
     }
     console.log(barCrawlList);
     
+    const isOnList = (brewid, list) => {
+        let index = list.findIndex(x => x.id === brewid);
+        let onList = (index === -1 ? false : true);
+        return onList;
+    }
+
+    let onList = isOnList(props.result.id, barCrawlList);
 
     const addClick = (e) => {
+        console.log(e.target)
+        let onList = isOnList(props.result.id, barCrawlList);
+        if(!onList) {
             dispatch(addBrewery(props.result));
+        }
+        
         
     }
 
@@ -57,7 +69,9 @@ const Result = (props) => {
                 <h3>Brewery: {props.result.name}</h3>
                 <h4>Location: {props.result.street}, {props.result.city}, {props.result.state}</h4>
                 <Link to={`/show/${props.result.name.split(' ').join('')}`}>More info</Link> { /* brewery name in URL is for visual purposes only. showPage uses Redux state */ }
-                <button onClick={(e) => addClick(e)}>Add to Bar Crawl</button>
+                <button onClick={(e) => addClick(e)}>
+                    {onList ? "Remove from Bar Crawl" : "Add to Bar Crawl"}
+                </button>
             </div>
         </Div>
     )

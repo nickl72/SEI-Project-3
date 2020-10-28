@@ -7,7 +7,7 @@ export const barCrawlSlice = createSlice({
     },
     reducers: {
         addBrewery: (state, action) => {
-            state.barCrawlList = action.payload
+            state.crawlList.push(action.payload) 
         }
     }
 })
