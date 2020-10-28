@@ -1,23 +1,52 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {Bold, Holder, Icon, Modal, CloseIcon} from "../styles/BreweryDisplayStyle";
-import { useSelector } from "react-redux";
-import { selectBrewery } from "../features/activeBrewerySlice";
+import { useSelector, useDispatch } from "react-redux";
+import { selectBrewery, activateBrewery } from "../features/activeBrewerySlice";
+
 
 
 function MapModal(props) {
+    const activeBrew = useSelector(selectBrewery);
+    const dispatch = useDispatch();
+
+    
+
     const [MapData, setMapData] = useState({
         brewery: props.brewery,
-        show: false,
+        show: false
     })
 
-    const toggleModal = (e) => {
+    //Toggle the modal on selecting new active brewery from list
+    useEffect(() => {
+        let showVar = ((props.brewery.id === activeBrew.id) ? true : false);
         setMapData({
             brewery: props.brewery,
-            show: !MapData.show
+            show: showVar
+        })
+    }, [activeBrew])
+
+    const isActiveBrewery = (MapData.brewery.id === activeBrew.id);
+
+    //Show will allow forced turn on for the modal;    
+    const toggleModal = (show = "default") => {
+        let showVar = (show === "show" ? true : !MapData.show)
+        setMapData({
+            brewery: props.brewery,
+            show: showVar
         })
     }
 
-    const activeBrew = useSelector(selectBrewery);
+    const handleIconClick = (e) => {
+        if (isActiveBrewery) {
+            toggleModal();
+        } else {
+            dispatch(activateBrewery(MapData.brewery));
+            toggleModal("show");
+        }
+    }
+    
+
+    
     let IconURL;
     switch(MapData.brewery.brewery_type) {
         case "micro":
@@ -45,7 +74,7 @@ function MapModal(props) {
         <Holder>
             <Icon 
                 src={IconURL} 
-                onClick={toggleModal} 
+                onClick={handleIconClick} 
                 className={MapData.brewery.id === activeBrew.id ? "light" : null}
                 />
             {MapData.show ? 
@@ -53,7 +82,7 @@ function MapModal(props) {
                 <Holder className="row">
                     <Bold>{MapData.brewery.name}</Bold>
                     <CloseIcon onClick={toggleModal}>
-                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/><path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-x-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/><path fillRule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
                         </svg>
                     </CloseIcon>
                 </Holder>
