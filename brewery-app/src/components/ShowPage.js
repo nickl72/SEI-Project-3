@@ -3,8 +3,8 @@ import { selectBrewery } from '../features/activeBrewerySlice';
 import { useSelector } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 
-import {ShowPageContainer, BreweryName, BrewImage, BrewStats, BrewDiv, Bold} from "../styles/BreweryDisplayStyle";
-
+import {ShowPageContainer, BreweryName, BrewImage, BrewStats, BrewDiv} from "../styles/ShowPageStyles";
+import { Bold } from '../styles/GlobalStyle';
 
 function ShowPage(props) {
     const brewery = useSelector(selectBrewery);

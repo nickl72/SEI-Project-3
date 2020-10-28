@@ -1,5 +1,5 @@
 import React from "react";
-import {LegendHolder, BasicIcon, Bold, Title} from "../styles/BreweryDisplayStyle";
+import { LegendHolder, BasicIcon, Title } from "../styles/BreweryDisplayStyle";
 
 
 const Legend = (props) => {

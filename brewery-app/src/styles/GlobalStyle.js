@@ -1,4 +1,4 @@
-import {createGlobalStyle} from 'styled-components';
+import Styled, {createGlobalStyle} from 'styled-components';
 
 
 export const GlobalStyle = createGlobalStyle`
@@ -23,4 +23,8 @@ export const GlobalStyle = createGlobalStyle`
   a:visited {
     color: #331a04;
   }
+`
+
+export const Bold = Styled.span`
+    font-weight: bold;
 `

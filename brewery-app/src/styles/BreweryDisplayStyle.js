@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import Styled, { keyframes } from "styled-components";
 import {rotateOutUpRight, rotateInDownRight, bounceIn, merge} from "react-animations";
 
 const bounceInAnimation = keyframes`${bounceIn}`;
@@ -6,33 +6,8 @@ const drinkOut =  keyframes`${rotateOutUpRight}`;
 const drinkIn = keyframes`${rotateInDownRight}`;
 const merger = merge(bounceIn, rotateOutUpRight);
 
-export const ShowPageContainer = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    align-items: center;
-`
 
-export const BreweryName = styled.div`
-    
-`
-export const BrewImage = styled.img`
-
-`
-
-export const BrewStats = styled.div`
-
-`
-
-export const BrewDiv = styled.div`
-
-`
-
-export const Bold = styled.span`
-    font-weight: bold;
-`
-
-export const Holder = styled.div`
+export const Holder = Styled.div`
     display: flex;
     width: 25px;
     &.row{
@@ -40,13 +15,13 @@ export const Holder = styled.div`
         justify-content: space-between;
     }
 `
-export const BasicIcon = styled.img`
+export const BasicIcon = Styled.img`
     height: 22px;
     width: 22px;
     margin: 5px;
 `
 
-export const Icon = styled(BasicIcon)`
+export const Icon = Styled(BasicIcon)`
     margin: 0;
     position: relative;
     cursor: pointer;
@@ -60,13 +35,13 @@ export const Icon = styled(BasicIcon)`
         
     }
 `
-export const CloseIcon = styled(Holder) `
+export const CloseIcon = Styled(Holder) `
     height: 22px;
     width: 22px;
     cursor: pointer;
 `
 
-export const Modal = styled.div`
+export const Modal = Styled.div`
     position: absolute;
     display: flex;
     flex-wrap: wrap;
@@ -80,7 +55,7 @@ export const Modal = styled.div`
     z-index: 1;
 `
 
-export const LegendHolder = styled.div`
+export const LegendHolder = Styled.div`
     background: white;
     margin: 10px;
     padding: 8px;
@@ -97,7 +72,7 @@ export const LegendHolder = styled.div`
     }
     
 `
-export const Title = styled.div`
+export const Title = Styled.div`
     font-weight: bold;
     text-decoration: underline;
     text-align: center;
