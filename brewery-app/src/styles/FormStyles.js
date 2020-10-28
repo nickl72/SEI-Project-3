@@ -13,6 +13,7 @@ export const StyledEmailForm = styled.form`
     p {
         height: 1em;
     }
+    z-index: 1;
 `
 export const StyledSubmit = styled.input`
     font-size: 1em;
@@ -52,7 +53,13 @@ export const ModalDiv = styled.div`
     height: 100%;
     width: 100%;
     position: absolute;
-    z-index: 10000;
+    z-index: 1;
     top: 0;
     background: rgba(0,0,0,.4);
+`
+
+export const CloseDiv= styled.div`
+    height:100%;
+    width: 100%;
+    position: absolute;
 `

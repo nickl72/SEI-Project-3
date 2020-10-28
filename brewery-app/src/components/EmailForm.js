@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { barCrawl, toggleEmail } from '../features/barCrawlSlice';
 import sendEmail from '../app/email';
-import { StyledEmailForm, StyledSubmit, StyledInput, ModalDiv } from '../styles/FormStyles'
+import { StyledEmailForm, StyledSubmit, StyledInput, ModalDiv, CloseDiv } from '../styles/FormStyles'
 
 
 const EmailForm = () => {
@@ -76,12 +76,14 @@ const EmailForm = () => {
         })
         // closes div for entire response
         htmlMessage = htmlMessage + `</div>`
-        sendEmail(e.target.name.value, htmlMessage, e.target.email.value)
+        sendEmail(e.target.name.value, htmlMessage, e.target.email.value);
+        dispatch(toggleEmail());
     }
     
     return (
-        <ModalDiv onClick={closeModal}>
-            <StyledEmailForm onSubmit={sendList}>
+        <ModalDiv className='shadow'>
+            <CloseDiv onClick={(e) => closeModal(e)}></CloseDiv>
+            <StyledEmailForm className='email-form' onSubmit={sendList}>
                 <h3>Send List In Email</h3>
                 <StyledInput type='text' name='name' placeholder='Name'/>
                 <StyledInput type='email' name='email'  placeholder='Email'/>
