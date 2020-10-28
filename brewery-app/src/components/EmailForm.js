@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import { useSelector } from 'react-redux';
-import { barCrawl } from '../features/barCrawlSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { barCrawl, toggleEmail } from '../features/barCrawlSlice';
 import sendEmail from '../app/email';
 import { StyledEmailForm, StyledSubmit, StyledInput, ModalDiv } from '../styles/FormStyles'
 
@@ -8,11 +8,19 @@ import { StyledEmailForm, StyledSubmit, StyledInput, ModalDiv } from '../styles/
 const EmailForm = () => {
     const barCrawlList = useSelector(barCrawl);
     const [error, setError] = useState(false);
+    const dispatch = useDispatch();
 
     function formatPhoneNumber(phoneNumber) {
         let match = phoneNumber.match(/^(\d{3})(\d{3})(\d{4})$/)
         if (match) {
             return `(${match[1]}) ${match[2]}-${match[3]}`
+        }
+    }
+
+    const closeModal = (e) => {
+        e.preventDefault();
+        if (e.target===e.currentTarget) {
+            dispatch(toggleEmail());
         }
     }
 
@@ -72,7 +80,7 @@ const EmailForm = () => {
     }
     
     return (
-        <ModalDiv>
+        <ModalDiv onClick={closeModal}>
             <StyledEmailForm onSubmit={sendList}>
                 <h3>Send List In Email</h3>
                 <StyledInput type='text' name='name' placeholder='Name'/>

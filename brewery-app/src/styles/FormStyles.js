@@ -22,6 +22,7 @@ export const StyledSubmit = styled.input`
     background: #331a04;
     color: #fbdc81;
     cursor: pointer;
+    text-align: center;
     &:hover {
         background: #532b04;
     }
