@@ -29,6 +29,26 @@ export const StyledSubmit = styled.input`
         background: #532b04;
     }
 `
+export const StyledButton = styled.button`
+    font-size: 1em;
+    height: 2em;
+    font-weight: 600;
+    padding: 0;
+    margin: 0;
+    width: 12em;
+    background: #331a04;
+    color: #fbdc81;
+    cursor: pointer;
+    text-align: center;
+    &:hover {
+        background: #532b04;
+    }
+`
+export const ButtonHolder = styled.div`
+    display: flex;
+    justify-content: space-between;
+    padding-top: 2px;
+`
 
 export const StyledInput = styled.input`
         margin: 1em;
