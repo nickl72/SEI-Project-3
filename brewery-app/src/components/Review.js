@@ -12,7 +12,6 @@ import * as S from '../styles/ReviewStyles';
 
 
 const Review = (props) => {
-    console.log(props.review);
     return (
         <S.StyledReview>
             <S.AuthorInfo>

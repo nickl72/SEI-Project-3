@@ -109,7 +109,6 @@ const MapContainer = () => {
   useEffect(() => {
     let newLegend = [];
     if(activeView === "results") {
-      console.log("got in results")
       breweryList.map((brew) => {
         addUnique(brew.brewery_type, newLegend)
       })

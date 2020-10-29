@@ -41,7 +41,6 @@ const ResultsList = () => {
             ],
         }));    
         dispatch(setList(brews));
-        console.log(brews)
     };
 
     const findBrew = (id) => {

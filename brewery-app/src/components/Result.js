@@ -69,9 +69,7 @@ const Result = (props) => {
         }),
         end: (dropResult, monitor) => {
             const {id: droppedId, originalIndex} = monitor.getItem();
-            console.log(monitor.getItem());
             const didDrop = monitor.didDrop();
-            console.log(`Dropped: ${droppedId}, original: ${originalIndex}`)
             if(!didDrop) {
                 moveBrew(droppedId, originalIndex);
             }
@@ -82,10 +80,8 @@ const Result = (props) => {
         accept: "resultCard",
         canDrop: () => false,
         hover({id: draggedId}) {
-            console.log(draggedId)
             if(draggedId !== props.id) {
                 const { index: overIndex } = findBrew(props.id);
-                console.log("trying to move brew")
                 moveBrew(draggedId, overIndex);
                 
             }
