@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import { Holder, Icon, Modal, CloseIcon} from "../styles/BreweryDisplayStyle";
 import { Bold } from '../styles/GlobalStyle';
 import { useSelector, useDispatch } from "react-redux";
-import { selectBrewery, activateBrewery } from "../features/activeBrewerySlice";
+import { selectBrewery, activateBrewery, deactivateBrewery } from "../features/activeBrewerySlice";
 import { hideSearch } from '../features/showSearchFormSlice';
 import { Redirect } from 'react-router-dom';
 import { barCrawl } from "../features/barCrawlSlice";
@@ -29,13 +29,13 @@ function MapModal(props) {
     }, [activeBrew])
 
     const barCrawlList = useSelector(barCrawl);
-    
+
     useEffect(() => {
-        console.log("newList!!!!")
-        setMapData({
-            brewery: props.brewery,
-            show: false
-        })
+        // setMapData({
+        //     brewery: props.brewery,
+        //     show: false
+        // })
+        dispatch(deactivateBrewery());
         
         // eslint-disable-next-line react-hooks/exhaustive-deps
       }, [barCrawlList]);
