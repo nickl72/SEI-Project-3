@@ -24,6 +24,7 @@ function MapModal(props) {
             brewery: props.brewery,
             show: showVar
         })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [activeBrew])
 
     const isActiveBrewery = (MapData.brewery.id === activeBrew.id);

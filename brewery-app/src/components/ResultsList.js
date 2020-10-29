@@ -1,11 +1,10 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, { useState, useEffect } from 'react';
 import Result from './Result';
 import { useSelector, useDispatch} from 'react-redux';
 import { selectBreweryList } from '../features/breweryListSlice';
 import { useDrop } from "react-dnd";
 import { barCrawl, view, setView, selectEmail, toggleEmail, setList } from "../features/barCrawlSlice";
 import EmailForm from './EmailForm';
-import { StyledSubmit } from '../styles/FormStyles';
 import { Message, ResultList, ResultHead, ViewButton, ResultHolder, CrawlCount, EmailButton } from '../styles/ResultStyle';
 import update from "immutability-helper";
 

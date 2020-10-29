@@ -79,6 +79,7 @@ function ShowPage() {
 
     useEffect(() => {
         getPlaceData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [placeDetails.place_id]);
 
 

@@ -1,11 +1,9 @@
 import Styled, {css, keyframes} from 'styled-components';
-import { headShake, slideInDown, slideOutUp } from 'react-animations';
+import { headShake } from 'react-animations';
 import { StyledInput as GenericStyledInput, StyledSubmit} from './FormStyles';
 
 
 const headShakeAnimation = keyframes`${headShake}`;
-const slideInDownAnimation = keyframes`${slideInDown}`;
-const slideOutUpAnimation = keyframes`${slideOutUp}`;
 
 
 export const StyledForm = Styled.form`

@@ -16,16 +16,16 @@ const sendEmail = (to_name, htmlMessage, sendToEmail) => {
     // console.log(emailParams.htmlMessage);
 
 
-    // emailjs.send(
-    //     process.env.REACT_APP_SERVICE_ID,
-    //     'template_BarCrawl',
-    //     emailParams,
-    //     process.env.REACT_APP_USER_ID)
-    // .then(result => {
-    //     console.log(result);
-    // }, error => {
-    //     console.error(error);
-    // })
+    emailjs.send(
+        process.env.REACT_APP_SERVICE_ID,
+        'template_BarCrawl',
+        emailParams,
+        process.env.REACT_APP_USER_ID)
+    .then(result => {
+        // console.log(result);
+    }, error => {
+        console.error(error);
+    })
 }
 
 export default sendEmail
