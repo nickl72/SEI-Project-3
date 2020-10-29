@@ -35,7 +35,6 @@ const ResultsList = () => {
             </ResultHead>
             {activeView === "results" ?
                 <ResultHolder>
-                    <h3>Search Results</h3>
                     <ResultHolder className="results">
                         {searchResults && searchResults.map((result, index) => (
                         <Result 
@@ -48,7 +47,6 @@ const ResultsList = () => {
                 
             :
                 <ResultHolder>
-                    <h3>Bar Crawl List</h3>
                     {barCrawlList.length === 0 ? 
                         <Message className="message">
                             <h4>You haven't pick any breweries yet...</h4>

@@ -11,6 +11,7 @@ const slideOutUpAnimation = keyframes`${slideOutUp}`;
 export const StyledForm = Styled.form`
     margin: 0;
     background: #f2a743;
+    background: #f5c270;
     width: 100%;
     min-width: 300px;
     min-height: 150px;
@@ -21,6 +22,7 @@ export const StyledForm = Styled.form`
     box-shadow: 3px 3px 5px grey;
     border-bottom-right-radius: 8px;
     border-bottom-left-radius: 8px;
+    /* border-top: 1px solid black; */
 `
 
 export const FormTitle = Styled.h3`
@@ -50,11 +52,16 @@ export const StyledInput = Styled(GenericStyledInput)`
     height: 1.5em;
     width: 10vw;
     min-width: 125px;
+    /* background: #9a5607;
+    color: #f5c270; */
+    /* ::placeholder {
+            color: #f5c270;
+        } */
 `
 
 export const StyledSelect = Styled.select`
     padding: 0 0.3em; 
-    color: #532b04;
+    color: #0d0404;
     background: #e78c11;
     font-size: 1em;
     height: 1.5em;
@@ -64,6 +71,9 @@ export const StyledSelect = Styled.select`
     margin: 5px;
     width: 10vw;
     min-width: 125px;
+
+    /* background: #9a5607;
+    color: #f5c270; */
 `
 
 export const SubmitButton = Styled(StyledSubmit)`
