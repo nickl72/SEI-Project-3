@@ -1,15 +1,13 @@
 import React, {useState, useEffect} from "react";
-import {Bold, Holder, Icon, Modal, CloseIcon} from "../styles/BreweryDisplayStyle";
+import { Holder, Icon, Modal, CloseIcon} from "../styles/BreweryDisplayStyle";
+import { Bold } from '../styles/GlobalStyle';
 import { useSelector, useDispatch } from "react-redux";
 import { selectBrewery, activateBrewery } from "../features/activeBrewerySlice";
-
 
 
 function MapModal(props) {
     const activeBrew = useSelector(selectBrewery);
     const dispatch = useDispatch();
-
-    
 
     const [MapData, setMapData] = useState({
         brewery: props.brewery,

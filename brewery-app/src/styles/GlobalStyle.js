@@ -1,4 +1,4 @@
-import {createGlobalStyle} from 'styled-components';
+import Styled, {createGlobalStyle} from 'styled-components';
 
 
 export const GlobalStyle = createGlobalStyle`
@@ -23,4 +23,17 @@ export const GlobalStyle = createGlobalStyle`
   a:visited {
     color: #331a04;
   }
+
+  #map {
+    height: 100%;
+  }
+  
+`
+
+export const Bold = Styled.span`
+    font-weight: bold;
+`
+
+export const Capitalize = Styled.span`
+  text-transform: capitalize;
 `

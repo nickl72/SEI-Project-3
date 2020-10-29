@@ -135,7 +135,7 @@ const MapContainer = () => {
           />
       <GoogleMapReact 
         // todo look into other parameters to use
-        bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY }}
+        bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY, libraries: 'places' }}
         center={mapData.center}
         zoom={mapData.zoom}
       >
