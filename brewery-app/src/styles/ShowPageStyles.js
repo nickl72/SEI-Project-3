@@ -31,7 +31,6 @@ export const BreweryPhotos = Styled.div`
     .rec.rec-arrow:hover {
         border-radius: 0;
         background: #e78c11;
-
     }
     .rec.rec-arrow:disabled {
         visibility: hidden;
@@ -46,7 +45,6 @@ export const BreweryPhotos = Styled.div`
     .rec.rec-dot_active {
         background: #f5c270;
         box-shadow: 0 0 1px 3px #532b04;
-
     }
 `
 

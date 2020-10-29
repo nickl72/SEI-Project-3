@@ -28,6 +28,7 @@ export const StyledForm = Styled.form`
 export const FormTitle = Styled.h3`
     text-align: center;
     margin: 0;
+    padding: 15px;
 `
 
 export const FormInputs = Styled.div`

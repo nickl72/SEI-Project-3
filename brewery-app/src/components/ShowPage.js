@@ -107,8 +107,9 @@ function ShowPage() {
                                 {placeDetails.rating 
                                 &&
                                 <div className = "stars">
-                                        <G.Bold>Rating: </G.Bold>{placeDetails.rating}
-                                    </div>
+                                    <G.Bold>Rating: </G.Bold>{placeDetails.rating}
+                                    <img src={"./beer-mug_1f37a.png"} />
+                                </div>
                                 }
                                 <div>
                                     <p><G.Bold>Brewery Type: </G.Bold><G.Capitalize>{brewery.brewery_type}</G.Capitalize></p>
@@ -116,8 +117,8 @@ function ShowPage() {
                                 {placeDetails.price_level 
                                 &&
                                 <div className ="Price">
-                                        Price Level: {placeDetails.price_level}
-                                    </div>
+                                    Price Level: {placeDetails.price_level}
+                                </div>
                                 }
                             </S.BreweryStats>
                                 </div>

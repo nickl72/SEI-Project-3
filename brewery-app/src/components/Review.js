@@ -1,14 +1,5 @@
 import React from 'react';
-
 import * as S from '../styles/ReviewStyles';
-
-// author_name: "Dean Ahles"
-// author_url: "https://www.google.com/maps/contrib/101440542195116051017/reviews"
-// language: "en"
-// profile_photo_url: "https://lh3.googleusercontent.com/-KpV-RjIKumk/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuclMdALlVsCnYt6LmTdVbXjwn82QAA/s128-c0x00000000-cc-rp-mo/photo.jpg"
-// rating: 3
-// relative_time_description: "a month ago"
-// text: "Steak was tough, food was not hot."
 
 
 const Review = (props) => {
@@ -25,6 +16,7 @@ const Review = (props) => {
                 <S.Rating>
                     {props.review.rating}
                 </S.Rating>
+                <img src={"./beer-mug_1f37a.png"} />
                 <S.ReviewText>
                     {props.review.text}
                 </S.ReviewText>
