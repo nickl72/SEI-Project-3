@@ -25,7 +25,7 @@ function App() {
             <Header />
             <main>
               <Route exact path="/" component={Homepage} />
-              <Route 
+              <Route
                 path="/show"
                 render={(props) => <ShowPage />}
                 />

@@ -3,7 +3,6 @@ import Result from './Result';
 import  styled  from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectBreweryList } from '../features/breweryListSlice';
-import { barCrawl, view, setView } from "../features/barCrawlSlice";
 import { useDrop } from "react-dnd";
 import { barCrawl, view, setView, selectEmail, toggleEmail } from "../features/barCrawlSlice";
 import EmailForm from './EmailForm';
@@ -74,6 +73,7 @@ const ResultsList = () => {
     const viewClick = (view) => {
         dispatch(setView(view))
     }
+
     const dispatch = useDispatch();
     const searchResults = useSelector(selectBreweryList);
     const barCrawlList = useSelector(barCrawl);
@@ -81,8 +81,7 @@ const ResultsList = () => {
     const email = useSelector(selectEmail);
 
     const drop = useDrop({
-        accept: "resultCard", 
-        drop: () => moveTask()
+        accept: "resultCard"
     })
 
     return (
@@ -128,12 +127,10 @@ const ResultsList = () => {
                                 dispatch(toggleEmail())}
                                 } />
                             {barCrawlList.map((brew, index) => (
-                                <ResultHolder className="results">
                                     <Result
                                         result={brew}
                                         key={index}
                                     />
-                                </ResultHolder>
                             ))}                            
                         </ResultHolder>
 
