@@ -1,6 +1,5 @@
 import React from 'react';
 import Result from './Result';
-import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectBreweryList } from '../features/breweryListSlice';
 import { barCrawl, view, setView, selectEmail, toggleEmail } from "../features/barCrawlSlice";
