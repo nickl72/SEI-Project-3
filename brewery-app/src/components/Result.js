@@ -20,7 +20,7 @@ const Result = (props) => {
      // Sends brewery details up to hompage level and highlights the active div based on the index
      // Sets redux state for active brewery
      const handleClick = (e) => {
-        if (e.target.className === 'cancel') {
+        if (e.target.className.search('cancel') !== -1) {
             dispatch(activateBrewery(props.result));
             return
         }
@@ -30,7 +30,7 @@ const Result = (props) => {
             dispatch(activateBrewery(props.result));
         }
     }
-    
+
     const isOnList = (brewid, list) => {
         let index = list.findIndex(x => x.id === brewid);
         let onList = (index === -1 ? false : true);
@@ -100,7 +100,7 @@ const Result = (props) => {
                 { /* brewery name in URL is for visual purposes only. showPage uses Redux state */ }
                 <ButtonHolder>
                     <Link to={`/show/${props.result.name.split(' ').join('')}`} className='cancel' onClick={hideForm}>
-                        <StyledButton>More info</StyledButton>
+                        <StyledButton className='cancel'>More info</StyledButton>
                     </Link> 
                     <StyledButton className='cancel' onClick={(e) => updateListClick(e)}>
                         {onList ? "Remove from Bar Crawl" : "Add to Bar Crawl"}
