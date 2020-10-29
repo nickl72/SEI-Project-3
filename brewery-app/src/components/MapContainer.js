@@ -25,7 +25,6 @@ const MapContainer = () => {
   const barCrawlList = useSelector(barCrawl);
   const activeView = useSelector(view);
 
-  console.log(breweryList)
   
   const calcCenter = (set, type) => {
     if(set.length > 0) {
@@ -109,8 +108,6 @@ const MapContainer = () => {
 
   useEffect(() => {
     let newLegend = [];
-    console.log("updating legend")
-    console.log(activeView === "results")
     if(activeView === "results") {
       console.log("got in results")
       breweryList.map((brew) => {
