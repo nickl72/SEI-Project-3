@@ -56,18 +56,16 @@ const ResultsList = () => {
                             <h5>Time to get planning!</h5> 
                         </Message>
                         :
-                        <ResultHolder>
+                        <ResultHolder className="results">
                             <StyledSubmit value='Send Email' onClick={(e) => {
                                 e.preventDefault()
                                 dispatch(toggleEmail())}
                                 } />
                             {barCrawlList.map((brew, index) => (
-                                <ResultHolder className="results">
                                     <Result
                                         result={brew}
                                         key={index}
                                     />
-                                </ResultHolder>
                             ))}                            
                         </ResultHolder>
 
