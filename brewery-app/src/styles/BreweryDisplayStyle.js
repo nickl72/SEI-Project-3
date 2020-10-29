@@ -14,8 +14,8 @@ export const Holder = Styled.div`
     }
 `
 export const BasicIcon = Styled.img`
-    height: 22px;
-    width: 22px;
+    height: 25px;
+    width: 25px;
     margin: 5px;
 `
 

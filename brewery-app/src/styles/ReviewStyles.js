@@ -5,6 +5,8 @@ export const StyledReview = Styled.div`
     width: 90%;
     display: flex;
     flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: center;
     background: #f5c270;
     margin: 5px auto;
     padding: 5px;
@@ -14,16 +16,19 @@ export const StyledReview = Styled.div`
 `
 
 export const AuthorInfo = Styled.div`
-    width: 20%;
+    width: 25%;
     height: 100%;
-    padding: 25px 10px;
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
+    justify-content: center;
+    padding: 5px;
+
 `
 
 export const AuthorProfilePhoto = Styled.img`
-    width: 70px;
+    width: 125px;
+    padding: 10px;
 `
 
 export const AuthorName = Styled.p`
@@ -33,16 +38,18 @@ export const AuthorName = Styled.p`
 `
 
 export const ReviewInfo = Styled.div`
-    width: 60%;
+    width: 65%;
     height: 100%;
-    padding: 15px;
+    padding: 10px;
 `
 
 export const Rating = Styled.p`
 `
 
 export const ReviewText = Styled.p`
+    width: 100%;
 `
 
 export const RelativeTime = Styled.p`
+    font-weight: bold;
 `
