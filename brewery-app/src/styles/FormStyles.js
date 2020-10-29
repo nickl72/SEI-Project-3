@@ -55,7 +55,6 @@ export const ButtonHolder = styled.div`
 export const StyledInput = styled.input`
         margin: 1em;
         padding: 0 0.3em; 
-        color: #532b04;
         color: #0d0404;
         background: #e78c11; 
         ::-webkit-outer-spin-button,
