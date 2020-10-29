@@ -2,11 +2,11 @@ import Styled from "styled-components";
 
 
 export const StyledReview = Styled.div`
-    width: 100%;
+    width: 90%;
     display: flex;
     flex-flow: row wrap;
     background: #f5c270;
-    margin: 5px;
+    margin: 5px auto;
     padding: 5px;
 `
 

@@ -130,16 +130,14 @@ function ShowPage() {
                         </S.BreweryContactInfo>
 
                     </S.BreweryInfoContainer>
-                    <S.BreweryReviews>
                         {(placeDetails && placeDetails.reviews)
                         &&
-                            <ul className='reviews'>
+                        <S.BreweryReviews>
                                 {placeDetails.reviews.map((review, id) =>
                                     <Review review={review} key={id} />
                                 )}
-                            </ul>
-                        }
                     </S.BreweryReviews>
+                        }
                 </S.ShowPageContainer>
             : <Redirect to='/' />}
         </S.ShowPage>
