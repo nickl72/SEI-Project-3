@@ -97,6 +97,8 @@ export const MugRating = Styled.div`
 export const MugRack = Styled.div`
     display: flex;
     flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
 `
 
 export const RatingIcon = Styled.img`

@@ -31,9 +31,12 @@ export const PageTitle = Styled.div`
 `
 
 export const PageIcon = Styled.img`
-    height: 70px;
-    width: 70px;
+    height: 65px;
+    width: 65px;
     object-fit: cover;
+    background: white;
+    padding: 5px;
+    border-radius: 10px;
 `
 
 export const NavBar = Styled.nav`

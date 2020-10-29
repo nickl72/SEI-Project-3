@@ -104,12 +104,12 @@ function ShowPage() {
                             <S.BreweryStats>
                                 {placeDetails.rating 
                                 &&
-                                <S.MugRating>
+                                <S.MugRack>
                                     <p>
                                         <G.Bold>Total Rating: </G.Bold>{placeDetails.rating}
                                     </p>
                                     <S.RatingIcon src = "/beer-mug_1f37a.png" alt='beer mug' />
-                                </S.MugRating>
+                                </S.MugRack>
                                 }
                                 <div>
                                     <p>
