@@ -1,12 +1,12 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useRef } from 'react';
 import { activateBrewery, deactivateBrewery, selectBrewery } from '../features/activeBrewerySlice';
 import { hideSearch } from '../features/showSearchFormSlice';
 import { addBrewery, barCrawl, removeBrewery, view } from "../features/barCrawlSlice";
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { useDrag } from "react-dnd";
+import { useDrag, useDrop } from "react-dnd";
 import { ResultDiv } from '../styles/ResultStyle';
+import { act } from 'react-dom/test-utils';
 
 
 const Result = (props) => {
@@ -49,15 +49,41 @@ const Result = (props) => {
     const hideForm = () => {
         dispatch(hideSearch());
     }
-
+    
     //Set up for draggable list
+    const findBrew = props.findBrew;
+    const moveBrew = props.moveBrew;
+
+    const originalIndex = findBrew(props.id).index
+
     const [{isDragging}, drag] = useDrag({
-        item: {type: "resultCard", id: props.result.id },
+        item: {type: "resultCard", id: props.id, originalIndex },
         canDrag: activeView==="barCrawl" ? true : false,
         collect: (monitor) => ({
             isDragging: !!monitor.isDragging()
-        })
+        }),
+        end: (dropResult, monitor) => {
+            const {id: droppedId, originalIndex} = monitor.getItem();
+            console.log(monitor.getItem());
+            const didDrop = monitor.didDrop();
+            if(!didDrop) {
+                moveBrew(droppedId, originalIndex);
+            }
+        }
+    });
+
+    const[, drop] = useDrop({
+        accept: "resultCard",
+        canDrop: () => false,
+        hover({id: draggedId}) {
+            if(draggedId !== props.id) {
+                const { index: overIndex } = findBrew(props.id);
+                moveBrew(draggedId, overIndex);
+            }
+        }
     })
+
+    
     
 
     return (
