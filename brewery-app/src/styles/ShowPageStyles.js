@@ -87,3 +87,15 @@ export const BreweryReviews = Styled.ul`
 
 `
 
+export const MugRating = Styled.div`
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+`
+
+export const RatingIcon = Styled.img`
+    height: 22px;
+    width: 22px;
+    margin: 0;
+`

@@ -38,6 +38,13 @@ export const ReviewInfo = Styled.div`
 export const Rating = Styled.p`
 `
 
+export const RatingIcon = Styled.img`
+    height: 22px;
+    width: 22px;
+    margin: 0;
+`
+
+
 export const ReviewText = Styled.p`
 `
 

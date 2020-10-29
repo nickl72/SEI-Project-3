@@ -15,7 +15,8 @@ const Review = (props) => {
                 <S.Rating>
                     {props.review.rating}
                 </S.Rating>
-                <img src={"./beer-mug_1f37a.png"} />
+                <S.RatingIcon src = "/beer-mug_1f37a.png" alt='beer mug' />
+
                 <S.ReviewText>
                     {props.review.text}
                 </S.ReviewText>

@@ -107,13 +107,17 @@ function ShowPage() {
                             <S.BreweryStats>
                                 {placeDetails.rating 
                                 &&
-                                <div className = "stars">
-                                    <G.Bold>Rating: </G.Bold>{placeDetails.rating}
-                                    <img src={"./beer-mug_1f37a.png"} />
-                                </div>
+                                <S.MugRating>
+                                    <p>
+                                        <G.Bold>Rating: </G.Bold>{placeDetails.rating}
+                                    </p>
+                                    <S.RatingIcon src = "/beer-mug_1f37a.png" alt='beer mug' />
+                                </S.MugRating>
                                 }
                                 <div>
-                                    <p><G.Bold>Brewery Type: </G.Bold><G.Capitalize>{brewery.brewery_type}</G.Capitalize></p>
+                                    <p>
+                                        <G.Bold>Brewery Type: </G.Bold><G.Capitalize>{brewery.brewery_type}</G.Capitalize>
+                                    </p>
                                 </div>
                                 {placeDetails.price_level 
                                 &&
