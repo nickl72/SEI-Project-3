@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useDrag, useDrop } from "react-dnd";
 import { ResultDiv } from '../styles/ResultStyle';
-import { act } from 'react-dom/test-utils';
+
 
 
 const Result = (props) => {
@@ -25,7 +25,6 @@ const Result = (props) => {
             dispatch(activateBrewery(props.result));
         }
     }
-    console.log(barCrawlList);
     
     const isOnList = (brewid, list) => {
         let index = list.findIndex(x => x.id === brewid);
@@ -51,10 +50,12 @@ const Result = (props) => {
     }
     
     //Set up for draggable list
+    const ref = useRef(null);
     const findBrew = props.findBrew;
     const moveBrew = props.moveBrew;
 
-    const originalIndex = findBrew(props.id).index
+    const originalIndex = findBrew(props.id).index;
+    
 
     const [{isDragging}, drag] = useDrag({
         item: {type: "resultCard", id: props.id, originalIndex },
@@ -66,6 +67,7 @@ const Result = (props) => {
             const {id: droppedId, originalIndex} = monitor.getItem();
             console.log(monitor.getItem());
             const didDrop = monitor.didDrop();
+            console.log(`Dropped: ${droppedId}, original: ${originalIndex}`)
             if(!didDrop) {
                 moveBrew(droppedId, originalIndex);
             }
@@ -76,18 +78,22 @@ const Result = (props) => {
         accept: "resultCard",
         canDrop: () => false,
         hover({id: draggedId}) {
+            console.log(draggedId)
             if(draggedId !== props.id) {
                 const { index: overIndex } = findBrew(props.id);
+                console.log("trying to move brew")
                 moveBrew(draggedId, overIndex);
+                
             }
-        }
+        },
     })
 
+    drag(drop(ref))
     
     
 
     return (
-        <ResultDiv className={isActiveBrewery ? 'result active' : 'result'} ref={drag} isDragging={isDragging} onClick={(e) => handleClick(e)}>
+        <ResultDiv className={isActiveBrewery ? 'result active' : 'result'} ref={ref} isDragging={isDragging} onClick={(e) => handleClick(e)}>
             <div className={isActiveBrewery ? 'active' : ''}> 
                 <h3>Brewery: {props.result.name}</h3>
                 <h4>Location: {props.result.street}, {props.result.city}, {props.result.state}</h4>

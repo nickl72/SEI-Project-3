@@ -19,11 +19,14 @@ export const barCrawlSlice = createSlice({
         },
         toggleEmail: state => {
             state.email = !state.email;
+        },
+        setList: (state, action) => {
+            state.crawlList = action.payload
         }
     }
 })
 
-export const { addBrewery, removeBrewery, setView, toggleEmail } = barCrawlSlice.actions;
+export const { addBrewery, removeBrewery, setView, toggleEmail, setList } = barCrawlSlice.actions;
 
 export const barCrawl = state => state.barCrawl.crawlList;
 export const view = state => state.barCrawl.view;

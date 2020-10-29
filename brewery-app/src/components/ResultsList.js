@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import Result from './Result';
 import { useSelector, useDispatch} from 'react-redux';
 import { selectBreweryList } from '../features/breweryListSlice';
 import { useDrop } from "react-dnd";
-import { barCrawl, view, setView, selectEmail, toggleEmail } from "../features/barCrawlSlice";
+import { barCrawl, view, setView, selectEmail, toggleEmail, setList } from "../features/barCrawlSlice";
 import EmailForm from './EmailForm';
 import { StyledSubmit } from '../styles/FormStyles';
 import { Message, ResultList, ResultHead, ViewButton, ResultHolder, CrawlCount } from '../styles/ResultStyle';
@@ -21,20 +21,27 @@ const ResultsList = () => {
     const activeView = useSelector(view);
     const email = useSelector(selectEmail);
     // Setting up neccessary controls for dragging cards
-
-    const [brews, setBrews] = useState(barCrawlList);
+    const crawlList = [barCrawlList]
+    const [brews, setBrews] = useState(crawlList);
+    
+    useEffect(() => {
+        setBrews(barCrawlList)
+    }, [barCrawlList])
 
     // $splice is an immutable version of plain splice
     // The first line of the splice removes the brewery we are dragging
     // The second line of the splice inserts in in the hovering position
     const moveBrew = (id, atIndex) => {
         const {brew, index} = findBrew(id);
+        // brews.splice(atIndex,0, brews.splice(index,1)[0])
         setBrews(update(brews, {
             $splice: [
-                [index,1],
-                [atIndex, 0, brew]
+                [index, 1],
+                [atIndex, 0, brew],
             ],
-        }));      
+        }));    
+        dispatch(setList(brews));
+        console.log(brews)
     };
 
     const findBrew = (id) => {
@@ -49,6 +56,7 @@ const ResultsList = () => {
         accept: "resultCard"
     })
 
+    
 
     return (
         <ResultList className='Result-list'>
@@ -68,7 +76,7 @@ const ResultsList = () => {
             {activeView === "results" ?
                 <ResultHolder>
                     <h3>Search Results</h3>
-                    <ResultHolder className="results">
+                    <ResultHolder className="results" ref={drop}>
                         {searchResults && searchResults.map((result, index) => (
                         <Result 
                             result={result} 
