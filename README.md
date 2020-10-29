@@ -58,5 +58,6 @@ Application users may search for breweries in an area and learn more about what 
 - [styled-components documantation](https://styled-components.com/docs/basics)
 - [Google Places Details API](https://developers.google.com/places/web-service/details)
 - [Google Places Place Search API](https://developers.google.com/places/web-service/search)
-
+- [Redux](https://react-redux.js.org/?_sm_au_=iVVQss71DZ23QDS5L321jK0f1JH33)
+- [EmailJS](https://www.emailjs.com/)
 
