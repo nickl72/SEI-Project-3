@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 export const verifyAgeSlice = createSlice({
     name: "verifyAge",
     initialState: {
-        ofAge: true
+        ofAge: null
     },
     reducers: {
         oldEnough: state => {
