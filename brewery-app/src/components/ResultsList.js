@@ -1,54 +1,10 @@
 import React from 'react';
 import Result from './Result';
-import  styled  from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectBreweryList } from '../features/breweryListSlice';
 import { barCrawl, view, setView } from "../features/barCrawlSlice";
+import { ResultHead, ViewButton, ResultHolder, ResultList } from '../styles/ResultStyle';
 
-
-const Div = styled.div` 
-    // border: solid 5px #6f3c05;
-    height: 90vh;
-    width: 25%;
-    background: #f2a743;
-`
-const ResultHead = styled.div`
-    height: 25px;
-    width: 100%;
-    display: flex;
-`
-const ViewButton = styled.div `
-    display: flex;
-    margin: 0;
-    background: #fbdc81;
-    border-left: 2px solid #fbdc81;
-    border-right: 2px solid #fbdc81;
-    height: 100%;
-    width: 50%;
-    cursor: pointer;
-    align-items: center;
-    justify-content: center;
-    &:hover {
-        background: #f2a743;
-        border-left: 2px solid #fbdc81;
-        border-right: 2px solid #fbdc81;
-
-    }
-    &.active {
-        background: #f2a743;
-        border-left: 2px solid #f2a743;
-        border-right: 2px solid #f2a743;
-    }
-`
-const ResultHolder = styled.div `
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    &.message {
-        padding: 15px;
-        text-align: center;
-    }
-`
 
 const ResultsList = () => {
     const viewClick = (view) => {
@@ -60,7 +16,7 @@ const ResultsList = () => {
     const activeView = useSelector(view);
 
     return (
-        <Div className='Result-list'>
+        <ResultList className='Result-list'>
             <ResultHead>
                 <ViewButton 
                     onClick={() => viewClick("results")}
@@ -100,7 +56,7 @@ const ResultsList = () => {
                     }
                 </ResultHolder>
             }
-        </Div>
+        </ResultList>
     )
 }
 
