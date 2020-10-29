@@ -72,8 +72,8 @@ width: 25%;
 background: #f2a743;
 position: relative;
 box-shadow: 3px 3px 5px grey;
-border-top-right-radius: 8px;
-border-top-left-radius: 8px;
+border-top-right-radius: 10px;
+border-top-left-radius: 10px;
 z-index: 1;
 `
 
