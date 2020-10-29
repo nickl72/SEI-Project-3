@@ -66,7 +66,7 @@ export const SearchButtonContainer = Styled.div`
 
 export const NavButton = Styled.div`
     margin: 0;
-    background: #fbdc81;
+    background: #f5c270;
     height: 100%;
     width: 100%;
     &:hover {

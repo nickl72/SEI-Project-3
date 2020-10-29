@@ -18,7 +18,7 @@ export const CrawlCount = styled.span`
 export const ResultDiv = styled.div`
     border: 2px solid black;
     border-radius: 5px;
-    margin: 8px 5px;
+    margin: 10px 5px;
     padding: 5px;
     box-shadow: 2px 2px 10px 2px grey;
     width: 90%;
@@ -35,32 +35,31 @@ export const ResultDiv = styled.div`
 `
 
 export const ResultHead = styled.div`
-min-height: 25px;
-height: 4%;
-width: 100%;
-display: flex;
-background: #fbdc81;
-
+    min-height: 25px;
+    height: 7%;
+    width: 100%;
+    display: flex;
+    background: #fbdc81;
 `
 
 export const ResultHolder = styled.div `
-display: flex;
-flex-direction: column;
-align-items: center;
-height: calc(87vh - 30px);
-overflow-y: auto;
-&.message {
-    padding: 15px;
-    text-align: center;
-    overflow: none;
-}
-h3 {
-        margin: 10px;
-}
-.active {
-        background: #9a5607;
-        color: white;
-}
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: calc(87vh - 7%);
+    overflow-y: auto;
+    &.message {
+        padding: 15px;
+        text-align: center;
+        overflow: none;
+    }
+    h3 {
+            margin: 10px;
+    }
+    .active {
+            background: #9a5607;
+            color: white;
+    }
 `
 
 export const Message = styled(ResultHolder)` 
@@ -86,8 +85,8 @@ border-left: 2px solid #fbdc81;
 border-right: 2px solid #fbdc81;
 height: 100%;
 width: 50%;
-border-top-right-radius: 8px;
-border-top-left-radius: 8px;
+border-top-right-radius: 10px;
+border-top-left-radius: 10px;
 cursor: pointer;
 align-items: center;
 justify-content: center;
@@ -101,5 +100,7 @@ justify-content: center;
     background: #f2a743;
     border-left: 2px solid #f2a743;
     border-right: 2px solid #f2a743;
+    font-size: x-large;
+    font-weight: 700;
 }
 `
