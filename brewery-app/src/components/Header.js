@@ -43,7 +43,7 @@ const Header = () => {
                         transitionEnterTimeout={500}
                         transitionLeaveTimeout={300}
                         >
-                            { showSearch && <SearchForm /> }
+                            { showingSearch && <SearchForm /> }
                     </CSSTransitionGroup>
                 </S.SearchButtonContainer>
                 <S.NavButton onClick={hideForm}>
