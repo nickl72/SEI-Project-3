@@ -6,7 +6,7 @@ import { useDrop } from "react-dnd";
 import { barCrawl, view, setView, selectEmail, toggleEmail, setList } from "../features/barCrawlSlice";
 import EmailForm from './EmailForm';
 import { StyledSubmit } from '../styles/FormStyles';
-import { Message, ResultList, ResultHead, ViewButton, ResultHolder, CrawlCount } from '../styles/ResultStyle';
+import { Message, ResultList, ResultHead, ViewButton, ResultHolder, CrawlCount, EmailButton } from '../styles/ResultStyle';
 import update from "immutability-helper";
 
 
@@ -75,7 +75,6 @@ const ResultsList = () => {
             </ResultHead>
             {activeView === "results" ?
                 <ResultHolder>
-                    <h3>Search Results</h3>
                     <ResultHolder className="results" ref={drop}>
                         {searchResults && searchResults.map((result, index) => (
                         <Result 
@@ -98,7 +97,7 @@ const ResultsList = () => {
                         </Message>
                         :
                         <ResultHolder className="results" ref={drop}>
-                            <StyledSubmit value='Send Email' onClick={(e) => {
+                            <EmailButton value='Send Email' onClick={(e) => {
                                 e.preventDefault()
                                 dispatch(toggleEmail())}
                                 } />

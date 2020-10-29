@@ -25,6 +25,7 @@ export const StyledSubmit = styled.input`
     color: #fbdc81;
     cursor: pointer;
     text-align: center;
+    border-radius: 5px;
     &:hover {
         background: #532b04;
     }
@@ -40,6 +41,7 @@ export const StyledButton = styled.button`
     color: #fbdc81;
     cursor: pointer;
     text-align: center;
+    border-radius: 5px;
     &:hover {
         background: #532b04;
     }
