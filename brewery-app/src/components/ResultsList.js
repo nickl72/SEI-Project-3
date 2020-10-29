@@ -4,7 +4,7 @@ import  styled  from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectBreweryList } from '../features/breweryListSlice';
 import { barCrawl, view, setView } from "../features/barCrawlSlice";
-
+import { useDrop } from "react-dnd";
 
 const Div = styled.div` 
     // border: solid 5px #6f3c05;
@@ -73,6 +73,11 @@ const ResultsList = () => {
     const searchResults = useSelector(selectBreweryList);
     const barCrawlList = useSelector(barCrawl);
     const activeView = useSelector(view);
+
+    const drop = useDrop({
+        accept: "resultCard", 
+        drop: () => moveTask()
+    })
 
     return (
         <Div className='Result-list'>
