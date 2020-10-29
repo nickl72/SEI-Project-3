@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect} from 'react';
 import GoogleMapReact from 'google-map-react';
 import Styled from 'styled-components';
 
@@ -25,7 +25,6 @@ const MapContainer = () => {
   const barCrawlList = useSelector(barCrawl);
   const activeView = useSelector(view);
 
-  
   const calcCenter = (set, type) => {
     if(set.length > 0) {
       return set.reduce((a,b) => parseFloat(a) + parseFloat(b), 0) / set.length;
@@ -124,6 +123,8 @@ const MapContainer = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeView])
   
+
+
   return (
     <StyledMap>
       <LegendMarker 

@@ -1,8 +1,9 @@
 import Styled, { keyframes } from "styled-components";
-import { rotateInDownRight, bounceIn} from "react-animations";
+import {rotateInDownRight, bounceIn} from "react-animations";
 
 const bounceInAnimation = keyframes`${bounceIn}`;
 const drinkIn = keyframes`${rotateInDownRight}`;
+
 
 
 export const Holder = Styled.div`
@@ -51,6 +52,7 @@ export const Modal = Styled.div`
     padding: 5px;
     width: 150px;
     z-index: 1;
+    box-shadow: 1px 1px 5px black;
 `
 
 export const LegendHolder = Styled.div`
