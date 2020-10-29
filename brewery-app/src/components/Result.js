@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import { activateBrewery, deactivateBrewery, selectBrewery } from '../features/activeBrewerySlice';
 import { hideSearch } from '../features/showSearchFormSlice';
 import { addBrewery, barCrawl, removeBrewery } from "../features/barCrawlSlice";
