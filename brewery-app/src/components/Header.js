@@ -2,18 +2,18 @@ import React, { useState } from 'react';
 import SearchForm from './SearchForm';
 import * as S from '../styles/HeaderStyles';
 import { Link } from 'react-router-dom';
-
+import {CSSTransitionGroup} from 'react-transition-group';
 
 const Header = () => {
-    const [showSearch, setShowSearch] = useState(false)
+    const [showSearch, setShowSearch] = useState(false);
 
     const toggleShowSearch = (e) => {
         if (e.target === e.currentTarget) {
-            setShowSearch(!showSearch)
+            setShowSearch(!showSearch)            
         }
     }
     const hideSearch = (e) => {
-        setShowSearch(false)
+        setShowSearch(false);
     }
     
     return (
@@ -35,11 +35,20 @@ const Header = () => {
                             </S.NavTitle>
                         </Link>
                     </S.NavButton>
-                    <S.SearchFormAnchor>
-                        { showSearch && <SearchForm /> }
-                    </S.SearchFormAnchor>
+                    
+                    <CSSTransitionGroup
+                        transitionName="slideForm"
+                        transitionEnterTimeout={500}
+                        transitionLeaveTimeout={300}
+                        >
+                            { showSearch && <SearchForm /> }
+                    </CSSTransitionGroup>
+                        
+                    
                 </S.SearchButtonContainer>
                 
+                
+
                 <S.NavButton onClick={hideSearch}>
                     <Link to='/about'>
                         <S.NavTitle>

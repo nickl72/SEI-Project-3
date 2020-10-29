@@ -54,6 +54,16 @@ const ResultHolder = styled.div `
         margin: 10px;
     }
 `
+const CrawlCount = styled.span`
+    display: inline-block;
+    background-color: white;
+    color: black;
+    text-align: center;
+    padding: 2px;
+    border-radius: 20%;
+    margin-left: 0.5em;
+    font-weight: bold;
+`
 
 const ResultsList = () => {
     const viewClick = (view) => {
@@ -74,7 +84,10 @@ const ResultsList = () => {
                 <ViewButton 
                     onClick={() => viewClick("barCrawl")}
                     className={activeView==="barCrawl" ? "active" : "inactive"}
-                >Bar Crawl List</ViewButton>
+                >
+                    Bar Crawl List
+                    <CrawlCount>{barCrawlList.length}</CrawlCount>
+                    </ViewButton>
             </ResultHead>
             {activeView === "results" ?
                 <ResultHolder>

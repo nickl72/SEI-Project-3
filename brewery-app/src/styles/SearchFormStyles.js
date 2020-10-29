@@ -8,17 +8,17 @@ const slideOutUpAnimation = keyframes`${slideOutUp}`;
 
 
 export const StyledForm = Styled.form`
-    margin: 0 auto;
+    margin: 0;
     background: #f2a743;
     // border: solid 5px #6f3c05;
-    width: 40%;
+    width: 100%;
     height: 20vh;
     min-width: 300px;
     min-height: 150px;
     position: absolute;
+    right: 0px;
+    top: 100%;
     z-index: 1;
-    animation: ${slideInDownAnimation} .3s 1;
-    // animation: ${slideOutUpAnimation} .3s 1;
 `
 
 export const FormTitle = Styled.h3`

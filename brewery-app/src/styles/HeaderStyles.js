@@ -31,6 +31,7 @@ export const NavBar = Styled.nav`
     width: 40%;
     display: flex;
     flex-flow: row nowrap;
+    position: relative;
 `
 
 export const SearchButtonContainer = Styled.div`
@@ -39,6 +40,28 @@ export const SearchButtonContainer = Styled.div`
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
+
+    .slideForm-enter {
+        opacity: 0.01;
+        transform: translateY(-100%);
+    }
+      
+    .slideForm-enter.slideForm-enter-active {
+        opacity: 1;
+        transform: translateY(0%);
+        transition: all 500ms ease-in-out;
+    }
+      
+    .slideForm-leave {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+    
+    .slideForm-leave.slideForm-leave-active {
+        opacity: 0.01;
+        transform: translateY(-100%);
+        transition: all 300ms ease-in;
+    }
 `
 
 export const NavButton = Styled.div`
@@ -58,6 +81,8 @@ export const SearchFormAnchor = Styled.div`
     width: 100%;
     height: 0;
     display: flex;
+    
+
 `
 
 export const NavTitle = Styled.h2`
