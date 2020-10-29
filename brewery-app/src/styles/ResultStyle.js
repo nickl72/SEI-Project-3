@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components';
+import { StyledSubmit } from './FormStyles';
 import { fadeIn } from 'react-animations';
 
 const fadeInAnimation = keyframes`${fadeIn}`;
@@ -13,6 +14,9 @@ export const CrawlCount = styled.span`
     border-radius: 20%;
     margin-left: 0.5em;
     font-weight: bold;
+`
+export const EmailButton = styled(StyledSubmit)`
+    margin-top: 10px;
 `
 
 export const ResultDiv = styled.div`
@@ -66,14 +70,15 @@ export const Message = styled(ResultHolder)`
 `
 
 export const ResultList = styled.div` 
-    height: 85vh;
-    width: 25%;
-    background: #f2a743;
-    position: relative;
-    box-shadow: 3px 3px 5px grey;
-    border-top-right-radius: 8px;
-    border-top-left-radius: 8px;
-    z-index: 1;
+// border: solid 5px #6f3c05;
+height: 87vh;
+width: 25%;
+background: #f2a743;
+position: relative;
+box-shadow: 3px 3px 5px grey;
+border-top-right-radius: 10px;
+border-top-left-radius: 10px;
+z-index: 1;
 `
 
 export const ViewButton = styled.div `

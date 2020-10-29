@@ -26,7 +26,6 @@ const MapContainer = () => {
   const barCrawlList = useSelector(barCrawl);
   const activeView = useSelector(view);
 
-  console.log(breweryList)
   
   const calcCenter = (set, type) => {
     if(set.length > 0) {
@@ -110,23 +109,20 @@ const MapContainer = () => {
 
   useEffect(() => {
     let newLegend = [];
-    console.log("updating legend")
-    console.log(activeView === "results")
     if(activeView === "results") {
-      console.log("got in results")
       breweryList.map((brew) => {
-        addUnique(brew.brewery_type, newLegend)
+        addUnique(brew.brewery_type, newLegend);
+        return '';
       })
     } else {
-      barCrawlList.map((brew) => {addUnique(brew.brewery_type, newLegend)})
+      barCrawlList.map((brew) => {addUnique(brew.brewery_type, newLegend); return '';})
     }
 
     setLegendData({
       activeTypes: newLegend
     })
 
-
-
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeView])
   
   return (

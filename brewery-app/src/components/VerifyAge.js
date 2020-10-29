@@ -54,32 +54,21 @@ function VerifyAge() {
 
         // splits js date into YYYY-MM-DD... -> [YYYY, MM, DD...]
         const today = (new Date()).toISOString().split('-');
-        console.log(today)
 
         if (parseInt(today[0])-year > 21) { // year
             dispatch(oldEnough());
-            console.log('oyear')
-
         } else if (parseInt(today[0])-year < 21) { // year
             dispatch(tooYoung());
-            console.log('yyear')
-
         } else {
             if (parseInt(today[1]) > month) { // month
                 dispatch(oldEnough());
-                console.log('omonth')
-
             } else if (parseInt(today[1]) < month) { // month
                 dispatch(tooYoung());
-                console.log('ymonth')
-
             } else {
                 if (parseInt(today[2]) >= day) { // day
                     dispatch(oldEnough());
-                    console.log('oday')
                 } else { // day
                     dispatch(tooYoung());
-                    console.log('yday')
                 }
             }
         }

@@ -1,10 +1,8 @@
 import Styled, { keyframes } from "styled-components";
-import {rotateOutUpRight, rotateInDownRight, bounceIn, merge} from "react-animations";
+import { rotateInDownRight, bounceIn} from "react-animations";
 
 const bounceInAnimation = keyframes`${bounceIn}`;
-const drinkOut =  keyframes`${rotateOutUpRight}`;
 const drinkIn = keyframes`${rotateInDownRight}`;
-const merger = merge(bounceIn, rotateOutUpRight);
 
 
 export const Holder = Styled.div`
@@ -29,7 +27,7 @@ export const Icon = Styled(BasicIcon)`
     background: radial-gradient(darkgray 15%, transparent);
     animation: 2s ${bounceInAnimation};
     &.light {
-        animation: 1s ${merger};
+        animation: 1s ${drinkIn};
         box-shadow: 0px 0px .5vmin .5vmin navy;
         background: navy;
         

@@ -14,15 +14,25 @@ export const TitleDiv = Styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 3px 0;
 `
-export const PageTitle = Styled.h1`
-    margin: 20px;
-    width: 40%;
+export const PageTitle = Styled.div`
+        margin: 0 20px;
+        width: 40%;
+    h1, p{ 
+        margin: 0;
+        padding: 0;
+    }
+    p {
+        font-size: small;
+        font-weight: 600;
+        text-transform: capitalize;
+    }
 `
 
 export const PageIcon = Styled.img`
     height: 70px;
-    widht: 70px;
+    width: 70px;
     object-fit: cover;
 `
 
