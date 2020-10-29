@@ -11,7 +11,8 @@ import Legend from "./Legend";
 require('dotenv').config();
 
 const StyledMap = Styled.div`
-  height: 87vh;
+  height: 100%;
+  
   width: 75%;
   z-index: 0;
 
