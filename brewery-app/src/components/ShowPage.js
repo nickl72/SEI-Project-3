@@ -8,6 +8,7 @@ import * as S from "../styles/ShowPageStyles";
 import * as G from '../styles/GlobalStyle';
 
 import Review from './Review';
+import Carousel from 'react-elastic-carousel';
 
 function ShowPage() {
     const dispatch = useDispatch();
@@ -32,7 +33,7 @@ function ShowPage() {
             
             var request = {
                 placeId: placeDetails.place_id,
-                fields: ['place_id', 'name', 'rating', 'review', 'price_level']
+                fields: ['place_id', 'name', 'rating', 'review', 'price_level', 'photo']
             };
             
             // eslint-disable-next-line no-undef
@@ -41,6 +42,7 @@ function ShowPage() {
             service.getDetails(request, (place, status) => {
                 // eslint-disable-next-line no-undef
                 if (status === google.maps.places.PlacesServiceStatus.OK) {
+                    console.log('&&&&&&&&&&&&&&&&&&&&' + place.photos[0].getUrl({'maxWidth': 100, 'maxHeight': 100}));
                     dispatch(setPlaceDetails(place));
                     dispatch(setBreweryId(brewery.id));
                 }
@@ -76,7 +78,6 @@ function ShowPage() {
 
 
     useEffect(() => {
-        console.log('useEffect');
         getPlaceData();
     }, [placeDetails.place_id]);
 
@@ -87,54 +88,70 @@ function ShowPage() {
             {brewery.id 
             ?
                 <S.ShowPageContainer>
-                    <S.BreweryName>{brewery.name}</S.BreweryName>
-                    <S.BreweryImage />
-                    {placeDetails
-                    &&
-                        <S.BreweryStats>
-                            {placeDetails.rating 
-                            &&
-                                <div className = "stars">
-                                    Rating: {placeDetails.rating}
-                                </div>
-                            }
+                    <S.BreweryInfoContainer>
+                        <S.BreweryName>{brewery.name}</S.BreweryName>
+                        {placeDetails
+                        &&
                             <div>
-                                <p><G.Bold>Brewery Type: </G.Bold><G.Capitalize>{brewery.brewery_type}</G.Capitalize></p>
-                            </div>
-                            {placeDetails.price_level 
-                            &&
-                                <div className ="Price">
-                                    Price Level: {placeDetails.price_level}
+                                {(placeDetails && placeDetails.reviews)
+                                &&
+                                <S.BreweryPhotos>
+                                    <Carousel itemsToShow={1}>
+                                        {placeDetails.photos.map((photo, id) =>
+                                            <S.BreweryImage src={photo.getUrl({'maxHeight': 300})} key={id} />
+                                        )}
+                                    </Carousel>
+                                </S.BreweryPhotos>
+                                }
+                            <S.BreweryStats>
+                                {placeDetails.rating 
+                                &&
+                                <div className = "stars">
+                                        <G.Bold>Rating: </G.Bold>{placeDetails.rating}
+                                    </div>
+                                }
+                                <div>
+                                    <p><G.Bold>Brewery Type: </G.Bold><G.Capitalize>{brewery.brewery_type}</G.Capitalize></p>
                                 </div>
-                            }
-                        </S.BreweryStats>
-                    }
-                    <S.BreweryContactInfo>
-                        <ul>
+                                {placeDetails.price_level 
+                                &&
+                                <div className ="Price">
+                                        Price Level: {placeDetails.price_level}
+                                    </div>
+                                }
+                            </S.BreweryStats>
+                                </div>
+                        }
+                        <S.BreweryContactInfo>
                             {brewery.street
                             &&
-                                <li><G.Bold>Address: </G.Bold>{brewery.street}, {brewery.city}, {brewery.state} {brewery.postal_code.substring(0,5)}</li>
+                                <li>
+                                    <G.Bold>Address: </G.Bold>{brewery.street}, {brewery.city}, {brewery.state} {brewery.postal_code.substring(0,5)}
+                                </li>
                             }
                             {brewery.phone
                             &&
-                                <li><G.Bold>Phone: </G.Bold>{formatPhoneNumber(brewery.phone)}</li>
+                                <li>
+                                    <G.Bold>Phone: </G.Bold>{formatPhoneNumber(brewery.phone)}
+                                </li>
                             }
                             {brewery.website_url
                             &&
-                                <li><G.Bold>Website: </G.Bold><a href={brewery.website_url} target="_blank" rel="noreferrer"> {brewery.website_url.replace("http://","")}</a></li>
+                                <li>
+                                    <G.Bold>Website: </G.Bold><a href={brewery.website_url} target="_blank" rel="noreferrer"> {brewery.website_url.replace("http://","")}</a>
+                                </li>
                             }
-                        </ul>
-                    </S.BreweryContactInfo>
-                    <S.BreweryReviews>
+                        </S.BreweryContactInfo>
+
+                    </S.BreweryInfoContainer>
                         {(placeDetails && placeDetails.reviews)
                         &&
-                            <ul className='reviews'>
+                        <S.BreweryReviews>
                                 {placeDetails.reviews.map((review, id) =>
                                     <Review review={review} key={id} />
                                 )}
-                            </ul>
+                        </S.BreweryReviews>
                         }
-                    </S.BreweryReviews>
                 </S.ShowPageContainer>
             : <Redirect to='/' />}
         </S.ShowPage>
