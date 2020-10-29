@@ -5,28 +5,8 @@ import { hideSearch } from '../features/showSearchFormSlice';
 import { addBrewery, barCrawl, removeBrewery } from "../features/barCrawlSlice";
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { ResultDiv } from '../styles/ResultStyle';
 
-
-const Div = styled.div`
-    border: 2px solid black;
-    border-radius: 5px;
-    margin: 10px 5px ;
-    padding: 0;
-    box-shadow: 2px 2px 10px 2px grey;
-    width: 85%;
-    &:hover {
-        box-shadow: none;
-    }
-    &:active {
-        box-shadow: inset 2px 2px 10px 2px grey;
-    }
-    .active {
-        background: red;
-    }
-    div > *{
-        margin: 0;
-    }
-`
 
 const Result = (props) => {
     const dispatch = useDispatch();
@@ -69,7 +49,7 @@ const Result = (props) => {
     }
 
     return (
-        <Div className='result' onClick={(e) => handleClick(e)}>
+        <ResultDiv className={isActiveBrewery ? 'result active' : 'result'} onClick={(e) => handleClick(e)}>
             <div className={isActiveBrewery ? 'active' : ''}> 
                 <h3>Brewery: {props.result.name}</h3>
                 <h4>Location: {props.result.street}, {props.result.city}, {props.result.state}</h4>
@@ -81,7 +61,7 @@ const Result = (props) => {
                     {onList ? "Remove from Bar Crawl" : "Add to Bar Crawl"}
                 </button>
             </div>
-        </Div>
+        </ResultDiv>
     )
 }
 
