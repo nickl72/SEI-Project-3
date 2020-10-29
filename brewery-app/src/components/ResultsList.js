@@ -10,7 +10,7 @@ import { StyledSubmit } from '../styles/FormStyles';
 
 const Div = styled.div` 
     // border: solid 5px #6f3c05;
-    height: 90vh;
+    height: 87vh;
     width: 25%;
     background: #f2a743;
     position: relative;
@@ -45,12 +45,27 @@ const ViewButton = styled.div `
 `
 const ResultHolder = styled.div `
     display: flex;
+    height: calc(87vh - 30px);
     flex-direction: column;
     align-items: center;
+    overflow: auto;
     &.message {
         padding: 15px;
         text-align: center;
     }
+    h3 {
+        margin: 10px;
+    }
+`
+const CrawlCount = styled.span`
+    display: inline-block;
+    background-color: white;
+    color: black;
+    text-align: center;
+    padding: 2px;
+    border-radius: 20%;
+    margin-left: 0.5em;
+    font-weight: bold;
 `
 
 const ResultsList = () => {
@@ -73,17 +88,22 @@ const ResultsList = () => {
                 <ViewButton 
                     onClick={() => viewClick("barCrawl")}
                     className={activeView==="barCrawl" ? "active" : "inactive"}
-                >Bar Crawl List</ViewButton>
+                >
+                    Bar Crawl List
+                    <CrawlCount>{barCrawlList.length}</CrawlCount>
+                    </ViewButton>
             </ResultHead>
             {activeView === "results" ?
                 <ResultHolder>
                     <h3>Search Results</h3>
-                    {searchResults && searchResults.map((result, index) => (
-                    <Result 
-                        result={result} 
-                        key={index} 
-                    /> 
-                    ))}
+                    <ResultHolder className="results">
+                        {searchResults && searchResults.map((result, index) => (
+                        <Result 
+                            result={result} 
+                            key={index} 
+                        /> 
+                        ))}
+                    </ResultHolder>
                 </ResultHolder> 
                 
             :
@@ -100,18 +120,17 @@ const ResultsList = () => {
                                 e.preventDefault()
                                 dispatch(toggleEmail())}
                                 } />
-                            { barCrawlList.map((brew, index) => (
-                                <Result
-                                    result={brew}
-                                    key={index}
-                                />
-                            ))}
+                            {barCrawlList.map((brew, index) => (
+                                <ResultHolder className="results">
+                                    <Result
+                                        result={brew}
+                                        key={index}
+                                    />
+                                </ResultHolder>
+                            ))}                            
                         </ResultHolder>
 
                     }
-                    
-
-
                 </ResultHolder>
             }
             {email && <EmailForm />}
