@@ -23,7 +23,7 @@ const Header = () => {
         <S.PageHeader>
             <Link to='/'>
                 <S.TitleDiv>
-                    <S.PageIcon src="./brew_puzzle.png" alt="Puzzles Icon" />
+                    <S.PageIcon src="/brew_puzzle.png" alt="Puzzles Icon" />
                         <S.PageTitle>
                             <h1>Puzzles</h1>
                             <p>Put Your Night Together</p>

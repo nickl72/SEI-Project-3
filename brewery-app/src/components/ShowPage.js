@@ -25,9 +25,7 @@ function ShowPage() {
 
     const getPlaceData = () => {
         if( placeDetails.place_id && placeBreweryId === brewery.id ) {
-            // console.log('alls good!');
         } else if ( placeDetails.place_id && !placeBreweryId ) {            
-            // console.log('getPlaceData have place ID ' + placeDetails.place_id );
             // eslint-disable-next-line no-undef
             let map = new google.maps.Map(document.getElementById("map"));
             
@@ -42,7 +40,6 @@ function ShowPage() {
             service.getDetails(request, (place, status) => {
                 // eslint-disable-next-line no-undef
                 if (status === google.maps.places.PlacesServiceStatus.OK) {
-                    // console.log('&&&&&&&&&&&&&&&&&&&&' + place.photos[0].getUrl({'maxWidth': 100, 'maxHeight': 100}));
                     dispatch(setPlaceDetails(place));
                     dispatch(setBreweryId(brewery.id));
                 }
@@ -109,7 +106,7 @@ function ShowPage() {
                                 &&
                                 <S.MugRating>
                                     <p>
-                                        <G.Bold>Rating: </G.Bold>{placeDetails.rating}
+                                        <G.Bold>Total Rating: </G.Bold>{placeDetails.rating}
                                     </p>
                                     <S.RatingIcon src = "/beer-mug_1f37a.png" alt='beer mug' />
                                 </S.MugRating>
