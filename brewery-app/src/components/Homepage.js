@@ -3,8 +3,6 @@ import styled from 'styled-components';
 
 import MapContainer from './MapContainer';
 import ResultsList from './ResultsList';
-import { useSelector } from 'react-redux';
-import { selectBreweryList } from '../features/breweryListSlice';
 
 const Div = styled.div`
     display: flex;
@@ -16,14 +14,11 @@ const Div = styled.div`
     margin: 0 auto;
 `
 
-
-
 const Homepage =() => {
-    const breweryList = useSelector(selectBreweryList);
     return (
         <Div>
             <ResultsList />    
-            <MapContainer searchResults={breweryList}/>
+            <MapContainer />
         </Div>
     )
 }
