@@ -12,34 +12,39 @@ import { useSelector } from 'react-redux';
 import { selectVerifyAge } from './features/verifyAgeSlice';
 
 
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+
 function App() {
   const ofAge = useSelector(selectVerifyAge)
   return (
-    <div className="App">
-      {ofAge ? 
-        <>
-          <Header />
-          <main>
-            <Route exact path="/" component={Homepage} />
-            <Route 
-              path="/show"
-              render={(props) => <ShowPage />}
-              />
-            <Route path="/about" component={AboutPage} />
-          </main>
-          <Footer />
-        </>
-        :
-        ofAge === null ?
-          <Switch>
-            <Route path='/kids' component={KidsPage} />
-            <Route path='/' component={VerifyAge} />
-          </Switch>
-          : 
-          <Redirect to='/kids' />
-        }
-        <Route path='/kids' component={KidsPage} />
-    </div>
+    <DndProvider backend={HTML5Backend}>
+      <div className="App">
+        {ofAge ? 
+          <>
+            <Header />
+            <main>
+              <Route exact path="/" component={Homepage} />
+              <Route 
+                path="/show"
+                render={(props) => <ShowPage />}
+                />
+              <Route path="/about" component={AboutPage} />
+            </main>
+            <Footer />
+          </>
+          :
+          ofAge === null ?
+            <Switch>
+              <Route path='/kids' component={KidsPage} />
+              <Route path='/' component={VerifyAge} />
+            </Switch>
+            : 
+            <Redirect to='/kids' />
+          }
+          <Route path='/kids' component={KidsPage} />
+      </div>
+    </DndProvider>
   );
 }
 

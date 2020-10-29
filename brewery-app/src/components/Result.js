@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import { activateBrewery, deactivateBrewery, selectBrewery } from '../features/activeBrewerySlice';
-import { addBrewery, barCrawl, removeBrewery } from "../features/barCrawlSlice";
+import { addBrewery, barCrawl, removeBrewery, view } from "../features/barCrawlSlice";
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { useDrag } from "react-dnd";
 
 
 
@@ -32,6 +33,7 @@ const Result = (props) => {
     const dispatch = useDispatch();
     const brewery = useSelector(selectBrewery);
     const barCrawlList = useSelector(barCrawl);
+    const activeView = useSelector(view);
 
     const isActiveBrewery = (props.result.id === brewery.id);
 
@@ -65,8 +67,17 @@ const Result = (props) => {
         
     }
 
+    //Set up for draggable list
+    const [{isDragging}, drag] = useDrag({
+        item: {type: "resultCard", id: props.result.id },
+        canDrag: activeView==="barCrawl" ? true : false,
+        collect: (monitor) => ({
+            isDragging: !!monitor.isDragging()
+        })
+    })
+
     return (
-        <Div className='result' onClick={(e) => handleClick(e)}>
+        <Div className='result' ref={drag} isDragging={isDragging} onClick={(e) => handleClick(e)}>
             <div className={isActiveBrewery ? 'active' : ''}> 
                 <h3>Brewery: {props.result.name}</h3>
                 <h4>Location: {props.result.street}, {props.result.city}, {props.result.state}</h4>
