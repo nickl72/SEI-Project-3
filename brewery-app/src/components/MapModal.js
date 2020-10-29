@@ -2,9 +2,10 @@ import React, {useState, useEffect} from "react";
 import { Holder, Icon, Modal, CloseIcon} from "../styles/BreweryDisplayStyle";
 import { Bold } from '../styles/GlobalStyle';
 import { useSelector, useDispatch } from "react-redux";
-import { selectBrewery, activateBrewery } from "../features/activeBrewerySlice";
+import { selectBrewery, activateBrewery, deactivateBrewery } from "../features/activeBrewerySlice";
 import { hideSearch } from '../features/showSearchFormSlice';
 import { Redirect } from 'react-router-dom';
+import { barCrawl } from "../features/barCrawlSlice";
 
 
 function MapModal(props) {
@@ -27,7 +28,19 @@ function MapModal(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [activeBrew])
 
-    const isActiveBrewery = (MapData.brewery.id === activeBrew.id);
+    const barCrawlList = useSelector(barCrawl);
+
+    useEffect(() => {
+        // setMapData({
+        //     brewery: props.brewery,
+        //     show: false
+        // })
+        dispatch(deactivateBrewery());
+        
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+      }, [barCrawlList]);
+
+    let isActiveBrewery = (MapData.brewery.id === activeBrew.id);
 
     //Show will allow forced turn on for the modal;    
     const toggleModal = (show = "default") => {
@@ -77,7 +90,7 @@ function MapModal(props) {
             <Icon 
                 src={IconURL} 
                 onClick={handleIconClick} 
-                className={MapData.brewery.id === activeBrew.id ? "light" : null}
+                className={isActiveBrewery ? "light" : null}
                 />
             {MapData.show ? 
             <Modal onDoubleClick={() => {dispatch(hideSearch()); setRedirect(true); }}>
