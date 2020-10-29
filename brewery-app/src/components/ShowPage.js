@@ -107,7 +107,7 @@ function ShowPage() {
                                 {placeDetails.rating 
                                 &&
                                 <div className = "stars">
-                                        Rating: {placeDetails.rating}
+                                        <G.Bold>Rating: </G.Bold>{placeDetails.rating}
                                     </div>
                                 }
                                 <div>
@@ -123,27 +123,24 @@ function ShowPage() {
                                 </div>
                         }
                         <S.BreweryContactInfo>
-
-                            <ul>
-                                {brewery.street
-                                &&
-                                    <li>
-                                        <G.Bold>Address: </G.Bold>{brewery.street}, {brewery.city}, {brewery.state} {brewery.postal_code.substring(0,5)}
-                                    </li>
-                                }
-                                {brewery.phone
-                                &&
-                                    <li>
-                                        <G.Bold>Phone: </G.Bold>{formatPhoneNumber(brewery.phone)}
-                                    </li>
-                                }
-                                {brewery.website_url
-                                &&
-                                    <li>
-                                        <G.Bold>Website: </G.Bold><a href={brewery.website_url} target="_blank" rel="noreferrer"> {brewery.website_url.replace("http://","")}</a>
-                                    </li>
-                                }
-                            </ul>
+                            {brewery.street
+                            &&
+                                <li>
+                                    <G.Bold>Address: </G.Bold>{brewery.street}, {brewery.city}, {brewery.state} {brewery.postal_code.substring(0,5)}
+                                </li>
+                            }
+                            {brewery.phone
+                            &&
+                                <li>
+                                    <G.Bold>Phone: </G.Bold>{formatPhoneNumber(brewery.phone)}
+                                </li>
+                            }
+                            {brewery.website_url
+                            &&
+                                <li>
+                                    <G.Bold>Website: </G.Bold><a href={brewery.website_url} target="_blank" rel="noreferrer"> {brewery.website_url.replace("http://","")}</a>
+                                </li>
+                            }
                         </S.BreweryContactInfo>
 
                     </S.BreweryInfoContainer>
