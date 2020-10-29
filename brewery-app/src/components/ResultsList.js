@@ -3,7 +3,7 @@ import Result from './Result';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectBreweryList } from '../features/breweryListSlice';
 import { barCrawl, view, setView } from "../features/barCrawlSlice";
-import { ResultHead, ViewButton, ResultHolder, ResultList } from '../styles/ResultStyle';
+import { Message, ResultHead, ViewButton, ResultHolder, ResultList } from '../styles/ResultStyle';
 
 
 const ResultsList = () => {
@@ -42,10 +42,10 @@ const ResultsList = () => {
                 <ResultHolder>
                     <h3>Bar Crawl List</h3>
                     {barCrawlList.length === 0 ? 
-                        <ResultHolder className="message">
+                        <Message className="message">
                             <h4>You haven't pick any breweries yet...</h4>
                             <h5>Time to get planning!</h5> 
-                        </ResultHolder>
+                        </Message>
                         :
                         barCrawlList.map((brew, index) => (
                             <Result

@@ -3,6 +3,8 @@ import { fadeIn } from 'react-animations';
 
 const fadeInAnimation = keyframes`${fadeIn}`;
 
+
+
 export const ResultDiv = styled.div`
     border: 2px solid black;
     border-radius: 5px;
@@ -26,7 +28,7 @@ export const ResultDiv = styled.div`
 `
 
 export const ResultHead = styled.div`
-height: 25px;
+height: 5%;
 width: 100%;
 display: flex;
 background: #fbdc81;
@@ -36,10 +38,15 @@ export const ResultHolder = styled.div `
 display: flex;
 flex-direction: column;
 align-items: center;
-&.message {
+max-height: 95%;
+overflow-y: auto;
+.message {
     padding: 15px;
     text-align: center;
+    overflow: none;
 }
+`
+export const Message = styled(ResultHolder)` 
 `
 
 export const ResultList = styled.div` 
