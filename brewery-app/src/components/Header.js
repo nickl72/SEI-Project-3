@@ -1,21 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
 import SearchForm from './SearchForm';
 import * as S from '../styles/HeaderStyles';
 import { Link } from 'react-router-dom';
 import {CSSTransitionGroup} from 'react-transition-group';
 
-const Header = () => {
-    const [showSearch, setShowSearch] = useState(false);
+import { useSelector, useDispatch } from 'react-redux';
+import { selectShowSearch, showSearch, hideSearch } from '../features/showSearchFormSlice';
 
-    const toggleShowSearch = (e) => {
-        if (e.target === e.currentTarget) {
-            setShowSearch(!showSearch)            
-        }
+
+const Header = () => {
+    const dispatch = useDispatch();
+    const showingSearch = useSelector(selectShowSearch)
+
+    const showForm = () => {
+        dispatch(showSearch());
     }
-    const hideSearch = (e) => {
-        setShowSearch(false);
+    const hideForm = () => {
+        dispatch(hideSearch());
     }
-    
+
     return (
         <S.PageHeader>
             <Link to='/'>
@@ -28,28 +31,22 @@ const Header = () => {
             </Link>
             <S.NavBar>
                 <S.SearchButtonContainer>
-                    <S.NavButton onClick={toggleShowSearch}>
+                    <S.NavButton onClick={ showingSearch ? hideForm : showForm}>
                         <Link to='/'>
-                            <S.NavTitle onClick={toggleShowSearch}>
+                            <S.NavTitle onClick={showForm}>
                                 Search breweries
                             </S.NavTitle>
                         </Link>
                     </S.NavButton>
-                    
                     <CSSTransitionGroup
                         transitionName="slideForm"
                         transitionEnterTimeout={500}
                         transitionLeaveTimeout={300}
                         >
-                            { showSearch && <SearchForm /> }
+                            { showingSearch && <SearchForm /> }
                     </CSSTransitionGroup>
-                        
-                    
                 </S.SearchButtonContainer>
-                
-                
-
-                <S.NavButton onClick={hideSearch}>
+                <S.NavButton onClick={hideForm}>
                     <Link to='/about'>
                         <S.NavTitle>
                             About Us

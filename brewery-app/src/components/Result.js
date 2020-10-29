@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import { activateBrewery, deactivateBrewery, selectBrewery } from '../features/activeBrewerySlice';
+import { hideSearch } from '../features/showSearchFormSlice';
 import { addBrewery, barCrawl, removeBrewery, view } from "../features/barCrawlSlice";
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useDrag } from "react-dnd";
-
 
 
 const Div = styled.div`
@@ -36,7 +36,6 @@ const Result = (props) => {
     const activeView = useSelector(view);
 
     const isActiveBrewery = (props.result.id === brewery.id);
-
      // Sends brewery details up to hompage level and highlights the active div based on the index
      // Sets redux state for active brewery
      const handleClick = (e) => {
@@ -67,6 +66,10 @@ const Result = (props) => {
         
     }
 
+    const hideForm = () => {
+        dispatch(hideSearch());
+    }
+
     //Set up for draggable list
     const [{isDragging}, drag] = useDrag({
         item: {type: "resultCard", id: props.result.id },
@@ -75,13 +78,17 @@ const Result = (props) => {
             isDragging: !!monitor.isDragging()
         })
     })
+    
 
     return (
         <Div className='result' ref={drag} isDragging={isDragging} onClick={(e) => handleClick(e)}>
             <div className={isActiveBrewery ? 'active' : ''}> 
                 <h3>Brewery: {props.result.name}</h3>
                 <h4>Location: {props.result.street}, {props.result.city}, {props.result.state}</h4>
-                <Link to={`/show/${props.result.name.split(' ').join('')}`}>More info</Link> { /* brewery name in URL is for visual purposes only. showPage uses Redux state */ }
+                { /* brewery name in URL is for visual purposes only. showPage uses Redux state */ }
+                <Link to={`/show/${props.result.name.split(' ').join('')}`} onClick={hideForm}>
+                    More info
+                </Link> 
                 <button onClick={(e) => updateListClick(e)}>
                     {onList ? "Remove from Bar Crawl" : "Add to Bar Crawl"}
                 </button>
