@@ -16,7 +16,7 @@ const SearchForm = () => {
         zipCode: '',
         breweryName: '',
         breweryType: '',
-        resultsPerPage: 10,
+        resultsPerPage: 15,
         resultPage: 1
     })
 
