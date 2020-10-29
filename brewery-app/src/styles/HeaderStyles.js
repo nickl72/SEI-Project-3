@@ -17,11 +17,15 @@ export const TitleDiv = Styled.div`
     margin: 3px 0;
 `
 export const PageTitle = Styled.div`
-        margin: 0 20px;
-        width: 40%;
+    margin: 0 20px;
+    width: 40%;
+
+
     h1, p{ 
         margin: 0;
         padding: 0;
+        color: #331a04;
+
     }
     p {
         font-size: small;
@@ -102,4 +106,6 @@ export const NavTitle = Styled.h2`
     margin: 0;
     text-align: center;
     padding: 25px;
+    color: #331a04;
+
 `

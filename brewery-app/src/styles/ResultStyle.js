@@ -8,7 +8,7 @@ const fadeInAnimation = keyframes`${fadeIn}`;
 export const CrawlCount = styled.span`
     display: inline-block;
     background-color: white;
-    color: black;
+    color: #331a04;
     text-align: center;
     padding: 2px;
     border-radius: 20%;
@@ -20,7 +20,7 @@ export const EmailButton = styled(StyledSubmit)`
 `
 
 export const ResultDiv = styled.div`
-    border: 2px solid black;
+    border: 2px solid #331a04;
     border-radius: 5px;
     margin: 10px 5px;
     padding: 5px;
@@ -50,7 +50,8 @@ export const ResultHolder = styled.div `
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: calc(87vh - 7%);
+    height: calc(85vh - 7%);
+    width: 100%;
     overflow-y: auto;
     &.message {
         padding: 15px;
@@ -58,11 +59,11 @@ export const ResultHolder = styled.div `
         overflow: none;
     }
     h3 {
-            margin: 10px;
+        margin: 10px;
     }
     .active {
-            background: #9a5607;
-            color: white;
+        background: #9a5607;
+        color: white;
     }
 `
 
@@ -70,8 +71,7 @@ export const Message = styled(ResultHolder)`
 `
 
 export const ResultList = styled.div` 
-// border: solid 5px #6f3c05;
-height: 87vh;
+height: 85vh;
 width: 25%;
 background: #f2a743;
 position: relative;

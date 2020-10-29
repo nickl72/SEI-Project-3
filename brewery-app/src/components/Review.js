@@ -3,6 +3,7 @@ import * as R from '../styles/ReviewStyles';
 import * as S from '../styles/ShowPageStyles';
 import * as G from '../styles/GlobalStyle';
 
+import { ResultDiv } from '../styles/ResultStyle';
 
 const Review = (props) => {
     let mugs = []
