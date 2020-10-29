@@ -8,6 +8,7 @@ import * as S from "../styles/ShowPageStyles";
 import * as G from '../styles/GlobalStyle';
 
 import Review from './Review';
+import Carousel from 'react-elastic-carousel';
 
 function ShowPage() {
     const dispatch = useDispatch();
@@ -87,16 +88,25 @@ function ShowPage() {
             {brewery.id 
             ?
                 <S.ShowPageContainer>
-                    
-                    {/* <S.BreweryImage /> */}
                     <S.BreweryInfoContainer>
-                    <S.BreweryName>{brewery.name}</S.BreweryName>
+                        <S.BreweryName>{brewery.name}</S.BreweryName>
                         {placeDetails
                         &&
+                            <div>
+                                {(placeDetails && placeDetails.reviews)
+                                &&
+                                <S.BreweryPhotos>
+                                    <Carousel itemsToShow={1}>
+                                        {placeDetails.photos.map((photo, id) =>
+                                            <S.BreweryImage src={photo.getUrl({'maxHeight': 300})} key={id} />
+                                        )}
+                                    </Carousel>
+                                </S.BreweryPhotos>
+                                }
                             <S.BreweryStats>
                                 {placeDetails.rating 
                                 &&
-                                    <div className = "stars">
+                                <div className = "stars">
                                         Rating: {placeDetails.rating}
                                     </div>
                                 }
@@ -105,26 +115,33 @@ function ShowPage() {
                                 </div>
                                 {placeDetails.price_level 
                                 &&
-                                    <div className ="Price">
+                                <div className ="Price">
                                         Price Level: {placeDetails.price_level}
                                     </div>
                                 }
                             </S.BreweryStats>
+                                </div>
                         }
                         <S.BreweryContactInfo>
 
                             <ul>
                                 {brewery.street
                                 &&
-                                    <li><G.Bold>Address: </G.Bold>{brewery.street}, {brewery.city}, {brewery.state} {brewery.postal_code.substring(0,5)}</li>
+                                    <li>
+                                        <G.Bold>Address: </G.Bold>{brewery.street}, {brewery.city}, {brewery.state} {brewery.postal_code.substring(0,5)}
+                                    </li>
                                 }
                                 {brewery.phone
                                 &&
-                                    <li><G.Bold>Phone: </G.Bold>{formatPhoneNumber(brewery.phone)}</li>
+                                    <li>
+                                        <G.Bold>Phone: </G.Bold>{formatPhoneNumber(brewery.phone)}
+                                    </li>
                                 }
                                 {brewery.website_url
                                 &&
-                                    <li><G.Bold>Website: </G.Bold><a href={brewery.website_url} target="_blank" rel="noreferrer"> {brewery.website_url.replace("http://","")}</a></li>
+                                    <li>
+                                        <G.Bold>Website: </G.Bold><a href={brewery.website_url} target="_blank" rel="noreferrer"> {brewery.website_url.replace("http://","")}</a>
+                                    </li>
                                 }
                             </ul>
                         </S.BreweryContactInfo>
@@ -136,7 +153,7 @@ function ShowPage() {
                                 {placeDetails.reviews.map((review, id) =>
                                     <Review review={review} key={id} />
                                 )}
-                    </S.BreweryReviews>
+                        </S.BreweryReviews>
                         }
                 </S.ShowPageContainer>
             : <Redirect to='/' />}
