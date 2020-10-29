@@ -24,9 +24,10 @@ const Header = () => {
             <Link to='/'>
                 <S.TitleDiv>
                     <S.PageIcon src="./brew_puzzle.png" alt="Puzzles Icon" />
-                    <S.PageTitle>
-                        Puzzles
-                    </S.PageTitle>
+                        <S.PageTitle>
+                            <h1>Puzzles</h1>
+                            <p>Put Your Night Together</p>
+                        </S.PageTitle>
                 </S.TitleDiv>
             </Link>
             <S.NavBar>

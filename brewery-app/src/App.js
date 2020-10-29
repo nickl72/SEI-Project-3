@@ -25,11 +25,12 @@ function App() {
             <Header />
             <main>
               <Route exact path="/" component={Homepage} />
-              <Route
+              <Route 
                 path="/show"
                 render={(props) => <ShowPage />}
                 />
               <Route path="/about" component={AboutPage} />
+              <Route path='/kids' component={KidsPage} />
             </main>
             <Footer />
           </>
@@ -40,9 +41,12 @@ function App() {
               <Route path='/' component={VerifyAge} />
             </Switch>
             : 
+            <>
             <Redirect to='/kids' />
+            <Route path='/kids' component={KidsPage} />
+            </>
           }
-          <Route path='/kids' component={KidsPage} />
+          {/* { !ofAge && } */}
       </div>
     </DndProvider>
   );

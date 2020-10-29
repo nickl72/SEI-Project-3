@@ -3,6 +3,8 @@ import { Holder, Icon, Modal, CloseIcon} from "../styles/BreweryDisplayStyle";
 import { Bold } from '../styles/GlobalStyle';
 import { useSelector, useDispatch } from "react-redux";
 import { selectBrewery, activateBrewery } from "../features/activeBrewerySlice";
+import { hideSearch } from '../features/showSearchFormSlice';
+import { Redirect } from 'react-router-dom';
 
 
 function MapModal(props) {
@@ -13,6 +15,7 @@ function MapModal(props) {
         brewery: props.brewery,
         show: false
     })
+    const [redirect, setRedirect] = useState(false);
 
     //Toggle the modal on selecting new active brewery from list
     useEffect(() => {
@@ -76,7 +79,7 @@ function MapModal(props) {
                 className={MapData.brewery.id === activeBrew.id ? "light" : null}
                 />
             {MapData.show ? 
-            <Modal>
+            <Modal onDoubleClick={() => {dispatch(hideSearch()); setRedirect(true); }}>
                 <Holder className="row">
                     <Bold>{MapData.brewery.name}</Bold>
                     <CloseIcon onClick={toggleModal}>
@@ -87,7 +90,7 @@ function MapModal(props) {
                 <a href={MapData.brewery.website_url} target="_blank" rel="noreferrer">{MapData.brewery.website_url.replace("http://","")}</a>
             </Modal>
             : null }
-            
+            { redirect && <Redirect to={`/show/${activeBrew.name.split(' ').join('')}`} />}
         </Holder>
     )
 }
