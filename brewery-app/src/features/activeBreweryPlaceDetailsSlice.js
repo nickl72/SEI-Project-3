@@ -10,15 +10,21 @@ export const activeBreweryPlaceDetailsSlice = createSlice({
         setPlaceDetails: (state, action) => {
             state.placeDetails = action.payload;
         },
+        setBreweryId: (state, action) => {
+            state.breweryId = action.payload;
+        },
         forgetPlaceDetails: state => {
-            state.placeDetails = {place_id: null}
+            state.placeDetails = {place_id: null};
+            state.breweryId = '';
+
         }
     }
 });
 
-export const { setPlaceDetails, forgetPlaceDetails } = activeBreweryPlaceDetailsSlice.actions;
+export const { setPlaceDetails, setBreweryId, forgetPlaceDetails } = activeBreweryPlaceDetailsSlice.actions;
 
 export const selectPlaceDetails = state => state.placeDetails.placeDetails;
+export const selectBreweryId = state => state.placeDetails.breweryId;
 
 
 export default activeBreweryPlaceDetailsSlice.reducer;

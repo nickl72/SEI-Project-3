@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { selectBrewery } from '../features/activeBrewerySlice';
-import { selectPlaceDetails, setPlaceDetails } from '../features/activeBreweryPlaceDetailsSlice';
+import { selectPlaceDetails, setPlaceDetails, selectBreweryId, setBreweryId, forgetPlaceDetails } from '../features/activeBreweryPlaceDetailsSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
@@ -10,10 +10,9 @@ import * as G from '../styles/GlobalStyle';
 import Review from './Review';
 
 function ShowPage() {
-    // const [placeId, setPlaceId] = useState(null);
-    // const [placeDetails, setPlaceDetails] = useState(null);
     const dispatch = useDispatch();
     const brewery = useSelector(selectBrewery);
+    const placeBreweryId = useSelector(selectBreweryId);
     const placeDetails = useSelector(selectPlaceDetails);
 
     function formatPhoneNumber(phoneNumber) {
@@ -24,10 +23,9 @@ function ShowPage() {
     }
 
     const getPlaceData = () => {
-        console.log('getPlaceData' );
-        console.log('place details: ' + placeDetails );
-        
-        if( placeDetails.place_id ) {
+        if( placeDetails.place_id && placeBreweryId === brewery.id ) {
+            console.log('alls good!');
+        } else if ( placeDetails.place_id && !placeBreweryId ) {            
             console.log('getPlaceData have place ID ' + placeDetails.place_id );
             // eslint-disable-next-line no-undef
             let map = new google.maps.Map(document.getElementById("map"));
@@ -43,37 +41,37 @@ function ShowPage() {
             service.getDetails(request, (place, status) => {
                 // eslint-disable-next-line no-undef
                 if (status === google.maps.places.PlacesServiceStatus.OK) {
-                    dispatch(setPlaceDetails(place, {id: brewery.id}));
+                    dispatch(setPlaceDetails(place));
+                    dispatch(setBreweryId(brewery.id));
                 }
             })
         } else {
-            console.log('getPlaceData dont have place ID ' + placeDetails.place_id );
+            dispatch(forgetPlaceDetails());
 
             getPlaceId();
         }
     }
     
     const getPlaceId = () => {
-        console.log('getPlaceId');
-        // eslint-disable-next-line no-undef
-        let map = new google.maps.Map(document.getElementById("map"));
-        
-        const request = {
-            query: brewery.name,
-            fields: ['name', 'place_id'],
-        };
-        
-        // eslint-disable-next-line no-undef
-        let service = new google.maps.places.PlacesService(map);
-        
-        service.findPlaceFromQuery(request, (place, status) => {
+        if(brewery.id) {
             // eslint-disable-next-line no-undef
-            if (status === google.maps.places.PlacesServiceStatus.OK) {
-                console.log(place[0].place_id);
-                dispatch(setPlaceDetails({place_id: place[0].place_id}));
-                // setPlaceId(place[0].place_id);
-            }
-        })
+            let map = new google.maps.Map(document.getElementById("map"));
+            
+            const request = {
+                query: brewery.name,
+                fields: ['name', 'place_id'],
+            };
+            
+            // eslint-disable-next-line no-undef
+            let service = new google.maps.places.PlacesService(map);
+            
+            service.findPlaceFromQuery(request, (place, status) => {
+                // eslint-disable-next-line no-undef
+                if (status === google.maps.places.PlacesServiceStatus.OK) {
+                    dispatch(setPlaceDetails({place_id: place[0].place_id}));
+                }
+            })
+        }
     }
 
 
