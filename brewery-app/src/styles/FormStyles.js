@@ -25,15 +25,36 @@ export const StyledSubmit = styled.input`
     color: #fbdc81;
     cursor: pointer;
     text-align: center;
+    border-radius: 5px;
     &:hover {
         background: #532b04;
     }
+`
+export const StyledButton = styled.button`
+    font-size: 1em;
+    height: 2em;
+    font-weight: 600;
+    padding: 0;
+    margin: 0;
+    width: 12em;
+    background: #331a04;
+    color: #fbdc81;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 5px;
+    &:hover {
+        background: #532b04;
+    }
+`
+export const ButtonHolder = styled.div`
+    display: flex;
+    justify-content: space-between;
+    padding-top: 2px;
 `
 
 export const StyledInput = styled.input`
         margin: 1em;
         padding: 0 0.3em; 
-        color: #532b04;
         color: #0d0404;
         background: #e78c11; 
         ::-webkit-outer-spin-button,

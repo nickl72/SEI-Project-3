@@ -1,12 +1,11 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, { useState, useEffect } from 'react';
 import Result from './Result';
 import { useSelector, useDispatch} from 'react-redux';
 import { selectBreweryList } from '../features/breweryListSlice';
 import { useDrop } from "react-dnd";
 import { barCrawl, view, setView, selectEmail, toggleEmail, setList } from "../features/barCrawlSlice";
 import EmailForm from './EmailForm';
-import { StyledSubmit } from '../styles/FormStyles';
-import { Message, ResultList, ResultHead, ViewButton, ResultHolder, CrawlCount } from '../styles/ResultStyle';
+import { Message, ResultList, ResultHead, ViewButton, ResultHolder, CrawlCount, EmailButton } from '../styles/ResultStyle';
 import update from "immutability-helper";
 
 
@@ -41,7 +40,6 @@ const ResultsList = () => {
             ],
         }));    
         dispatch(setList(brews));
-        console.log(brews)
     };
 
     const findBrew = (id) => {
@@ -75,7 +73,6 @@ const ResultsList = () => {
             </ResultHead>
             {activeView === "results" ?
                 <ResultHolder>
-                    <h3>Search Results</h3>
                     <ResultHolder className="results" ref={drop}>
                         {searchResults && searchResults.map((result, index) => (
                         <Result 
@@ -98,7 +95,7 @@ const ResultsList = () => {
                         </Message>
                         :
                         <ResultHolder className="results" ref={drop}>
-                            <StyledSubmit value='Send Email' onClick={(e) => {
+                            <EmailButton value='Send Email' onClick={(e) => {
                                 e.preventDefault()
                                 dispatch(toggleEmail())}
                                 } />

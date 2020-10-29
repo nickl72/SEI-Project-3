@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components';
+import { StyledSubmit } from './FormStyles';
 import { fadeIn } from 'react-animations';
 
 const fadeInAnimation = keyframes`${fadeIn}`;
@@ -13,6 +14,9 @@ export const CrawlCount = styled.span`
     border-radius: 20%;
     margin-left: 0.5em;
     font-weight: bold;
+`
+export const EmailButton = styled(StyledSubmit)`
+    margin-top: 10px;
 `
 
 export const ResultDiv = styled.div`

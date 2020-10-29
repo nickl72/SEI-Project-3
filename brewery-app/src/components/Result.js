@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useDrag, useDrop } from "react-dnd";
 import { ResultDiv } from '../styles/ResultStyle';
+import { StyledButton, ButtonHolder } from '../styles/FormStyles';
 
 
 
@@ -39,14 +40,13 @@ const Result = (props) => {
     let onList = isOnList(props.result.id, barCrawlList);
 
     const updateListClick = (e) => {
+        e.preventDefault();
         let onList = isOnList(props.result.id, barCrawlList);
         if(onList) {
             dispatch(removeBrewery(props.result));
         } else {
             dispatch(addBrewery(props.result));
         }
-        
-        
     }
 
     const hideForm = () => {
@@ -69,9 +69,7 @@ const Result = (props) => {
         }),
         end: (dropResult, monitor) => {
             const {id: droppedId, originalIndex} = monitor.getItem();
-            console.log(monitor.getItem());
             const didDrop = monitor.didDrop();
-            console.log(`Dropped: ${droppedId}, original: ${originalIndex}`)
             if(!didDrop) {
                 moveBrew(droppedId, originalIndex);
             }
@@ -82,10 +80,8 @@ const Result = (props) => {
         accept: "resultCard",
         canDrop: () => false,
         hover({id: draggedId}) {
-            console.log(draggedId)
             if(draggedId !== props.id) {
                 const { index: overIndex } = findBrew(props.id);
-                console.log("trying to move brew")
                 moveBrew(draggedId, overIndex);
                 
             }
@@ -102,12 +98,14 @@ const Result = (props) => {
                 <h3>Brewery: {props.result.name}</h3>
                 <h4>Location: {props.result.street}, {props.result.city}, {props.result.state}</h4>
                 { /* brewery name in URL is for visual purposes only. showPage uses Redux state */ }
-                <Link to={`/show/${props.result.name.split(' ').join('')}`} className='cancel' onClick={hideForm}>
-                    More info
-                </Link> 
-                <button className='cancel' onClick={(e) => updateListClick(e)}>
-                    {onList ? "Remove from Bar Crawl" : "Add to Bar Crawl"}
-                </button>
+                <ButtonHolder>
+                    <Link to={`/show/${props.result.name.split(' ').join('')}`} className='cancel' onClick={hideForm}>
+                        <StyledButton>More info</StyledButton>
+                    </Link> 
+                    <StyledButton className='cancel' onClick={(e) => updateListClick(e)}>
+                        {onList ? "Remove from Bar Crawl" : "Add to Bar Crawl"}
+                    </StyledButton>
+                </ButtonHolder>
             </div>
         </ResultDiv>
     )

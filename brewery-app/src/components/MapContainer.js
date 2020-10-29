@@ -109,20 +109,19 @@ const MapContainer = () => {
   useEffect(() => {
     let newLegend = [];
     if(activeView === "results") {
-      console.log("got in results")
       breweryList.map((brew) => {
-        addUnique(brew.brewery_type, newLegend)
+        addUnique(brew.brewery_type, newLegend);
+        return '';
       })
     } else {
-      barCrawlList.map((brew) => {addUnique(brew.brewery_type, newLegend)})
+      barCrawlList.map((brew) => {addUnique(brew.brewery_type, newLegend); return '';})
     }
 
     setLegendData({
       activeTypes: newLegend
     })
 
-
-
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeView])
   
   return (
