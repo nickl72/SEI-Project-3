@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { activateBrewery, deactivateBrewery, selectBrewery } from '../features/activeBrewerySlice';
 import { hideSearch } from '../features/showSearchFormSlice';
-import { addBrewery, barCrawl, removeBrewery } from "../features/barCrawlSlice";
+import { addBrewery, barCrawl, removeBrewery, view } from "../features/barCrawlSlice";
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { useDrag, useDrop } from "react-dnd";
 import { ResultDiv } from '../styles/ResultStyle';
+
 
 
 const Result = (props) => {
     const dispatch = useDispatch();
     const brewery = useSelector(selectBrewery);
     const barCrawlList = useSelector(barCrawl);
+    const activeView = useSelector(view);
 
     const isActiveBrewery = (props.result.id === brewery.id);
      // Sends brewery details up to hompage level and highlights the active div based on the index
@@ -26,7 +29,6 @@ const Result = (props) => {
             dispatch(activateBrewery(props.result));
         }
     }
-    console.log(barCrawlList);
     
     const isOnList = (brewid, list) => {
         let index = list.findIndex(x => x.id === brewid);
@@ -50,9 +52,52 @@ const Result = (props) => {
     const hideForm = () => {
         dispatch(hideSearch());
     }
+    
+    //Set up for draggable list
+    const ref = useRef(null);
+    const findBrew = props.findBrew;
+    const moveBrew = props.moveBrew;
+
+    const originalIndex = findBrew(props.id).index;
+    
+
+    const [{isDragging}, drag] = useDrag({
+        item: {type: "resultCard", id: props.id, originalIndex },
+        canDrag: activeView==="barCrawl" ? true : false,
+        collect: (monitor) => ({
+            isDragging: !!monitor.isDragging()
+        }),
+        end: (dropResult, monitor) => {
+            const {id: droppedId, originalIndex} = monitor.getItem();
+            console.log(monitor.getItem());
+            const didDrop = monitor.didDrop();
+            console.log(`Dropped: ${droppedId}, original: ${originalIndex}`)
+            if(!didDrop) {
+                moveBrew(droppedId, originalIndex);
+            }
+        }
+    });
+
+    const[, drop] = useDrop({
+        accept: "resultCard",
+        canDrop: () => false,
+        hover({id: draggedId}) {
+            console.log(draggedId)
+            if(draggedId !== props.id) {
+                const { index: overIndex } = findBrew(props.id);
+                console.log("trying to move brew")
+                moveBrew(draggedId, overIndex);
+                
+            }
+        },
+    })
+
+    drag(drop(ref))
+    
+    
 
     return (
-        <ResultDiv className={isActiveBrewery ? 'result active' : 'result'} onClick={(e) => handleClick(e)}>
+        <ResultDiv className={isActiveBrewery ? 'result active' : 'result'} ref={ref} isDragging={isDragging} onClick={(e) => handleClick(e)}>
             <div className={isActiveBrewery ? 'active' : ''}> 
                 <h3>Brewery: {props.result.name}</h3>
                 <h4>Location: {props.result.street}, {props.result.city}, {props.result.state}</h4>
