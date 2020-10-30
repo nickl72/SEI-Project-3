@@ -6,6 +6,7 @@ import { Names as StateNames} from '../stateNames';
 import { useDispatch } from 'react-redux'
 import { loadResults, addResults } from '../features/breweryListSlice'
 import { setView } from "../features/barCrawlSlice";
+import { deactivateBrewery } from "../features/activeBrewerySlice";
 
 const SearchForm = () => {
     const dispatch = useDispatch();
@@ -29,9 +30,10 @@ const SearchForm = () => {
         axios(buildSearchUrl())
         .then(resp => {
             const data = resp.data;
-            let cleanedData = cleanData(data)
-            dispatch(loadResults(cleanedData))
-            dispatch(setView("results"))
+            let cleanedData = cleanData(data);
+            dispatch(loadResults(cleanedData));
+            dispatch(setView("results"));
+            dispatch(deactivateBrewery());
         })
         .catch(err => console.error(err));
     }
