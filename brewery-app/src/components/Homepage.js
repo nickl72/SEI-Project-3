@@ -10,7 +10,7 @@ const Div = styled.div`
     align-items: flex-start;
     justify-content: center;
     width: 100vw;
-    height: 75vh;
+    height: 85vh;
     margin: 0 auto;
 `
 

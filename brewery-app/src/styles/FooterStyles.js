@@ -5,6 +5,7 @@ export const FooterDiv = styled.footer`
     justify-content: space-between;
     padding: 0 10px;
     height: 5vh;
+    min-height: 50px;
     font-size: 12px;
     text-align: center;
 `
@@ -23,7 +24,6 @@ export const Div = styled.div`
 export const Note = styled.p`
     font-weight: bold;
     font-style: italic;
-    
 `
 
 export const Bold = styled.span`

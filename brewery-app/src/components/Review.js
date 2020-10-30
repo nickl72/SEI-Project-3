@@ -1,37 +1,40 @@
 import React from 'react';
-
-import * as S from '../styles/ReviewStyles';
-
-// author_name: "Dean Ahles"
-// author_url: "https://www.google.com/maps/contrib/101440542195116051017/reviews"
-// language: "en"
-// profile_photo_url: "https://lh3.googleusercontent.com/-KpV-RjIKumk/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuclMdALlVsCnYt6LmTdVbXjwn82QAA/s128-c0x00000000-cc-rp-mo/photo.jpg"
-// rating: 3
-// relative_time_description: "a month ago"
-// text: "Steak was tough, food was not hot."
+import * as R from '../styles/ReviewStyles';
+import * as S from '../styles/ShowPageStyles';
+import * as G from '../styles/GlobalStyle';
 
 
 const Review = (props) => {
+    let mugs = []
+    for( let i = 0 ; i < props.review.rating ; i++) {
+        mugs.push(<S.RatingIcon src = "/beer-mug_1f37a.png" alt='beer mug' />)
+    };
+
     return (
-        <S.StyledReview>
-            <S.AuthorInfo>
-                <S.AuthorProfilePhoto src={props.review.profile_photo_url} />
-                <S.AuthorName>
+        <R.StyledReview>
+            <R.AuthorInfo>
+                <R.AuthorProfilePhoto src={props.review.profile_photo_url} />
+                <R.AuthorName>
                     {props.review.author_name}
-                </S.AuthorName>
-            </S.AuthorInfo>
-            <S.ReviewInfo>
-                <S.Rating>
-                    {props.review.rating}
-                </S.Rating>
-                <S.ReviewText>
+                </R.AuthorName>
+            </R.AuthorInfo>
+            <R.ReviewInfo>
+                <S.MugRating>
+                    <p>
+                        <G.Bold>Rating: </G.Bold>{props.review.rating}
+                    </p>
+                    <S.MugRack>
+                        {mugs}
+                    </S.MugRack>
+                </S.MugRating>
+                <R.ReviewText>
                     {props.review.text}
-                </S.ReviewText>
-                <S.RelativeTime>
+                </R.ReviewText>
+                <R.RelativeTime>
                     {props.review.relative_time_description}
-                </S.RelativeTime>
-            </S.ReviewInfo>
-        </S.StyledReview>
+                </R.RelativeTime>
+            </R.ReviewInfo>
+        </R.StyledReview>
     )
 }
 

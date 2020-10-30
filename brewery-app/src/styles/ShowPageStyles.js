@@ -31,7 +31,6 @@ export const BreweryPhotos = Styled.div`
     .rec.rec-arrow:hover {
         border-radius: 0;
         background: #e78c11;
-
     }
     .rec.rec-arrow:disabled {
         visibility: hidden;
@@ -46,7 +45,6 @@ export const BreweryPhotos = Styled.div`
     .rec.rec-dot_active {
         background: #f5c270;
         box-shadow: 0 0 1px 3px #532b04;
-
     }
 `
 
@@ -89,3 +87,25 @@ export const BreweryReviews = Styled.ul`
 
 `
 
+export const MugRating = Styled.div`
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+`
+
+export const MugRack = Styled.div`
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+`
+
+export const RatingIcon = Styled.img`
+    height: 22px;
+    width: 22px;
+    margin: 3px;
+    background: #ce6505;
+    padding: 4px;
+    border-radius: 4px;
+`

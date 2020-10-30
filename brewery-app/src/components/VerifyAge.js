@@ -5,6 +5,9 @@ import styled, {keyframes} from 'styled-components';
 import { fadeIn } from 'react-animations';
 import { StyledSubmit, StyledInput } from '../styles/FormStyles';
 
+import * as S from '../styles/HeaderStyles';
+
+
 const BigStyledSubmit = styled(StyledSubmit)`
     font-size: 2em;
 
@@ -22,6 +25,7 @@ const Div = styled.div`
     height: 100vh;
     width: 100vw;
     display: flex;
+    flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
     form div {
@@ -36,9 +40,9 @@ const Div = styled.div`
     }
     h3 {
         text-align: center;
-        font-size: 3em;
+        font-size: 2em;
         font-weight: 700;
-        color: #331a04
+        color: #331a04;
     }
 `
 
@@ -76,6 +80,15 @@ function VerifyAge() {
 
     return (
         <Div>
+            <S.TitleDiv>
+                <S.PageIcon src="/brew_puzzle.png" alt="Puzzles Icon" />
+                    <S.PageTitle>
+                        <h1>Puzzles</h1>
+                        <p>Put Your Night Together</p>
+                    </S.PageTitle>
+            </S.TitleDiv>
+
+
             <form onSubmit={(e) => checkAge(e)} autoComplete='off'>
                 <h3>Enter your birthday to proceed to site</h3>
                 <div>

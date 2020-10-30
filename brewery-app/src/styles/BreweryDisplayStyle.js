@@ -15,8 +15,8 @@ export const Holder = Styled.div`
     }
 `
 export const BasicIcon = Styled.img`
-    height: 22px;
-    width: 22px;
+    height: 25px;
+    width: 25px;
     margin: 5px;
 `
 
@@ -56,11 +56,11 @@ export const Modal = Styled.div`
 `
 
 export const LegendHolder = Styled.div`
-    background: white;
+    background: #fbbf51;
     margin: 10px;
     padding: 8px;
     border-radius: 2px;
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
+    box-shadow: rgba(0, 0, 0, 0.8) 0px 1px 4px -1px;
     min-width: 50px;
     z-index: 2;
     min-height: 12px;

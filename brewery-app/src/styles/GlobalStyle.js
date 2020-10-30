@@ -10,10 +10,11 @@ export const GlobalStyle = createGlobalStyle`
   .App {
     display: flex;
     flex-flow: column nowrap;
+    min-height: 100vh;
   }
 
   main {
-    height: 87vh;
+    flex-grow: 1;
   }
 
   a {
