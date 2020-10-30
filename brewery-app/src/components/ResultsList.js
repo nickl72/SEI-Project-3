@@ -90,7 +90,7 @@ const ResultsList = () => {
                 <ResultHolder>
                     {barCrawlList.length === 0 ? 
                         <Message className="message">
-                            <h4>You haven't pick any breweries yet...</h4>
+                            <h4>You haven't picked any breweries yet...</h4>
                             <h5>Time to get planning!</h5> 
                         </Message>
                         :
