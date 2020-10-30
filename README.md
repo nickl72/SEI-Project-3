@@ -36,11 +36,18 @@ Application users may search for breweries in an area and learn more about what 
 ![Brewery Info Page](/planning/wireframes/BreweryInfoPage.jpg)
 
 ### Technologies used
-- React
-- React Router
-- Axios
-- Redux
-- EmailJS
+* React
+  * Front end framework
+* React Router
+  * Routes between different section of the site
+* Axios
+  * Makes API calls
+* Redux
+  * Manages state that is needed for multiple components
+* EmailJS 
+  * Emails bar crawl itinerary
+* React DND
+  * Draggable method to reorder bar crawl list
 
 
 ### Approach taken 
@@ -49,11 +56,9 @@ Application users may search for breweries in an area and learn more about what 
 ### Unsolved problems
 
 
-
 #### Useful links:
 - [Google Maps JS API](https://developers.google.com/maps/documentation/javascript/overview#maps_map_simple-javascript)
 - [Open Brewery DB](https://www.openbrewerydb.org/)
-- [Brewery DB: sandbox](https://www.brewerydb.com/developers/docs)
 - [google-map-react Library](https://www.npmjs.com/package/google-map-react)
 - [styled-components documantation](https://styled-components.com/docs/basics)
 - [Google Places Details API](https://developers.google.com/places/web-service/details)
