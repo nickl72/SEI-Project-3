@@ -73,6 +73,11 @@ const ResultsList = () => {
             </ResultHead>
             {activeView === "results" ?
                 <ResultHolder>
+                    {searchResults.length === 0 ? 
+                    <Message className="message">
+                        <h4>Sorry, we couldn't find any breweries there.</h4>
+                    </Message>    
+                    :
                     <ResultHolder className="results" ref={drop}>
                         {searchResults && searchResults.map((result, index) => (
                         <Result 
@@ -84,6 +89,7 @@ const ResultsList = () => {
                         /> 
                         ))}
                     </ResultHolder>
+                    }
                 </ResultHolder> 
                 
             :
