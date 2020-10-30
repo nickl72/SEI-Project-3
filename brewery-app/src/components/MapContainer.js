@@ -66,7 +66,8 @@ const MapContainer = () => {
   
   // Setting map center based on center of results, will only change on newSet of results
   useEffect(() => {
-    let newLegend =  legendData.activeTypes;
+    console.log("making new legend")
+    let newLegend =  [];
     
     breweryList.map((brew) => {
       if(brew.latitude) {
