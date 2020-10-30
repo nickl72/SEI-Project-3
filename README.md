@@ -1,6 +1,8 @@
 # SEI-Project-3
 
 ## Brewery searching React application. 
+Live Link: [Puzzles](http://puzzles.surge.sh/)
+
 Application users may search for breweries in an area and learn more about what beers they provide. They can find a brewery's location on a map as well as learn more about it and link to its website.
 
 ### MVP
