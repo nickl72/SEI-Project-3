@@ -67,7 +67,7 @@ const ResultsList = () => {
                     onClick={() => viewClick("barCrawl")}
                     className={activeView==="barCrawl" ? "active" : "inactive"}
                 >
-                    Bar Crawl List
+                    Brew Crawl List
                     <CrawlCount>{barCrawlList.length}</CrawlCount>
                     </ViewButton>
             </ResultHead>

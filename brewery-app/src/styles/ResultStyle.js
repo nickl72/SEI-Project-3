@@ -104,7 +104,7 @@ export const ViewButton = styled.div `
         background: #f2a743;
         border-left: 2px solid #f2a743;
         border-right: 2px solid #f2a743;
-        font-size: x-large;
+        font-size: 1.4em;
         font-weight: 700;
 }
 `
